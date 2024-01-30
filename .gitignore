@@ -248,5 +248,7 @@ adb_port.ini
 *.exe
 !popup.exe
 *.zip
-console.bat
 .vscode/*
+
+# Pylance configuration file
+pyrightconfig.json

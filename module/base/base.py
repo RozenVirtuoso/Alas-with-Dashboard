@@ -21,7 +21,7 @@ class ModuleBase:
         Args:
             config (AzurLaneConfig, str):
                 Name of the user config under ./config
-            device (Device):
+            device (Device, str):
                 To reuse a device.
                 If None, create a new Device object.
                 If str, create a new Device object and use the given device as serial.
@@ -172,16 +172,19 @@ class ModuleBase:
                 logger.warning(f'wait_until_stable({button}) timeout')
                 break
 
-    def image_crop(self, button):
+    def image_crop(self, button, copy=True):
         """Extract the area from image.
 
         Args:
             button(Button, tuple): Button instance or area tuple.
+            copy:
         """
         if isinstance(button, Button):
-            return crop(self.device.image, button.area)
+            return crop(self.device.image, button.area, copy=copy)
+        elif hasattr(button, 'area'):
+            return crop(self.device.image, button.area, copy=copy)
         else:
-            return crop(self.device.image, button)
+            return crop(self.device.image, button, copy=copy)
 
     def image_color_count(self, button, color, threshold=221, count=50):
         """
@@ -194,9 +197,14 @@ class ModuleBase:
         Returns:
             bool:
         """
-        image = self.image_crop(button)
-        mask = color_similarity_2d(image, color=color) > threshold
-        return np.sum(mask) > count
+        if isinstance(button, np.ndarray):
+            image = button
+        else:
+            image = self.image_crop(button, copy=False)
+        mask = color_similarity_2d(image, color=color)
+        cv2.inRange(mask, threshold, 255, dst=mask)
+        sum_ = cv2.countNonZero(mask)
+        return sum_ > count
 
     def image_color_button(self, area, color, color_threshold=250, encourage=5, name='COLOR_BUTTON'):
         """
@@ -224,27 +232,29 @@ class ModuleBase:
         color = get_color(self.device.image, button_area)
         return Button(area=button_area, color=color, button=button_area, name=name)
 
-    def interval_reset(self, button):
+    def interval_reset(self, button, interval=3):
         if isinstance(button, (list, tuple)):
             for b in button:
                 self.interval_reset(b)
             return
 
-        if button.name in self.interval_timer:
-            self.interval_timer[button.name].reset()
-        else:
-            self.interval_timer[button.name] = Timer(3).reset()
+        if button is not None:
+            if button.name in self.interval_timer:
+                self.interval_timer[button.name].reset()
+            else:
+                self.interval_timer[button.name] = Timer(interval).reset()
 
-    def interval_clear(self, button):
+    def interval_clear(self, button, interval=3):
         if isinstance(button, (list, tuple)):
             for b in button:
                 self.interval_clear(b)
             return
 
-        if button.name in self.interval_timer:
-            self.interval_timer[button.name].clear()
-        else:
-            self.interval_timer[button.name] = Timer(3).clear()
+        if button is not None:
+            if button.name in self.interval_timer:
+                self.interval_timer[button.name].clear()
+            else:
+                self.interval_timer[button.name] = Timer(interval).clear()
 
     _image_file = ''
 

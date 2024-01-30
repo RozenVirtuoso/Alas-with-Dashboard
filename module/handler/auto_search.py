@@ -1,10 +1,28 @@
+import numpy as np
+
 from module.base.button import ButtonGrid
 from module.base.decorator import Config
 from module.handler.assets import *
 from module.handler.enemy_searching import EnemySearchingHandler
 from module.logger import logger
+from module.map.assets import FLEET_PREPARATION_CHECK
 
-AUTO_SEARCH_SETTINGS = [AUTO_SEARCH_SET_MOB, AUTO_SEARCH_SET_BOSS, AUTO_SEARCH_SET_ALL, AUTO_SEARCH_SET_STANDBY, AUTO_SEARCH_SET_SUB_AUTO, AUTO_SEARCH_SET_SUB_STANDBY]
+AUTO_SEARCH_SETTINGS = [
+    AUTO_SEARCH_SET_MOB,
+    AUTO_SEARCH_SET_BOSS,
+    AUTO_SEARCH_SET_ALL,
+    AUTO_SEARCH_SET_STANDBY,
+    AUTO_SEARCH_SET_SUB_AUTO,
+    AUTO_SEARCH_SET_SUB_STANDBY
+]
+AUTO_SEARCH_SETTINGS_15 = [
+    AUTO_SEARCH_SET_MOB_15,
+    AUTO_SEARCH_SET_BOSS_15,
+    AUTO_SEARCH_SET_ALL_15,
+    AUTO_SEARCH_SET_STANDBY_15,
+    AUTO_SEARCH_SET_SUB_AUTO_15,
+    AUTO_SEARCH_SET_SUB_STANDBY_15
+]
 dic_setting_name_to_index = {
     'fleet1_mob_fleet2_boss': 0,
     'fleet1_boss_fleet2_mob': 1,
@@ -19,13 +37,25 @@ dic_setting_index_to_name = {v: k for k, v in dic_setting_name_to_index.items()}
 class AutoSearchHandler(EnemySearchingHandler):
     @Config.when(SERVER='en')
     def _fleet_sidebar(self):
+        if FLEET_PREPARATION_CHECK.match(self.device.image, offset=(20, 80)):
+            offset = np.subtract(FLEET_PREPARATION_CHECK.button, FLEET_PREPARATION_CHECK._button)[1]
+        else:
+            offset = 0
+        logger.attr('_fleet_sidebar_offset', offset)
         return ButtonGrid(
-            origin=(1177, 138), delta=(0, 54), button_shape=(102, 43), grid_shape=(1, 3), name='FLEET_SIDEBAR')
+            origin=(1178, 171 + offset), delta=(0, 53),
+            button_shape=(98, 42), grid_shape=(1, 3), name='FLEET_SIDEBAR')
 
     @Config.when(SERVER=None)
     def _fleet_sidebar(self):
+        if FLEET_PREPARATION_CHECK.match(self.device.image, offset=(20, 80)):
+            offset = np.subtract(FLEET_PREPARATION_CHECK.button, FLEET_PREPARATION_CHECK._button)[1]
+        else:
+            offset = 0
+        logger.attr('_fleet_sidebar_offset', offset)
         return ButtonGrid(
-            origin=(1185, 125), delta=(0, 109), button_shape=(53, 104), grid_shape=(1, 3), name='FLEET_SIDEBAR')
+            origin=(1185, 155 + offset), delta=(0, 111),
+            button_shape=(53, 104), grid_shape=(1, 3), name='FLEET_SIDEBAR')
 
     def _fleet_preparation_sidebar_click(self, index):
         """
@@ -44,8 +74,9 @@ class AutoSearchHandler(EnemySearchingHandler):
 
         current = 0
         total = 0
+        sidebar = self._fleet_sidebar()
 
-        for idx, button in enumerate(self._fleet_sidebar().buttons):
+        for idx, button in enumerate(sidebar.buttons):
             if self.image_color_count(button, color=(99, 235, 255), threshold=221, count=50):
                 current = idx + 1
                 total = idx + 1
@@ -61,7 +92,7 @@ class AutoSearchHandler(EnemySearchingHandler):
         if current == index:
             return False
 
-        self.device.click(self._fleet_sidebar()[0, index - 1])
+        self.device.click(sidebar[0, index - 1])
         return True
 
     def fleet_preparation_sidebar_ensure(self, index, skip_first_screenshot=True):
@@ -108,8 +139,9 @@ class AutoSearchHandler(EnemySearchingHandler):
             bool: If selected to the correct option.
         """
         active = []
-
-        for index, button in enumerate(AUTO_SEARCH_SETTINGS):
+        self.AUTO_SEARCH_SETTINGS = AUTO_SEARCH_SETTINGS_15 if 'campaign_15' in self.config.campaign_name \
+            else AUTO_SEARCH_SETTINGS
+        for index, button in enumerate(self.AUTO_SEARCH_SETTINGS):
             if self.image_color_count(button, color=(156, 255, 82), threshold=221, count=20):
                 active.append(index)
 
@@ -127,7 +159,7 @@ class AutoSearchHandler(EnemySearchingHandler):
             logger.info('Selected to the correct auto search setting')
             return True
         else:
-            self.device.click(AUTO_SEARCH_SETTINGS[target_index])
+            self.device.click(self.AUTO_SEARCH_SETTINGS[target_index])
             return False
 
     def auto_search_setting_ensure(self, setting, skip_first_screenshot=True):
@@ -159,7 +191,8 @@ class AutoSearchHandler(EnemySearchingHandler):
                 continue
 
     _auto_search_offset = (5, 5)
-    _auto_search_menu_offset = (200, 20)
+    # Move 213px left when MULTIPLE_SORTIE appears
+    _auto_search_menu_offset = (250, 30)
 
     def is_auto_search_running(self):
         """

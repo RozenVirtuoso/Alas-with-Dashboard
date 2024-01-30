@@ -33,9 +33,7 @@ class AshCombat(Combat):
         """
         if self.is_combat_executing():
             return False
-        if super().handle_battle_status(drop=drop):
-            return True
-        if self.appear(BATTLE_STATUS, offset=(20, 20), interval=self.battle_status_click_interval):
+        if self.appear(BATTLE_STATUS, offset=(120, 20), interval=self.battle_status_click_interval):
             if drop:
                 drop.handle_add(self)
             else:
@@ -45,16 +43,21 @@ class AshCombat(Combat):
         if self.appear(BATTLE_PREPARATION, offset=(30, 30), interval=2):
             self.device.click(BACK_ARROW)
             return True
+        if super().handle_battle_status(drop=drop):
+            return True
 
         return False
 
     def handle_battle_preparation(self):
-        # Power limit check
-        from module.gg_handler.gg_handler import GGHandler
-        GGHandler(config=self.config, device=self.device).power_limit('Ash')
 
-        if super().handle_battle_preparation():
-            return True
+        if self.appear(BATTLE_PREPARATION, offset=(20, 20)):
+            self.device.sleep(0.5)
+            self.device.screenshot()
+            # Power limit check
+            from module.gg_handler.gg_handler import GGHandler
+            GGHandler(config=self.config, device=self.device).power_limit('Ash')
+            if super().handle_battle_preparation():
+                return True
 
         if self.appear_then_click(ASH_START, offset=(30, 30), interval=2):
             return True

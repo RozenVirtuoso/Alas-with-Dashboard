@@ -23,10 +23,13 @@
           "com.bilibili.blhx.nearme.gamecenter",
           "com.bilibili.blhx.vivo",
           "com.bilibili.blhx.mz",
+          "com.bilibili.blhx.dl",
+          "com.bilibili.blhx.lenovo",
           "com.bilibili.blhx.uc",
           "com.bilibili.blhx.mzw",
           "com.yiwu.blhx.yx15",
           "com.bilibili.blhx.m4399",
+          "com.bilibili.blhx.bilibiliMove",
           "com.hkmanjuu.azurlane.gp.mc"
         ]
       },
@@ -58,6 +61,7 @@
           "cn_android-20",
           "cn_android-21",
           "cn_android-22",
+          "cn_android-23",
           "cn_ios-0",
           "cn_ios-1",
           "cn_ios-2",
@@ -73,11 +77,13 @@
           "cn_channel-1",
           "cn_channel-2",
           "cn_channel-3",
+          "cn_channel-4",
           "en-0",
           "en-1",
           "en-2",
           "en-3",
           "en-4",
+          "en-5",
           "jp-0",
           "jp-1",
           "jp-2",
@@ -133,23 +139,34 @@
         "value": false
       }
     },
-    "RestartEmulator": {
-      "Enable": {
-        "type": "checkbox",
-        "value": false
+    "EmulatorInfo": {
+      "Emulator": {
+        "type": "select",
+        "value": "auto",
+        "option": [
+          "auto",
+          "NoxPlayer",
+          "NoxPlayer64",
+          "BlueStacks4",
+          "BlueStacks5",
+          "BlueStacks4HyperV",
+          "BlueStacks5HyperV",
+          "LDPlayer3",
+          "LDPlayer4",
+          "LDPlayer9",
+          "MuMuPlayer",
+          "MuMuPlayerX",
+          "MuMuPlayer12",
+          "MEmuPlayer"
+        ]
       },
-      "EmulatorData": {
+      "name": {
         "type": "textarea",
-        "value": "emulator:\nname:\npath:",
-        "mode": "yaml"
+        "value": null
       },
-      "ErrorRestart": {
-        "type": "checkbox",
-        "value": false
-      },
-      "DailyRestart": {
-        "type": "checkbox",
-        "value": false
+      "path": {
+        "type": "textarea",
+        "value": null
       }
     },
     "Error": {
@@ -208,8 +225,7 @@
         "value": "default",
         "option": [
           "default",
-          "cn_gz_reverse_proxy",
-          "cn_sh_reverse_proxy"
+          "cn_gz_reverse_proxy"
         ]
       },
       "ResearchRecord": {
@@ -298,14 +314,6 @@
           "keep_limit_break",
           "do_not_keep"
         ]
-      },
-      "RetireAmount": {
-        "type": "select",
-        "value": "retire_all",
-        "option": [
-          "retire_all",
-          "retire_10"
-        ]
       }
     },
     "Enhance": {
@@ -364,13 +372,18 @@
   "Restart": {
     "Scheduler": {
       "Enable": {
-        "type": "checkbox",
+        "type": "state",
         "value": true,
-        "display": "disabled"
+        "option": [
+          true
+        ],
+        "option_bold": [
+          true
+        ]
       },
       "NextRun": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime"
       },
       "Command": {
@@ -407,11 +420,15 @@
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
-        "value": false
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
       },
       "NextRun": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime"
       },
       "Command": {
@@ -661,7 +678,7 @@
       },
       "Fleet1Record": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime",
         "display": "disabled"
       },
@@ -694,7 +711,7 @@
       },
       "Fleet2Record": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime",
         "display": "disabled"
       },
@@ -780,11 +797,15 @@
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
-        "value": false
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
       },
       "NextRun": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime"
       },
       "Command": {
@@ -1034,7 +1055,7 @@
       },
       "Fleet1Record": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime",
         "display": "disabled"
       },
@@ -1067,7 +1088,7 @@
       },
       "Fleet2Record": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime",
         "display": "disabled"
       },
@@ -1153,11 +1174,15 @@
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
-        "value": false
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
       },
       "NextRun": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime"
       },
       "Command": {
@@ -1407,7 +1432,7 @@
       },
       "Fleet1Record": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime",
         "display": "disabled"
       },
@@ -1440,7 +1465,7 @@
       },
       "Fleet2Record": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime",
         "display": "disabled"
       },
@@ -1526,11 +1551,15 @@
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
-        "value": false
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
       },
       "NextRun": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime"
       },
       "Command": {
@@ -1567,6 +1596,7 @@
         "type": "select",
         "value": "ship",
         "option": [
+          "disabled",
           "ship",
           "ship_equip"
         ]
@@ -1613,68 +1643,78 @@
         "type": "select",
         "value": "campaign_main",
         "option": [
-          "campaign_main",
-          "event_20210422_cn",
-          "event_20230223_cn",
-          "event_20220224_cn",
-          "event_20200806_cn",
-          "event_20210610_tw",
-          "event_20210225_cn",
-          "event_20211229_cn",
-          "event_20221222_cn",
-          "event_20221124_cn",
-          "event_20210325_cn",
-          "event_20201229_cn",
-          "event_20211111_cn",
-          "event_20210121_cn",
-          "event_20220915_cn",
-          "event_20210916_cn",
-          "event_20200903_en",
-          "event_20220818_cn",
-          "event_20220324_cn",
-          "event_20211028_cn",
-          "event_20220728_cn",
-          "event_20200917_cn",
-          "event_20201029_cn",
-          "event_20200820_cn",
-          "event_20201012_cn",
-          "event_20210527_cn",
-          "event_20220526_cn",
-          "event_20220428_cn",
-          "event_20220414_cn",
-          "event_20220407_tw",
-          "event_20220310_tw",
+          "event_20200227_cn",
+          "event_20200312_cn",
+          "event_20200326_cn",
+          "event_20200423_cn",
+          "event_20200507_cn",
+          "event_20200521_cn",
+          "event_20200521_en",
           "event_20200603_cn",
-          "event_20220210_cn",
-          "event_20211125_cn",
-          "event_20211028_tw",
-          "event_20210722_cn",
-          "event_20210819_cn",
+          "event_20200603_en",
+          "event_20200611_en",
+          "event_20200716_en",
           "event_20200723_cn",
+          "event_20200806_cn",
+          "event_20200820_cn",
+          "event_20200903_en",
+          "event_20200917_cn",
+          "event_20201002_en",
+          "event_20201012_cn",
+          "event_20201029_cn",
+          "event_20201126_cn",
+          "event_20201229_cn",
+          "event_20210121_cn",
+          "event_20210225_cn",
+          "event_20210225_tw",
+          "event_20210325_cn",
+          "event_20210415_tw",
+          "event_20210422_cn",
+          "event_20210429_tw",
+          "event_20210527_cn",
+          "event_20210527_tw",
+          "event_20210610_tw",
           "event_20210624_cn",
           "event_20210624_tw",
-          "event_20210527_tw",
-          "event_20210429_tw",
-          "event_20210415_tw",
-          "event_20210225_tw",
-          "event_20201126_cn",
-          "event_20200312_cn",
-          "event_20201002_en",
-          "event_20200716_en",
-          "event_20200611_en",
-          "event_20200603_en",
-          "event_20200521_en",
-          "event_20200521_cn",
-          "event_20200507_cn",
-          "event_20200423_cn",
-          "event_20200326_cn",
-          "event_20200227_cn"
+          "event_20210722_cn",
+          "event_20210819_cn",
+          "event_20210916_cn",
+          "event_20211028_cn",
+          "event_20211028_tw",
+          "event_20211111_cn",
+          "event_20211125_cn",
+          "event_20211229_cn",
+          "event_20220210_cn",
+          "event_20220224_cn",
+          "event_20220310_tw",
+          "event_20220324_cn",
+          "event_20220407_tw",
+          "event_20220414_cn",
+          "event_20220428_cn",
+          "event_20220526_cn",
+          "event_20220728_cn",
+          "event_20220818_cn",
+          "event_20220915_cn",
+          "event_20221124_cn",
+          "event_20221222_cn",
+          "event_20230223_cn",
+          "event_20230525_cn",
+          "event_20230803_cn",
+          "event_20230817_cn",
+          "event_20230914_cn",
+          "event_20231026_cn",
+          "event_20231123_cn",
+          "event_20231221_cn"
         ],
         "display": "hide",
-        "cn": "event_20210422_cn",
-        "en": "event_20210422_cn",
-        "jp": "event_20210422_cn",
-        "tw": "event_20220224_cn"
+        "option_bold": [
+          "event_20210527_cn",
+          "event_20211229_cn"
+        ],
+        "cn": "event_20211229_cn",
+        "en": "event_20211229_cn",
+        "jp": "event_20211229_cn",
+        "tw": "event_20210527_cn"
       },
       "Mode": {
         "type": "select",
@@ -1851,408 +1891,6 @@
       }
     }
   },
-  "Sos": {
-    "Scheduler": {
-      "Enable": {
-        "type": "checkbox",
-        "value": false
-      },
-      "NextRun": {
-        "type": "datetime",
-        "value": "2023-01-01 00:00:00",
-        "validate": "datetime"
-      },
-      "Command": {
-        "type": "input",
-        "value": "Sos",
-        "display": "hide"
-      },
-      "SuccessInterval": {
-        "type": "input",
-        "value": 30,
-        "display": "hide"
-      },
-      "FailureInterval": {
-        "type": "input",
-        "value": 30,
-        "display": "hide"
-      },
-      "ServerUpdate": {
-        "type": "input",
-        "value": "00:00",
-        "display": "hide"
-      }
-    },
-    "Sos": {
-      "Chapter": {
-        "type": "select",
-        "value": 3,
-        "option": [
-          3,
-          4,
-          5,
-          6,
-          7,
-          8,
-          9,
-          10
-        ]
-      }
-    },
-    "Campaign": {
-      "Name": {
-        "type": "input",
-        "value": "dynamic",
-        "display": "hide"
-      },
-      "Event": {
-        "type": "select",
-        "value": "campaign_main",
-        "option": [
-          "campaign_main"
-        ],
-        "display": "hide"
-      },
-      "Mode": {
-        "type": "select",
-        "value": "normal",
-        "option": [
-          "normal",
-          "hard"
-        ],
-        "display": "hide"
-      },
-      "UseClearMode": {
-        "type": "checkbox",
-        "value": true,
-        "display": "hide"
-      },
-      "UseFleetLock": {
-        "type": "checkbox",
-        "value": true,
-        "display": "hide"
-      },
-      "UseAutoSearch": {
-        "type": "checkbox",
-        "value": false,
-        "display": "hide"
-      },
-      "Use2xBook": {
-        "type": "checkbox",
-        "value": false,
-        "display": "hide"
-      },
-      "AmbushEvade": {
-        "type": "checkbox",
-        "value": true,
-        "display": "hide"
-      }
-    },
-    "StopCondition": {
-      "RunCount": {
-        "type": "input",
-        "value": 0,
-        "display": "hide"
-      },
-      "OilLimit": {
-        "type": "input",
-        "value": 1000
-      },
-      "MapAchievement": {
-        "type": "select",
-        "value": "non_stop",
-        "option": [
-          "non_stop",
-          "100_percent_clear",
-          "map_3_stars",
-          "threat_safe",
-          "threat_safe_without_3_stars"
-        ],
-        "display": "hide"
-      },
-      "StageIncrease": {
-        "type": "checkbox",
-        "value": false,
-        "display": "hide"
-      },
-      "GetNewShip": {
-        "type": "checkbox",
-        "value": false,
-        "display": "hide"
-      },
-      "ReachLevel": {
-        "type": "input",
-        "value": 0,
-        "display": "hide"
-      }
-    },
-    "Fleet": {
-      "Fleet1": {
-        "type": "select",
-        "value": 1,
-        "option": [
-          1,
-          2,
-          3,
-          4,
-          5,
-          6
-        ]
-      },
-      "Fleet1Formation": {
-        "type": "select",
-        "value": "double_line",
-        "option": [
-          "line_ahead",
-          "double_line",
-          "diamond"
-        ]
-      },
-      "Fleet1Mode": {
-        "type": "select",
-        "value": "combat_auto",
-        "option": [
-          "combat_auto",
-          "combat_manual",
-          "stand_still_in_the_middle",
-          "hide_in_bottom_left"
-        ]
-      },
-      "Fleet1Step": {
-        "type": "select",
-        "value": 3,
-        "option": [
-          2,
-          3,
-          4,
-          5
-        ]
-      },
-      "Fleet2": {
-        "type": "select",
-        "value": 2,
-        "option": [
-          0,
-          1,
-          2,
-          3,
-          4,
-          5,
-          6
-        ]
-      },
-      "Fleet2Formation": {
-        "type": "select",
-        "value": "double_line",
-        "option": [
-          "line_ahead",
-          "double_line",
-          "diamond"
-        ]
-      },
-      "Fleet2Mode": {
-        "type": "select",
-        "value": "combat_auto",
-        "option": [
-          "combat_auto",
-          "combat_manual",
-          "stand_still_in_the_middle",
-          "hide_in_bottom_left"
-        ]
-      },
-      "Fleet2Step": {
-        "type": "select",
-        "value": 2,
-        "option": [
-          2,
-          3,
-          4,
-          5
-        ]
-      },
-      "FleetOrder": {
-        "type": "select",
-        "value": "fleet1_mob_fleet2_boss",
-        "option": [
-          "fleet1_mob_fleet2_boss",
-          "fleet1_boss_fleet2_mob",
-          "fleet1_all_fleet2_standby",
-          "fleet1_standby_fleet2_all"
-        ]
-      }
-    },
-    "Submarine": {
-      "Fleet": {
-        "type": "select",
-        "value": 0,
-        "option": [
-          0,
-          1,
-          2
-        ]
-      },
-      "Mode": {
-        "type": "select",
-        "value": "do_not_use",
-        "option": [
-          "do_not_use",
-          "hunt_only",
-          "boss_only",
-          "hunt_and_boss",
-          "every_combat"
-        ]
-      },
-      "AutoSearchMode": {
-        "type": "select",
-        "value": "sub_standby",
-        "option": [
-          "sub_standby",
-          "sub_auto_call"
-        ],
-        "display": "hide"
-      },
-      "DistanceToBoss": {
-        "type": "select",
-        "value": "2_grid_to_boss",
-        "option": [
-          "to_boss_position",
-          "1_grid_to_boss",
-          "2_grid_to_boss",
-          "use_open_ocean_support"
-        ]
-      }
-    },
-    "Emotion": {
-      "Mode": {
-        "type": "select",
-        "value": "calculate",
-        "option": [
-          "calculate",
-          "ignore",
-          "calculate_ignore"
-        ]
-      },
-      "Fleet1Value": {
-        "type": "input",
-        "value": 119
-      },
-      "Fleet1Record": {
-        "type": "datetime",
-        "value": "2023-01-01 00:00:00",
-        "validate": "datetime",
-        "display": "disabled"
-      },
-      "Fleet1Control": {
-        "type": "select",
-        "value": "prevent_yellow_face",
-        "option": [
-          "keep_exp_bonus",
-          "prevent_green_face",
-          "prevent_yellow_face",
-          "prevent_red_face"
-        ]
-      },
-      "Fleet1Recover": {
-        "type": "select",
-        "value": "not_in_dormitory",
-        "option": [
-          "not_in_dormitory",
-          "dormitory_floor_1",
-          "dormitory_floor_2"
-        ]
-      },
-      "Fleet1Oath": {
-        "type": "checkbox",
-        "value": false
-      },
-      "Fleet2Value": {
-        "type": "input",
-        "value": 119
-      },
-      "Fleet2Record": {
-        "type": "datetime",
-        "value": "2023-01-01 00:00:00",
-        "validate": "datetime",
-        "display": "disabled"
-      },
-      "Fleet2Control": {
-        "type": "select",
-        "value": "prevent_yellow_face",
-        "option": [
-          "keep_exp_bonus",
-          "prevent_green_face",
-          "prevent_yellow_face",
-          "prevent_red_face"
-        ]
-      },
-      "Fleet2Recover": {
-        "type": "select",
-        "value": "not_in_dormitory",
-        "option": [
-          "not_in_dormitory",
-          "dormitory_floor_1",
-          "dormitory_floor_2"
-        ]
-      },
-      "Fleet2Oath": {
-        "type": "checkbox",
-        "value": false
-      }
-    },
-    "HpControl": {
-      "UseHpBalance": {
-        "type": "checkbox",
-        "value": false
-      },
-      "UseEmergencyRepair": {
-        "type": "checkbox",
-        "value": false
-      },
-      "UseLowHpRetreat": {
-        "type": "checkbox",
-        "value": false
-      },
-      "HpBalanceThreshold": {
-        "type": "input",
-        "value": 0.2
-      },
-      "HpBalanceWeight": {
-        "type": "input",
-        "value": "1000, 1000, 1000"
-      },
-      "RepairUseSingleThreshold": {
-        "type": "input",
-        "value": 0.3
-      },
-      "RepairUseMultiThreshold": {
-        "type": "input",
-        "value": 0.6
-      },
-      "LowHpRetreatThreshold": {
-        "type": "input",
-        "value": 0.3
-      }
-    },
-    "EnemyPriority": {
-      "EnemyScaleBalanceWeight": {
-        "type": "select",
-        "value": "default_mode",
-        "option": [
-          "default_mode",
-          "S3_enemy_first",
-          "S1_enemy_first"
-        ]
-      }
-    },
-    "Storage": {
-      "Storage": {
-        "type": "storage",
-        "value": {},
-        "valuetype": "ignore",
-        "display": "disabled"
-      }
-    }
-  },
   "EventGeneral": {
     "EventGeneral": {
       "PtLimit": {
@@ -2261,7 +1899,7 @@
       },
       "TimeLimit": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime"
       }
     },
@@ -2297,11 +1935,15 @@
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
-        "value": false
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
       },
       "NextRun": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime"
       },
       "Command": {
@@ -2331,70 +1973,80 @@
         "value": "12-4"
       },
       "Event": {
-        "type": "select",
+        "type": "state",
         "value": "campaign_main",
         "option": [
-          "event_20210422_cn",
-          "event_20230223_cn",
-          "event_20220224_cn",
-          "event_20200806_cn",
-          "event_20210610_tw",
-          "event_20210225_cn",
-          "event_20211229_cn",
-          "event_20221222_cn",
-          "event_20221124_cn",
-          "event_20210325_cn",
-          "event_20201229_cn",
-          "event_20211111_cn",
-          "event_20210121_cn",
-          "event_20220915_cn",
-          "event_20210916_cn",
-          "event_20200903_en",
-          "event_20220818_cn",
-          "event_20220324_cn",
-          "event_20211028_cn",
-          "event_20220728_cn",
-          "event_20200917_cn",
-          "event_20201029_cn",
-          "event_20200820_cn",
-          "event_20201012_cn",
-          "event_20210527_cn",
-          "event_20220526_cn",
-          "event_20220428_cn",
-          "event_20220414_cn",
-          "event_20220407_tw",
-          "event_20220310_tw",
+          "event_20200227_cn",
+          "event_20200312_cn",
+          "event_20200326_cn",
+          "event_20200423_cn",
+          "event_20200507_cn",
+          "event_20200521_cn",
+          "event_20200521_en",
           "event_20200603_cn",
-          "event_20220210_cn",
-          "event_20211125_cn",
-          "event_20211028_tw",
-          "event_20210722_cn",
-          "event_20210819_cn",
+          "event_20200603_en",
+          "event_20200611_en",
+          "event_20200716_en",
           "event_20200723_cn",
+          "event_20200806_cn",
+          "event_20200820_cn",
+          "event_20200903_en",
+          "event_20200917_cn",
+          "event_20201002_en",
+          "event_20201012_cn",
+          "event_20201029_cn",
+          "event_20201126_cn",
+          "event_20201229_cn",
+          "event_20210121_cn",
+          "event_20210225_cn",
+          "event_20210225_tw",
+          "event_20210325_cn",
+          "event_20210415_tw",
+          "event_20210422_cn",
+          "event_20210429_tw",
+          "event_20210527_cn",
+          "event_20210527_tw",
+          "event_20210610_tw",
           "event_20210624_cn",
           "event_20210624_tw",
-          "event_20210527_tw",
-          "event_20210429_tw",
-          "event_20210415_tw",
-          "event_20210225_tw",
-          "event_20201126_cn",
-          "event_20200312_cn",
-          "event_20201002_en",
-          "event_20200716_en",
-          "event_20200611_en",
-          "event_20200603_en",
-          "event_20200521_en",
-          "event_20200521_cn",
-          "event_20200507_cn",
-          "event_20200423_cn",
-          "event_20200326_cn",
-          "event_20200227_cn"
+          "event_20210722_cn",
+          "event_20210819_cn",
+          "event_20210916_cn",
+          "event_20211028_cn",
+          "event_20211028_tw",
+          "event_20211111_cn",
+          "event_20211125_cn",
+          "event_20211229_cn",
+          "event_20220210_cn",
+          "event_20220224_cn",
+          "event_20220310_tw",
+          "event_20220324_cn",
+          "event_20220407_tw",
+          "event_20220414_cn",
+          "event_20220428_cn",
+          "event_20220526_cn",
+          "event_20220728_cn",
+          "event_20220818_cn",
+          "event_20220915_cn",
+          "event_20221124_cn",
+          "event_20221222_cn",
+          "event_20230223_cn",
+          "event_20230525_cn",
+          "event_20230803_cn",
+          "event_20230817_cn",
+          "event_20230914_cn",
+          "event_20231026_cn",
+          "event_20231123_cn",
+          "event_20231221_cn"
         ],
-        "display": "disabled",
-        "cn": "event_20210422_cn",
-        "en": "event_20210422_cn",
-        "jp": "event_20210422_cn",
-        "tw": "event_20220224_cn"
+        "option_bold": [
+          "event_20210527_cn",
+          "event_20211229_cn"
+        ],
+        "cn": "event_20211229_cn",
+        "en": "event_20211229_cn",
+        "jp": "event_20211229_cn",
+        "tw": "event_20210527_cn"
       },
       "Mode": {
         "type": "select",
@@ -2611,7 +2263,7 @@
       },
       "Fleet1Record": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime",
         "display": "disabled"
       },
@@ -2644,7 +2296,7 @@
       },
       "Fleet2Record": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime",
         "display": "disabled"
       },
@@ -2730,11 +2382,15 @@
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
-        "value": false
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
       },
       "NextRun": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime"
       },
       "Command": {
@@ -2764,70 +2420,80 @@
         "value": "12-4"
       },
       "Event": {
-        "type": "select",
+        "type": "state",
         "value": "campaign_main",
         "option": [
-          "event_20210422_cn",
-          "event_20230223_cn",
-          "event_20220224_cn",
-          "event_20200806_cn",
-          "event_20210610_tw",
-          "event_20210225_cn",
-          "event_20211229_cn",
-          "event_20221222_cn",
-          "event_20221124_cn",
-          "event_20210325_cn",
-          "event_20201229_cn",
-          "event_20211111_cn",
-          "event_20210121_cn",
-          "event_20220915_cn",
-          "event_20210916_cn",
-          "event_20200903_en",
-          "event_20220818_cn",
-          "event_20220324_cn",
-          "event_20211028_cn",
-          "event_20220728_cn",
-          "event_20200917_cn",
-          "event_20201029_cn",
-          "event_20200820_cn",
-          "event_20201012_cn",
-          "event_20210527_cn",
-          "event_20220526_cn",
-          "event_20220428_cn",
-          "event_20220414_cn",
-          "event_20220407_tw",
-          "event_20220310_tw",
+          "event_20200227_cn",
+          "event_20200312_cn",
+          "event_20200326_cn",
+          "event_20200423_cn",
+          "event_20200507_cn",
+          "event_20200521_cn",
+          "event_20200521_en",
           "event_20200603_cn",
-          "event_20220210_cn",
-          "event_20211125_cn",
-          "event_20211028_tw",
-          "event_20210722_cn",
-          "event_20210819_cn",
+          "event_20200603_en",
+          "event_20200611_en",
+          "event_20200716_en",
           "event_20200723_cn",
+          "event_20200806_cn",
+          "event_20200820_cn",
+          "event_20200903_en",
+          "event_20200917_cn",
+          "event_20201002_en",
+          "event_20201012_cn",
+          "event_20201029_cn",
+          "event_20201126_cn",
+          "event_20201229_cn",
+          "event_20210121_cn",
+          "event_20210225_cn",
+          "event_20210225_tw",
+          "event_20210325_cn",
+          "event_20210415_tw",
+          "event_20210422_cn",
+          "event_20210429_tw",
+          "event_20210527_cn",
+          "event_20210527_tw",
+          "event_20210610_tw",
           "event_20210624_cn",
           "event_20210624_tw",
-          "event_20210527_tw",
-          "event_20210429_tw",
-          "event_20210415_tw",
-          "event_20210225_tw",
-          "event_20201126_cn",
-          "event_20200312_cn",
-          "event_20201002_en",
-          "event_20200716_en",
-          "event_20200611_en",
-          "event_20200603_en",
-          "event_20200521_en",
-          "event_20200521_cn",
-          "event_20200507_cn",
-          "event_20200423_cn",
-          "event_20200326_cn",
-          "event_20200227_cn"
+          "event_20210722_cn",
+          "event_20210819_cn",
+          "event_20210916_cn",
+          "event_20211028_cn",
+          "event_20211028_tw",
+          "event_20211111_cn",
+          "event_20211125_cn",
+          "event_20211229_cn",
+          "event_20220210_cn",
+          "event_20220224_cn",
+          "event_20220310_tw",
+          "event_20220324_cn",
+          "event_20220407_tw",
+          "event_20220414_cn",
+          "event_20220428_cn",
+          "event_20220526_cn",
+          "event_20220728_cn",
+          "event_20220818_cn",
+          "event_20220915_cn",
+          "event_20221124_cn",
+          "event_20221222_cn",
+          "event_20230223_cn",
+          "event_20230525_cn",
+          "event_20230803_cn",
+          "event_20230817_cn",
+          "event_20230914_cn",
+          "event_20231026_cn",
+          "event_20231123_cn",
+          "event_20231221_cn"
         ],
-        "display": "disabled",
-        "cn": "event_20210422_cn",
-        "en": "event_20210422_cn",
-        "jp": "event_20210422_cn",
-        "tw": "event_20220224_cn"
+        "option_bold": [
+          "event_20210527_cn",
+          "event_20211229_cn"
+        ],
+        "cn": "event_20211229_cn",
+        "en": "event_20211229_cn",
+        "jp": "event_20211229_cn",
+        "tw": "event_20210527_cn"
       },
       "Mode": {
         "type": "select",
@@ -3044,7 +2710,7 @@
       },
       "Fleet1Record": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime",
         "display": "disabled"
       },
@@ -3077,7 +2743,7 @@
       },
       "Fleet2Record": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime",
         "display": "disabled"
       },
@@ -3163,11 +2829,15 @@
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
-        "value": false
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
       },
       "NextRun": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime"
       },
       "Command": {
@@ -3200,2704 +2870,78 @@
         "type": "select",
         "value": "campaign_main",
         "option": [
-          "event_20210422_cn",
-          "event_20230223_cn",
-          "event_20220224_cn",
-          "event_20200806_cn",
-          "event_20210610_tw",
-          "event_20210225_cn",
-          "event_20211229_cn",
-          "event_20221222_cn",
-          "event_20221124_cn",
-          "event_20210325_cn",
-          "event_20201229_cn",
-          "event_20211111_cn",
-          "event_20210121_cn",
-          "event_20220915_cn",
-          "event_20210916_cn",
-          "event_20200903_en",
-          "event_20220818_cn",
-          "event_20220324_cn",
-          "event_20211028_cn",
-          "event_20220728_cn",
-          "event_20200917_cn",
-          "event_20201029_cn",
-          "event_20200820_cn",
-          "event_20201012_cn",
-          "event_20210527_cn",
-          "event_20220526_cn",
-          "event_20220428_cn",
-          "event_20220414_cn",
-          "event_20220407_tw",
-          "event_20220310_tw",
+          "event_20200227_cn",
+          "event_20200312_cn",
+          "event_20200326_cn",
+          "event_20200423_cn",
+          "event_20200507_cn",
+          "event_20200521_cn",
+          "event_20200521_en",
           "event_20200603_cn",
-          "event_20220210_cn",
-          "event_20211125_cn",
-          "event_20211028_tw",
-          "event_20210722_cn",
-          "event_20210819_cn",
+          "event_20200603_en",
+          "event_20200611_en",
+          "event_20200716_en",
           "event_20200723_cn",
+          "event_20200806_cn",
+          "event_20200820_cn",
+          "event_20200903_en",
+          "event_20200917_cn",
+          "event_20201002_en",
+          "event_20201012_cn",
+          "event_20201029_cn",
+          "event_20201126_cn",
+          "event_20201229_cn",
+          "event_20210121_cn",
+          "event_20210225_cn",
+          "event_20210225_tw",
+          "event_20210325_cn",
+          "event_20210415_tw",
+          "event_20210422_cn",
+          "event_20210429_tw",
+          "event_20210527_cn",
+          "event_20210527_tw",
+          "event_20210610_tw",
           "event_20210624_cn",
           "event_20210624_tw",
-          "event_20210527_tw",
-          "event_20210429_tw",
-          "event_20210415_tw",
-          "event_20210225_tw",
-          "event_20201126_cn",
-          "event_20200312_cn",
-          "event_20201002_en",
-          "event_20200716_en",
-          "event_20200611_en",
-          "event_20200603_en",
-          "event_20200521_en",
-          "event_20200521_cn",
-          "event_20200507_cn",
-          "event_20200423_cn",
-          "event_20200326_cn",
-          "event_20200227_cn"
-        ],
-        "display": "disabled",
-        "cn": "event_20210422_cn",
-        "en": "event_20210422_cn",
-        "jp": "event_20210422_cn",
-        "tw": "event_20220224_cn"
-      },
-      "Mode": {
-        "type": "select",
-        "value": "normal",
-        "option": [
-          "normal",
-          "hard"
-        ],
-        "display": "hide"
-      },
-      "UseClearMode": {
-        "type": "checkbox",
-        "value": true
-      },
-      "UseFleetLock": {
-        "type": "checkbox",
-        "value": true
-      },
-      "UseAutoSearch": {
-        "type": "checkbox",
-        "value": true
-      },
-      "Use2xBook": {
-        "type": "checkbox",
-        "value": false
-      },
-      "AmbushEvade": {
-        "type": "checkbox",
-        "value": true,
-        "display": "hide"
-      }
-    },
-    "StopCondition": {
-      "RunCount": {
-        "type": "input",
-        "value": 0
-      },
-      "OilLimit": {
-        "type": "input",
-        "value": 1000
-      },
-      "MapAchievement": {
-        "type": "select",
-        "value": "non_stop",
-        "option": [
-          "non_stop",
-          "100_percent_clear",
-          "map_3_stars",
-          "threat_safe",
-          "threat_safe_without_3_stars"
-        ]
-      },
-      "StageIncrease": {
-        "type": "checkbox",
-        "value": false
-      },
-      "GetNewShip": {
-        "type": "checkbox",
-        "value": false
-      },
-      "ReachLevel": {
-        "type": "input",
-        "value": 0
-      }
-    },
-    "Fleet": {
-      "Fleet1": {
-        "type": "select",
-        "value": 1,
-        "option": [
-          1,
-          2,
-          3,
-          4,
-          5,
-          6
-        ]
-      },
-      "Fleet1Formation": {
-        "type": "select",
-        "value": "double_line",
-        "option": [
-          "line_ahead",
-          "double_line",
-          "diamond"
-        ]
-      },
-      "Fleet1Mode": {
-        "type": "select",
-        "value": "combat_auto",
-        "option": [
-          "combat_auto",
-          "combat_manual",
-          "stand_still_in_the_middle",
-          "hide_in_bottom_left"
-        ]
-      },
-      "Fleet1Step": {
-        "type": "select",
-        "value": 3,
-        "option": [
-          2,
-          3,
-          4,
-          5
-        ]
-      },
-      "Fleet2": {
-        "type": "select",
-        "value": 2,
-        "option": [
-          0,
-          1,
-          2,
-          3,
-          4,
-          5,
-          6
-        ]
-      },
-      "Fleet2Formation": {
-        "type": "select",
-        "value": "double_line",
-        "option": [
-          "line_ahead",
-          "double_line",
-          "diamond"
-        ]
-      },
-      "Fleet2Mode": {
-        "type": "select",
-        "value": "combat_auto",
-        "option": [
-          "combat_auto",
-          "combat_manual",
-          "stand_still_in_the_middle",
-          "hide_in_bottom_left"
-        ]
-      },
-      "Fleet2Step": {
-        "type": "select",
-        "value": 2,
-        "option": [
-          2,
-          3,
-          4,
-          5
-        ]
-      },
-      "FleetOrder": {
-        "type": "select",
-        "value": "fleet1_mob_fleet2_boss",
-        "option": [
-          "fleet1_mob_fleet2_boss",
-          "fleet1_boss_fleet2_mob",
-          "fleet1_all_fleet2_standby",
-          "fleet1_standby_fleet2_all"
-        ]
-      }
-    },
-    "Submarine": {
-      "Fleet": {
-        "type": "select",
-        "value": 0,
-        "option": [
-          0,
-          1,
-          2
-        ]
-      },
-      "Mode": {
-        "type": "select",
-        "value": "do_not_use",
-        "option": [
-          "do_not_use",
-          "hunt_only",
-          "boss_only",
-          "hunt_and_boss",
-          "every_combat"
-        ]
-      },
-      "AutoSearchMode": {
-        "type": "select",
-        "value": "sub_standby",
-        "option": [
-          "sub_standby",
-          "sub_auto_call"
-        ]
-      },
-      "DistanceToBoss": {
-        "type": "select",
-        "value": "2_grid_to_boss",
-        "option": [
-          "to_boss_position",
-          "1_grid_to_boss",
-          "2_grid_to_boss",
-          "use_open_ocean_support"
-        ]
-      }
-    },
-    "Emotion": {
-      "Mode": {
-        "type": "select",
-        "value": "calculate",
-        "option": [
-          "calculate",
-          "ignore",
-          "calculate_ignore"
-        ]
-      },
-      "Fleet1Value": {
-        "type": "input",
-        "value": 119
-      },
-      "Fleet1Record": {
-        "type": "datetime",
-        "value": "2023-01-01 00:00:00",
-        "validate": "datetime",
-        "display": "disabled"
-      },
-      "Fleet1Control": {
-        "type": "select",
-        "value": "prevent_yellow_face",
-        "option": [
-          "keep_exp_bonus",
-          "prevent_green_face",
-          "prevent_yellow_face",
-          "prevent_red_face"
-        ]
-      },
-      "Fleet1Recover": {
-        "type": "select",
-        "value": "not_in_dormitory",
-        "option": [
-          "not_in_dormitory",
-          "dormitory_floor_1",
-          "dormitory_floor_2"
-        ]
-      },
-      "Fleet1Oath": {
-        "type": "checkbox",
-        "value": false
-      },
-      "Fleet2Value": {
-        "type": "input",
-        "value": 119
-      },
-      "Fleet2Record": {
-        "type": "datetime",
-        "value": "2023-01-01 00:00:00",
-        "validate": "datetime",
-        "display": "disabled"
-      },
-      "Fleet2Control": {
-        "type": "select",
-        "value": "prevent_yellow_face",
-        "option": [
-          "keep_exp_bonus",
-          "prevent_green_face",
-          "prevent_yellow_face",
-          "prevent_red_face"
-        ]
-      },
-      "Fleet2Recover": {
-        "type": "select",
-        "value": "not_in_dormitory",
-        "option": [
-          "not_in_dormitory",
-          "dormitory_floor_1",
-          "dormitory_floor_2"
-        ]
-      },
-      "Fleet2Oath": {
-        "type": "checkbox",
-        "value": false
-      }
-    },
-    "HpControl": {
-      "UseHpBalance": {
-        "type": "checkbox",
-        "value": false
-      },
-      "UseEmergencyRepair": {
-        "type": "checkbox",
-        "value": false
-      },
-      "UseLowHpRetreat": {
-        "type": "checkbox",
-        "value": false
-      },
-      "HpBalanceThreshold": {
-        "type": "input",
-        "value": 0.2
-      },
-      "HpBalanceWeight": {
-        "type": "input",
-        "value": "1000, 1000, 1000"
-      },
-      "RepairUseSingleThreshold": {
-        "type": "input",
-        "value": 0.3
-      },
-      "RepairUseMultiThreshold": {
-        "type": "input",
-        "value": 0.6
-      },
-      "LowHpRetreatThreshold": {
-        "type": "input",
-        "value": 0.3
-      }
-    },
-    "EnemyPriority": {
-      "EnemyScaleBalanceWeight": {
-        "type": "select",
-        "value": "default_mode",
-        "option": [
-          "default_mode",
-          "S3_enemy_first",
-          "S1_enemy_first"
-        ]
-      }
-    },
-    "Storage": {
-      "Storage": {
-        "type": "storage",
-        "value": {},
-        "valuetype": "ignore",
-        "display": "disabled"
-      }
-    }
-  },
-  "EventA": {
-    "Scheduler": {
-      "Enable": {
-        "type": "checkbox",
-        "value": false
-      },
-      "NextRun": {
-        "type": "datetime",
-        "value": "2023-01-01 00:00:00",
-        "validate": "datetime"
-      },
-      "Command": {
-        "type": "input",
-        "value": "EventA",
-        "display": "hide"
-      },
-      "SuccessInterval": {
-        "type": "input",
-        "value": 30,
-        "display": "hide"
-      },
-      "FailureInterval": {
-        "type": "input",
-        "value": 30,
-        "display": "hide"
-      },
-      "ServerUpdate": {
-        "type": "input",
-        "value": "00:00",
-        "display": "hide"
-      }
-    },
-    "EventDaily": {
-      "StageFilter": {
-        "type": "textarea",
-        "value": "A1 > A2 > A3"
-      },
-      "LastStage": {
-        "type": "input",
-        "value": 0
-      }
-    },
-    "Campaign": {
-      "Name": {
-        "type": "input",
-        "value": "dynamic",
-        "display": "hide"
-      },
-      "Event": {
-        "type": "select",
-        "value": "campaign_main",
-        "option": [
-          "event_20210422_cn",
-          "event_20230223_cn",
-          "event_20220224_cn",
-          "event_20200806_cn",
-          "event_20210610_tw",
-          "event_20210225_cn",
-          "event_20211229_cn",
-          "event_20221222_cn",
-          "event_20221124_cn",
-          "event_20210325_cn",
-          "event_20201229_cn",
-          "event_20211111_cn",
-          "event_20210121_cn",
-          "event_20220915_cn",
-          "event_20210916_cn",
-          "event_20200903_en",
-          "event_20220818_cn",
-          "event_20220324_cn",
-          "event_20211028_cn",
-          "event_20220728_cn",
-          "event_20200917_cn",
-          "event_20201029_cn",
-          "event_20200820_cn",
-          "event_20201012_cn",
-          "event_20210527_cn",
-          "event_20220526_cn",
-          "event_20220428_cn",
-          "event_20220414_cn",
-          "event_20220407_tw",
-          "event_20220310_tw",
-          "event_20200603_cn",
-          "event_20220210_cn",
-          "event_20211125_cn",
-          "event_20211028_tw",
           "event_20210722_cn",
           "event_20210819_cn",
-          "event_20200723_cn",
-          "event_20210624_cn",
-          "event_20210624_tw",
-          "event_20210527_tw",
-          "event_20210429_tw",
-          "event_20210415_tw",
-          "event_20210225_tw",
-          "event_20201126_cn",
-          "event_20200312_cn",
-          "event_20201002_en",
-          "event_20200716_en",
-          "event_20200611_en",
-          "event_20200603_en",
-          "event_20200521_en",
-          "event_20200521_cn",
-          "event_20200507_cn",
-          "event_20200423_cn",
-          "event_20200326_cn",
-          "event_20200227_cn"
-        ],
-        "display": "disabled",
-        "cn": "event_20210422_cn",
-        "en": "event_20210422_cn",
-        "jp": "event_20210422_cn",
-        "tw": "event_20220224_cn"
-      },
-      "Mode": {
-        "type": "select",
-        "value": "normal",
-        "option": [
-          "normal",
-          "hard"
-        ],
-        "display": "hide"
-      },
-      "UseClearMode": {
-        "type": "checkbox",
-        "value": true
-      },
-      "UseFleetLock": {
-        "type": "checkbox",
-        "value": true
-      },
-      "UseAutoSearch": {
-        "type": "checkbox",
-        "value": true
-      },
-      "Use2xBook": {
-        "type": "checkbox",
-        "value": false,
-        "display": "hide"
-      },
-      "AmbushEvade": {
-        "type": "checkbox",
-        "value": true,
-        "display": "hide"
-      }
-    },
-    "StopCondition": {
-      "RunCount": {
-        "type": "input",
-        "value": 0,
-        "display": "hide"
-      },
-      "OilLimit": {
-        "type": "input",
-        "value": 1000
-      },
-      "MapAchievement": {
-        "type": "select",
-        "value": "non_stop",
-        "option": [
-          "non_stop",
-          "100_percent_clear",
-          "map_3_stars",
-          "threat_safe",
-          "threat_safe_without_3_stars"
-        ],
-        "display": "hide"
-      },
-      "StageIncrease": {
-        "type": "checkbox",
-        "value": false,
-        "display": "hide"
-      },
-      "GetNewShip": {
-        "type": "checkbox",
-        "value": false,
-        "display": "hide"
-      },
-      "ReachLevel": {
-        "type": "input",
-        "value": 0,
-        "display": "hide"
-      }
-    },
-    "Fleet": {
-      "Fleet1": {
-        "type": "select",
-        "value": 1,
-        "option": [
-          1,
-          2,
-          3,
-          4,
-          5,
-          6
-        ]
-      },
-      "Fleet1Formation": {
-        "type": "select",
-        "value": "double_line",
-        "option": [
-          "line_ahead",
-          "double_line",
-          "diamond"
-        ]
-      },
-      "Fleet1Mode": {
-        "type": "select",
-        "value": "combat_auto",
-        "option": [
-          "combat_auto",
-          "combat_manual",
-          "stand_still_in_the_middle",
-          "hide_in_bottom_left"
-        ]
-      },
-      "Fleet1Step": {
-        "type": "select",
-        "value": 3,
-        "option": [
-          2,
-          3,
-          4,
-          5
-        ]
-      },
-      "Fleet2": {
-        "type": "select",
-        "value": 2,
-        "option": [
-          0,
-          1,
-          2,
-          3,
-          4,
-          5,
-          6
-        ]
-      },
-      "Fleet2Formation": {
-        "type": "select",
-        "value": "double_line",
-        "option": [
-          "line_ahead",
-          "double_line",
-          "diamond"
-        ]
-      },
-      "Fleet2Mode": {
-        "type": "select",
-        "value": "combat_auto",
-        "option": [
-          "combat_auto",
-          "combat_manual",
-          "stand_still_in_the_middle",
-          "hide_in_bottom_left"
-        ]
-      },
-      "Fleet2Step": {
-        "type": "select",
-        "value": 2,
-        "option": [
-          2,
-          3,
-          4,
-          5
-        ]
-      },
-      "FleetOrder": {
-        "type": "select",
-        "value": "fleet1_mob_fleet2_boss",
-        "option": [
-          "fleet1_mob_fleet2_boss",
-          "fleet1_boss_fleet2_mob",
-          "fleet1_all_fleet2_standby",
-          "fleet1_standby_fleet2_all"
-        ]
-      }
-    },
-    "Submarine": {
-      "Fleet": {
-        "type": "select",
-        "value": 0,
-        "option": [
-          0,
-          1,
-          2
-        ]
-      },
-      "Mode": {
-        "type": "select",
-        "value": "do_not_use",
-        "option": [
-          "do_not_use",
-          "hunt_only",
-          "boss_only",
-          "hunt_and_boss",
-          "every_combat"
-        ]
-      },
-      "AutoSearchMode": {
-        "type": "select",
-        "value": "sub_standby",
-        "option": [
-          "sub_standby",
-          "sub_auto_call"
-        ]
-      },
-      "DistanceToBoss": {
-        "type": "select",
-        "value": "2_grid_to_boss",
-        "option": [
-          "to_boss_position",
-          "1_grid_to_boss",
-          "2_grid_to_boss",
-          "use_open_ocean_support"
-        ]
-      }
-    },
-    "Emotion": {
-      "Mode": {
-        "type": "select",
-        "value": "calculate",
-        "option": [
-          "calculate",
-          "ignore",
-          "calculate_ignore"
-        ]
-      },
-      "Fleet1Value": {
-        "type": "input",
-        "value": 119
-      },
-      "Fleet1Record": {
-        "type": "datetime",
-        "value": "2023-01-01 00:00:00",
-        "validate": "datetime",
-        "display": "disabled"
-      },
-      "Fleet1Control": {
-        "type": "select",
-        "value": "prevent_yellow_face",
-        "option": [
-          "keep_exp_bonus",
-          "prevent_green_face",
-          "prevent_yellow_face",
-          "prevent_red_face"
-        ]
-      },
-      "Fleet1Recover": {
-        "type": "select",
-        "value": "not_in_dormitory",
-        "option": [
-          "not_in_dormitory",
-          "dormitory_floor_1",
-          "dormitory_floor_2"
-        ]
-      },
-      "Fleet1Oath": {
-        "type": "checkbox",
-        "value": false
-      },
-      "Fleet2Value": {
-        "type": "input",
-        "value": 119
-      },
-      "Fleet2Record": {
-        "type": "datetime",
-        "value": "2023-01-01 00:00:00",
-        "validate": "datetime",
-        "display": "disabled"
-      },
-      "Fleet2Control": {
-        "type": "select",
-        "value": "prevent_yellow_face",
-        "option": [
-          "keep_exp_bonus",
-          "prevent_green_face",
-          "prevent_yellow_face",
-          "prevent_red_face"
-        ]
-      },
-      "Fleet2Recover": {
-        "type": "select",
-        "value": "not_in_dormitory",
-        "option": [
-          "not_in_dormitory",
-          "dormitory_floor_1",
-          "dormitory_floor_2"
-        ]
-      },
-      "Fleet2Oath": {
-        "type": "checkbox",
-        "value": false
-      }
-    },
-    "HpControl": {
-      "UseHpBalance": {
-        "type": "checkbox",
-        "value": false
-      },
-      "UseEmergencyRepair": {
-        "type": "checkbox",
-        "value": false
-      },
-      "UseLowHpRetreat": {
-        "type": "checkbox",
-        "value": false
-      },
-      "HpBalanceThreshold": {
-        "type": "input",
-        "value": 0.2
-      },
-      "HpBalanceWeight": {
-        "type": "input",
-        "value": "1000, 1000, 1000"
-      },
-      "RepairUseSingleThreshold": {
-        "type": "input",
-        "value": 0.3
-      },
-      "RepairUseMultiThreshold": {
-        "type": "input",
-        "value": 0.6
-      },
-      "LowHpRetreatThreshold": {
-        "type": "input",
-        "value": 0.3
-      }
-    },
-    "EnemyPriority": {
-      "EnemyScaleBalanceWeight": {
-        "type": "select",
-        "value": "default_mode",
-        "option": [
-          "default_mode",
-          "S3_enemy_first",
-          "S1_enemy_first"
-        ]
-      }
-    },
-    "Storage": {
-      "Storage": {
-        "type": "storage",
-        "value": {},
-        "valuetype": "ignore",
-        "display": "disabled"
-      }
-    }
-  },
-  "EventB": {
-    "Scheduler": {
-      "Enable": {
-        "type": "checkbox",
-        "value": false
-      },
-      "NextRun": {
-        "type": "datetime",
-        "value": "2023-01-01 00:00:00",
-        "validate": "datetime"
-      },
-      "Command": {
-        "type": "input",
-        "value": "EventB",
-        "display": "hide"
-      },
-      "SuccessInterval": {
-        "type": "input",
-        "value": 30,
-        "display": "hide"
-      },
-      "FailureInterval": {
-        "type": "input",
-        "value": 30,
-        "display": "hide"
-      },
-      "ServerUpdate": {
-        "type": "input",
-        "value": "00:00",
-        "display": "hide"
-      }
-    },
-    "EventDaily": {
-      "StageFilter": {
-        "type": "textarea",
-        "value": "B1 > B2 > B3"
-      },
-      "LastStage": {
-        "type": "input",
-        "value": 0
-      }
-    },
-    "Campaign": {
-      "Name": {
-        "type": "input",
-        "value": "dynamic",
-        "display": "hide"
-      },
-      "Event": {
-        "type": "select",
-        "value": "campaign_main",
-        "option": [
-          "event_20210422_cn",
-          "event_20230223_cn",
-          "event_20220224_cn",
-          "event_20200806_cn",
-          "event_20210610_tw",
-          "event_20210225_cn",
-          "event_20211229_cn",
-          "event_20221222_cn",
-          "event_20221124_cn",
-          "event_20210325_cn",
-          "event_20201229_cn",
-          "event_20211111_cn",
-          "event_20210121_cn",
-          "event_20220915_cn",
           "event_20210916_cn",
-          "event_20200903_en",
-          "event_20220818_cn",
-          "event_20220324_cn",
           "event_20211028_cn",
-          "event_20220728_cn",
-          "event_20200917_cn",
-          "event_20201029_cn",
-          "event_20200820_cn",
-          "event_20201012_cn",
-          "event_20210527_cn",
-          "event_20220526_cn",
-          "event_20220428_cn",
-          "event_20220414_cn",
-          "event_20220407_tw",
-          "event_20220310_tw",
-          "event_20200603_cn",
-          "event_20220210_cn",
-          "event_20211125_cn",
           "event_20211028_tw",
-          "event_20210722_cn",
-          "event_20210819_cn",
-          "event_20200723_cn",
-          "event_20210624_cn",
-          "event_20210624_tw",
-          "event_20210527_tw",
-          "event_20210429_tw",
-          "event_20210415_tw",
-          "event_20210225_tw",
-          "event_20201126_cn",
-          "event_20200312_cn",
-          "event_20201002_en",
-          "event_20200716_en",
-          "event_20200611_en",
-          "event_20200603_en",
-          "event_20200521_en",
-          "event_20200521_cn",
-          "event_20200507_cn",
-          "event_20200423_cn",
-          "event_20200326_cn",
-          "event_20200227_cn"
-        ],
-        "display": "disabled",
-        "cn": "event_20210422_cn",
-        "en": "event_20210422_cn",
-        "jp": "event_20210422_cn",
-        "tw": "event_20220224_cn"
-      },
-      "Mode": {
-        "type": "select",
-        "value": "normal",
-        "option": [
-          "normal",
-          "hard"
-        ],
-        "display": "hide"
-      },
-      "UseClearMode": {
-        "type": "checkbox",
-        "value": true
-      },
-      "UseFleetLock": {
-        "type": "checkbox",
-        "value": true
-      },
-      "UseAutoSearch": {
-        "type": "checkbox",
-        "value": true
-      },
-      "Use2xBook": {
-        "type": "checkbox",
-        "value": false,
-        "display": "hide"
-      },
-      "AmbushEvade": {
-        "type": "checkbox",
-        "value": true,
-        "display": "hide"
-      }
-    },
-    "StopCondition": {
-      "RunCount": {
-        "type": "input",
-        "value": 0,
-        "display": "hide"
-      },
-      "OilLimit": {
-        "type": "input",
-        "value": 1000
-      },
-      "MapAchievement": {
-        "type": "select",
-        "value": "non_stop",
-        "option": [
-          "non_stop",
-          "100_percent_clear",
-          "map_3_stars",
-          "threat_safe",
-          "threat_safe_without_3_stars"
-        ],
-        "display": "hide"
-      },
-      "StageIncrease": {
-        "type": "checkbox",
-        "value": false,
-        "display": "hide"
-      },
-      "GetNewShip": {
-        "type": "checkbox",
-        "value": false,
-        "display": "hide"
-      },
-      "ReachLevel": {
-        "type": "input",
-        "value": 0,
-        "display": "hide"
-      }
-    },
-    "Fleet": {
-      "Fleet1": {
-        "type": "select",
-        "value": 1,
-        "option": [
-          1,
-          2,
-          3,
-          4,
-          5,
-          6
-        ]
-      },
-      "Fleet1Formation": {
-        "type": "select",
-        "value": "double_line",
-        "option": [
-          "line_ahead",
-          "double_line",
-          "diamond"
-        ]
-      },
-      "Fleet1Mode": {
-        "type": "select",
-        "value": "combat_auto",
-        "option": [
-          "combat_auto",
-          "combat_manual",
-          "stand_still_in_the_middle",
-          "hide_in_bottom_left"
-        ]
-      },
-      "Fleet1Step": {
-        "type": "select",
-        "value": 3,
-        "option": [
-          2,
-          3,
-          4,
-          5
-        ]
-      },
-      "Fleet2": {
-        "type": "select",
-        "value": 2,
-        "option": [
-          0,
-          1,
-          2,
-          3,
-          4,
-          5,
-          6
-        ]
-      },
-      "Fleet2Formation": {
-        "type": "select",
-        "value": "double_line",
-        "option": [
-          "line_ahead",
-          "double_line",
-          "diamond"
-        ]
-      },
-      "Fleet2Mode": {
-        "type": "select",
-        "value": "combat_auto",
-        "option": [
-          "combat_auto",
-          "combat_manual",
-          "stand_still_in_the_middle",
-          "hide_in_bottom_left"
-        ]
-      },
-      "Fleet2Step": {
-        "type": "select",
-        "value": 2,
-        "option": [
-          2,
-          3,
-          4,
-          5
-        ]
-      },
-      "FleetOrder": {
-        "type": "select",
-        "value": "fleet1_mob_fleet2_boss",
-        "option": [
-          "fleet1_mob_fleet2_boss",
-          "fleet1_boss_fleet2_mob",
-          "fleet1_all_fleet2_standby",
-          "fleet1_standby_fleet2_all"
-        ]
-      }
-    },
-    "Submarine": {
-      "Fleet": {
-        "type": "select",
-        "value": 0,
-        "option": [
-          0,
-          1,
-          2
-        ]
-      },
-      "Mode": {
-        "type": "select",
-        "value": "do_not_use",
-        "option": [
-          "do_not_use",
-          "hunt_only",
-          "boss_only",
-          "hunt_and_boss",
-          "every_combat"
-        ]
-      },
-      "AutoSearchMode": {
-        "type": "select",
-        "value": "sub_standby",
-        "option": [
-          "sub_standby",
-          "sub_auto_call"
-        ]
-      },
-      "DistanceToBoss": {
-        "type": "select",
-        "value": "2_grid_to_boss",
-        "option": [
-          "to_boss_position",
-          "1_grid_to_boss",
-          "2_grid_to_boss",
-          "use_open_ocean_support"
-        ]
-      }
-    },
-    "Emotion": {
-      "Mode": {
-        "type": "select",
-        "value": "calculate",
-        "option": [
-          "calculate",
-          "ignore",
-          "calculate_ignore"
-        ]
-      },
-      "Fleet1Value": {
-        "type": "input",
-        "value": 119
-      },
-      "Fleet1Record": {
-        "type": "datetime",
-        "value": "2023-01-01 00:00:00",
-        "validate": "datetime",
-        "display": "disabled"
-      },
-      "Fleet1Control": {
-        "type": "select",
-        "value": "prevent_yellow_face",
-        "option": [
-          "keep_exp_bonus",
-          "prevent_green_face",
-          "prevent_yellow_face",
-          "prevent_red_face"
-        ]
-      },
-      "Fleet1Recover": {
-        "type": "select",
-        "value": "not_in_dormitory",
-        "option": [
-          "not_in_dormitory",
-          "dormitory_floor_1",
-          "dormitory_floor_2"
-        ]
-      },
-      "Fleet1Oath": {
-        "type": "checkbox",
-        "value": false
-      },
-      "Fleet2Value": {
-        "type": "input",
-        "value": 119
-      },
-      "Fleet2Record": {
-        "type": "datetime",
-        "value": "2023-01-01 00:00:00",
-        "validate": "datetime",
-        "display": "disabled"
-      },
-      "Fleet2Control": {
-        "type": "select",
-        "value": "prevent_yellow_face",
-        "option": [
-          "keep_exp_bonus",
-          "prevent_green_face",
-          "prevent_yellow_face",
-          "prevent_red_face"
-        ]
-      },
-      "Fleet2Recover": {
-        "type": "select",
-        "value": "not_in_dormitory",
-        "option": [
-          "not_in_dormitory",
-          "dormitory_floor_1",
-          "dormitory_floor_2"
-        ]
-      },
-      "Fleet2Oath": {
-        "type": "checkbox",
-        "value": false
-      }
-    },
-    "HpControl": {
-      "UseHpBalance": {
-        "type": "checkbox",
-        "value": false
-      },
-      "UseEmergencyRepair": {
-        "type": "checkbox",
-        "value": false
-      },
-      "UseLowHpRetreat": {
-        "type": "checkbox",
-        "value": false
-      },
-      "HpBalanceThreshold": {
-        "type": "input",
-        "value": 0.2
-      },
-      "HpBalanceWeight": {
-        "type": "input",
-        "value": "1000, 1000, 1000"
-      },
-      "RepairUseSingleThreshold": {
-        "type": "input",
-        "value": 0.3
-      },
-      "RepairUseMultiThreshold": {
-        "type": "input",
-        "value": 0.6
-      },
-      "LowHpRetreatThreshold": {
-        "type": "input",
-        "value": 0.3
-      }
-    },
-    "EnemyPriority": {
-      "EnemyScaleBalanceWeight": {
-        "type": "select",
-        "value": "default_mode",
-        "option": [
-          "default_mode",
-          "S3_enemy_first",
-          "S1_enemy_first"
-        ]
-      }
-    },
-    "Storage": {
-      "Storage": {
-        "type": "storage",
-        "value": {},
-        "valuetype": "ignore",
-        "display": "disabled"
-      }
-    }
-  },
-  "EventC": {
-    "Scheduler": {
-      "Enable": {
-        "type": "checkbox",
-        "value": false
-      },
-      "NextRun": {
-        "type": "datetime",
-        "value": "2023-01-01 00:00:00",
-        "validate": "datetime"
-      },
-      "Command": {
-        "type": "input",
-        "value": "EventC",
-        "display": "hide"
-      },
-      "SuccessInterval": {
-        "type": "input",
-        "value": 30,
-        "display": "hide"
-      },
-      "FailureInterval": {
-        "type": "input",
-        "value": 30,
-        "display": "hide"
-      },
-      "ServerUpdate": {
-        "type": "input",
-        "value": "00:00",
-        "display": "hide"
-      }
-    },
-    "EventDaily": {
-      "StageFilter": {
-        "type": "textarea",
-        "value": "C1 > C2 > C3"
-      },
-      "LastStage": {
-        "type": "input",
-        "value": 0
-      }
-    },
-    "Campaign": {
-      "Name": {
-        "type": "input",
-        "value": "dynamic",
-        "display": "hide"
-      },
-      "Event": {
-        "type": "select",
-        "value": "campaign_main",
-        "option": [
-          "event_20210422_cn",
-          "event_20230223_cn",
-          "event_20220224_cn",
-          "event_20200806_cn",
-          "event_20210610_tw",
-          "event_20210225_cn",
-          "event_20211229_cn",
-          "event_20221222_cn",
-          "event_20221124_cn",
-          "event_20210325_cn",
-          "event_20201229_cn",
           "event_20211111_cn",
-          "event_20210121_cn",
-          "event_20220915_cn",
-          "event_20210916_cn",
-          "event_20200903_en",
-          "event_20220818_cn",
-          "event_20220324_cn",
-          "event_20211028_cn",
-          "event_20220728_cn",
-          "event_20200917_cn",
-          "event_20201029_cn",
-          "event_20200820_cn",
-          "event_20201012_cn",
-          "event_20210527_cn",
-          "event_20220526_cn",
-          "event_20220428_cn",
-          "event_20220414_cn",
-          "event_20220407_tw",
-          "event_20220310_tw",
-          "event_20200603_cn",
-          "event_20220210_cn",
           "event_20211125_cn",
-          "event_20211028_tw",
-          "event_20210722_cn",
-          "event_20210819_cn",
-          "event_20200723_cn",
-          "event_20210624_cn",
-          "event_20210624_tw",
-          "event_20210527_tw",
-          "event_20210429_tw",
-          "event_20210415_tw",
-          "event_20210225_tw",
-          "event_20201126_cn",
-          "event_20200312_cn",
-          "event_20201002_en",
-          "event_20200716_en",
-          "event_20200611_en",
-          "event_20200603_en",
-          "event_20200521_en",
-          "event_20200521_cn",
-          "event_20200507_cn",
-          "event_20200423_cn",
-          "event_20200326_cn",
-          "event_20200227_cn"
-        ],
-        "display": "disabled",
-        "cn": "event_20210422_cn",
-        "en": "event_20210422_cn",
-        "jp": "event_20210422_cn",
-        "tw": "event_20220224_cn"
-      },
-      "Mode": {
-        "type": "select",
-        "value": "normal",
-        "option": [
-          "normal",
-          "hard"
-        ],
-        "display": "hide"
-      },
-      "UseClearMode": {
-        "type": "checkbox",
-        "value": true
-      },
-      "UseFleetLock": {
-        "type": "checkbox",
-        "value": true
-      },
-      "UseAutoSearch": {
-        "type": "checkbox",
-        "value": true
-      },
-      "Use2xBook": {
-        "type": "checkbox",
-        "value": false,
-        "display": "hide"
-      },
-      "AmbushEvade": {
-        "type": "checkbox",
-        "value": true,
-        "display": "hide"
-      }
-    },
-    "StopCondition": {
-      "RunCount": {
-        "type": "input",
-        "value": 0,
-        "display": "hide"
-      },
-      "OilLimit": {
-        "type": "input",
-        "value": 1000
-      },
-      "MapAchievement": {
-        "type": "select",
-        "value": "non_stop",
-        "option": [
-          "non_stop",
-          "100_percent_clear",
-          "map_3_stars",
-          "threat_safe",
-          "threat_safe_without_3_stars"
-        ],
-        "display": "hide"
-      },
-      "StageIncrease": {
-        "type": "checkbox",
-        "value": false,
-        "display": "hide"
-      },
-      "GetNewShip": {
-        "type": "checkbox",
-        "value": false,
-        "display": "hide"
-      },
-      "ReachLevel": {
-        "type": "input",
-        "value": 0,
-        "display": "hide"
-      }
-    },
-    "Fleet": {
-      "Fleet1": {
-        "type": "select",
-        "value": 1,
-        "option": [
-          1,
-          2,
-          3,
-          4,
-          5,
-          6
-        ]
-      },
-      "Fleet1Formation": {
-        "type": "select",
-        "value": "double_line",
-        "option": [
-          "line_ahead",
-          "double_line",
-          "diamond"
-        ]
-      },
-      "Fleet1Mode": {
-        "type": "select",
-        "value": "combat_auto",
-        "option": [
-          "combat_auto",
-          "combat_manual",
-          "stand_still_in_the_middle",
-          "hide_in_bottom_left"
-        ]
-      },
-      "Fleet1Step": {
-        "type": "select",
-        "value": 3,
-        "option": [
-          2,
-          3,
-          4,
-          5
-        ]
-      },
-      "Fleet2": {
-        "type": "select",
-        "value": 2,
-        "option": [
-          0,
-          1,
-          2,
-          3,
-          4,
-          5,
-          6
-        ]
-      },
-      "Fleet2Formation": {
-        "type": "select",
-        "value": "double_line",
-        "option": [
-          "line_ahead",
-          "double_line",
-          "diamond"
-        ]
-      },
-      "Fleet2Mode": {
-        "type": "select",
-        "value": "combat_auto",
-        "option": [
-          "combat_auto",
-          "combat_manual",
-          "stand_still_in_the_middle",
-          "hide_in_bottom_left"
-        ]
-      },
-      "Fleet2Step": {
-        "type": "select",
-        "value": 2,
-        "option": [
-          2,
-          3,
-          4,
-          5
-        ]
-      },
-      "FleetOrder": {
-        "type": "select",
-        "value": "fleet1_mob_fleet2_boss",
-        "option": [
-          "fleet1_mob_fleet2_boss",
-          "fleet1_boss_fleet2_mob",
-          "fleet1_all_fleet2_standby",
-          "fleet1_standby_fleet2_all"
-        ]
-      }
-    },
-    "Submarine": {
-      "Fleet": {
-        "type": "select",
-        "value": 0,
-        "option": [
-          0,
-          1,
-          2
-        ]
-      },
-      "Mode": {
-        "type": "select",
-        "value": "do_not_use",
-        "option": [
-          "do_not_use",
-          "hunt_only",
-          "boss_only",
-          "hunt_and_boss",
-          "every_combat"
-        ]
-      },
-      "AutoSearchMode": {
-        "type": "select",
-        "value": "sub_standby",
-        "option": [
-          "sub_standby",
-          "sub_auto_call"
-        ]
-      },
-      "DistanceToBoss": {
-        "type": "select",
-        "value": "2_grid_to_boss",
-        "option": [
-          "to_boss_position",
-          "1_grid_to_boss",
-          "2_grid_to_boss",
-          "use_open_ocean_support"
-        ]
-      }
-    },
-    "Emotion": {
-      "Mode": {
-        "type": "select",
-        "value": "calculate",
-        "option": [
-          "calculate",
-          "ignore",
-          "calculate_ignore"
-        ]
-      },
-      "Fleet1Value": {
-        "type": "input",
-        "value": 119
-      },
-      "Fleet1Record": {
-        "type": "datetime",
-        "value": "2023-01-01 00:00:00",
-        "validate": "datetime",
-        "display": "disabled"
-      },
-      "Fleet1Control": {
-        "type": "select",
-        "value": "prevent_yellow_face",
-        "option": [
-          "keep_exp_bonus",
-          "prevent_green_face",
-          "prevent_yellow_face",
-          "prevent_red_face"
-        ]
-      },
-      "Fleet1Recover": {
-        "type": "select",
-        "value": "not_in_dormitory",
-        "option": [
-          "not_in_dormitory",
-          "dormitory_floor_1",
-          "dormitory_floor_2"
-        ]
-      },
-      "Fleet1Oath": {
-        "type": "checkbox",
-        "value": false
-      },
-      "Fleet2Value": {
-        "type": "input",
-        "value": 119
-      },
-      "Fleet2Record": {
-        "type": "datetime",
-        "value": "2023-01-01 00:00:00",
-        "validate": "datetime",
-        "display": "disabled"
-      },
-      "Fleet2Control": {
-        "type": "select",
-        "value": "prevent_yellow_face",
-        "option": [
-          "keep_exp_bonus",
-          "prevent_green_face",
-          "prevent_yellow_face",
-          "prevent_red_face"
-        ]
-      },
-      "Fleet2Recover": {
-        "type": "select",
-        "value": "not_in_dormitory",
-        "option": [
-          "not_in_dormitory",
-          "dormitory_floor_1",
-          "dormitory_floor_2"
-        ]
-      },
-      "Fleet2Oath": {
-        "type": "checkbox",
-        "value": false
-      }
-    },
-    "HpControl": {
-      "UseHpBalance": {
-        "type": "checkbox",
-        "value": false
-      },
-      "UseEmergencyRepair": {
-        "type": "checkbox",
-        "value": false
-      },
-      "UseLowHpRetreat": {
-        "type": "checkbox",
-        "value": false
-      },
-      "HpBalanceThreshold": {
-        "type": "input",
-        "value": 0.2
-      },
-      "HpBalanceWeight": {
-        "type": "input",
-        "value": "1000, 1000, 1000"
-      },
-      "RepairUseSingleThreshold": {
-        "type": "input",
-        "value": 0.3
-      },
-      "RepairUseMultiThreshold": {
-        "type": "input",
-        "value": 0.6
-      },
-      "LowHpRetreatThreshold": {
-        "type": "input",
-        "value": 0.3
-      }
-    },
-    "EnemyPriority": {
-      "EnemyScaleBalanceWeight": {
-        "type": "select",
-        "value": "default_mode",
-        "option": [
-          "default_mode",
-          "S3_enemy_first",
-          "S1_enemy_first"
-        ]
-      }
-    },
-    "Storage": {
-      "Storage": {
-        "type": "storage",
-        "value": {},
-        "valuetype": "ignore",
-        "display": "disabled"
-      }
-    }
-  },
-  "EventD": {
-    "Scheduler": {
-      "Enable": {
-        "type": "checkbox",
-        "value": false
-      },
-      "NextRun": {
-        "type": "datetime",
-        "value": "2023-01-01 00:00:00",
-        "validate": "datetime"
-      },
-      "Command": {
-        "type": "input",
-        "value": "EventD",
-        "display": "hide"
-      },
-      "SuccessInterval": {
-        "type": "input",
-        "value": 30,
-        "display": "hide"
-      },
-      "FailureInterval": {
-        "type": "input",
-        "value": 30,
-        "display": "hide"
-      },
-      "ServerUpdate": {
-        "type": "input",
-        "value": "00:00",
-        "display": "hide"
-      }
-    },
-    "EventDaily": {
-      "StageFilter": {
-        "type": "textarea",
-        "value": "D1 > D2 > D3"
-      },
-      "LastStage": {
-        "type": "input",
-        "value": 0
-      }
-    },
-    "Campaign": {
-      "Name": {
-        "type": "input",
-        "value": "dynamic",
-        "display": "hide"
-      },
-      "Event": {
-        "type": "select",
-        "value": "campaign_main",
-        "option": [
-          "event_20210422_cn",
-          "event_20230223_cn",
-          "event_20220224_cn",
-          "event_20200806_cn",
-          "event_20210610_tw",
-          "event_20210225_cn",
           "event_20211229_cn",
-          "event_20221222_cn",
-          "event_20221124_cn",
-          "event_20210325_cn",
-          "event_20201229_cn",
-          "event_20211111_cn",
-          "event_20210121_cn",
-          "event_20220915_cn",
-          "event_20210916_cn",
-          "event_20200903_en",
-          "event_20220818_cn",
-          "event_20220324_cn",
-          "event_20211028_cn",
-          "event_20220728_cn",
-          "event_20200917_cn",
-          "event_20201029_cn",
-          "event_20200820_cn",
-          "event_20201012_cn",
-          "event_20210527_cn",
-          "event_20220526_cn",
-          "event_20220428_cn",
-          "event_20220414_cn",
-          "event_20220407_tw",
-          "event_20220310_tw",
-          "event_20200603_cn",
           "event_20220210_cn",
-          "event_20211125_cn",
-          "event_20211028_tw",
-          "event_20210722_cn",
-          "event_20210819_cn",
-          "event_20200723_cn",
-          "event_20210624_cn",
-          "event_20210624_tw",
-          "event_20210527_tw",
-          "event_20210429_tw",
-          "event_20210415_tw",
-          "event_20210225_tw",
-          "event_20201126_cn",
-          "event_20200312_cn",
-          "event_20201002_en",
-          "event_20200716_en",
-          "event_20200611_en",
-          "event_20200603_en",
-          "event_20200521_en",
-          "event_20200521_cn",
-          "event_20200507_cn",
-          "event_20200423_cn",
-          "event_20200326_cn",
-          "event_20200227_cn"
-        ],
-        "display": "disabled",
-        "cn": "event_20210422_cn",
-        "en": "event_20210422_cn",
-        "jp": "event_20210422_cn",
-        "tw": "event_20220224_cn"
-      },
-      "Mode": {
-        "type": "select",
-        "value": "normal",
-        "option": [
-          "normal",
-          "hard"
-        ],
-        "display": "hide"
-      },
-      "UseClearMode": {
-        "type": "checkbox",
-        "value": true
-      },
-      "UseFleetLock": {
-        "type": "checkbox",
-        "value": true
-      },
-      "UseAutoSearch": {
-        "type": "checkbox",
-        "value": true
-      },
-      "Use2xBook": {
-        "type": "checkbox",
-        "value": false,
-        "display": "hide"
-      },
-      "AmbushEvade": {
-        "type": "checkbox",
-        "value": true,
-        "display": "hide"
-      }
-    },
-    "StopCondition": {
-      "RunCount": {
-        "type": "input",
-        "value": 0,
-        "display": "hide"
-      },
-      "OilLimit": {
-        "type": "input",
-        "value": 1000
-      },
-      "MapAchievement": {
-        "type": "select",
-        "value": "non_stop",
-        "option": [
-          "non_stop",
-          "100_percent_clear",
-          "map_3_stars",
-          "threat_safe",
-          "threat_safe_without_3_stars"
-        ],
-        "display": "hide"
-      },
-      "StageIncrease": {
-        "type": "checkbox",
-        "value": false,
-        "display": "hide"
-      },
-      "GetNewShip": {
-        "type": "checkbox",
-        "value": false,
-        "display": "hide"
-      },
-      "ReachLevel": {
-        "type": "input",
-        "value": 0,
-        "display": "hide"
-      }
-    },
-    "Fleet": {
-      "Fleet1": {
-        "type": "select",
-        "value": 1,
-        "option": [
-          1,
-          2,
-          3,
-          4,
-          5,
-          6
-        ]
-      },
-      "Fleet1Formation": {
-        "type": "select",
-        "value": "double_line",
-        "option": [
-          "line_ahead",
-          "double_line",
-          "diamond"
-        ]
-      },
-      "Fleet1Mode": {
-        "type": "select",
-        "value": "combat_auto",
-        "option": [
-          "combat_auto",
-          "combat_manual",
-          "stand_still_in_the_middle",
-          "hide_in_bottom_left"
-        ]
-      },
-      "Fleet1Step": {
-        "type": "select",
-        "value": 3,
-        "option": [
-          2,
-          3,
-          4,
-          5
-        ]
-      },
-      "Fleet2": {
-        "type": "select",
-        "value": 2,
-        "option": [
-          0,
-          1,
-          2,
-          3,
-          4,
-          5,
-          6
-        ]
-      },
-      "Fleet2Formation": {
-        "type": "select",
-        "value": "double_line",
-        "option": [
-          "line_ahead",
-          "double_line",
-          "diamond"
-        ]
-      },
-      "Fleet2Mode": {
-        "type": "select",
-        "value": "combat_auto",
-        "option": [
-          "combat_auto",
-          "combat_manual",
-          "stand_still_in_the_middle",
-          "hide_in_bottom_left"
-        ]
-      },
-      "Fleet2Step": {
-        "type": "select",
-        "value": 2,
-        "option": [
-          2,
-          3,
-          4,
-          5
-        ]
-      },
-      "FleetOrder": {
-        "type": "select",
-        "value": "fleet1_mob_fleet2_boss",
-        "option": [
-          "fleet1_mob_fleet2_boss",
-          "fleet1_boss_fleet2_mob",
-          "fleet1_all_fleet2_standby",
-          "fleet1_standby_fleet2_all"
-        ]
-      }
-    },
-    "Submarine": {
-      "Fleet": {
-        "type": "select",
-        "value": 0,
-        "option": [
-          0,
-          1,
-          2
-        ]
-      },
-      "Mode": {
-        "type": "select",
-        "value": "do_not_use",
-        "option": [
-          "do_not_use",
-          "hunt_only",
-          "boss_only",
-          "hunt_and_boss",
-          "every_combat"
-        ]
-      },
-      "AutoSearchMode": {
-        "type": "select",
-        "value": "sub_standby",
-        "option": [
-          "sub_standby",
-          "sub_auto_call"
-        ]
-      },
-      "DistanceToBoss": {
-        "type": "select",
-        "value": "2_grid_to_boss",
-        "option": [
-          "to_boss_position",
-          "1_grid_to_boss",
-          "2_grid_to_boss",
-          "use_open_ocean_support"
-        ]
-      }
-    },
-    "Emotion": {
-      "Mode": {
-        "type": "select",
-        "value": "calculate",
-        "option": [
-          "calculate",
-          "ignore",
-          "calculate_ignore"
-        ]
-      },
-      "Fleet1Value": {
-        "type": "input",
-        "value": 119
-      },
-      "Fleet1Record": {
-        "type": "datetime",
-        "value": "2023-01-01 00:00:00",
-        "validate": "datetime",
-        "display": "disabled"
-      },
-      "Fleet1Control": {
-        "type": "select",
-        "value": "prevent_yellow_face",
-        "option": [
-          "keep_exp_bonus",
-          "prevent_green_face",
-          "prevent_yellow_face",
-          "prevent_red_face"
-        ]
-      },
-      "Fleet1Recover": {
-        "type": "select",
-        "value": "not_in_dormitory",
-        "option": [
-          "not_in_dormitory",
-          "dormitory_floor_1",
-          "dormitory_floor_2"
-        ]
-      },
-      "Fleet1Oath": {
-        "type": "checkbox",
-        "value": false
-      },
-      "Fleet2Value": {
-        "type": "input",
-        "value": 119
-      },
-      "Fleet2Record": {
-        "type": "datetime",
-        "value": "2023-01-01 00:00:00",
-        "validate": "datetime",
-        "display": "disabled"
-      },
-      "Fleet2Control": {
-        "type": "select",
-        "value": "prevent_yellow_face",
-        "option": [
-          "keep_exp_bonus",
-          "prevent_green_face",
-          "prevent_yellow_face",
-          "prevent_red_face"
-        ]
-      },
-      "Fleet2Recover": {
-        "type": "select",
-        "value": "not_in_dormitory",
-        "option": [
-          "not_in_dormitory",
-          "dormitory_floor_1",
-          "dormitory_floor_2"
-        ]
-      },
-      "Fleet2Oath": {
-        "type": "checkbox",
-        "value": false
-      }
-    },
-    "HpControl": {
-      "UseHpBalance": {
-        "type": "checkbox",
-        "value": false
-      },
-      "UseEmergencyRepair": {
-        "type": "checkbox",
-        "value": false
-      },
-      "UseLowHpRetreat": {
-        "type": "checkbox",
-        "value": false
-      },
-      "HpBalanceThreshold": {
-        "type": "input",
-        "value": 0.2
-      },
-      "HpBalanceWeight": {
-        "type": "input",
-        "value": "1000, 1000, 1000"
-      },
-      "RepairUseSingleThreshold": {
-        "type": "input",
-        "value": 0.3
-      },
-      "RepairUseMultiThreshold": {
-        "type": "input",
-        "value": 0.6
-      },
-      "LowHpRetreatThreshold": {
-        "type": "input",
-        "value": 0.3
-      }
-    },
-    "EnemyPriority": {
-      "EnemyScaleBalanceWeight": {
-        "type": "select",
-        "value": "default_mode",
-        "option": [
-          "default_mode",
-          "S3_enemy_first",
-          "S1_enemy_first"
-        ]
-      }
-    },
-    "Storage": {
-      "Storage": {
-        "type": "storage",
-        "value": {},
-        "valuetype": "ignore",
-        "display": "disabled"
-      }
-    }
-  },
-  "EventSp": {
-    "Scheduler": {
-      "Enable": {
-        "type": "checkbox",
-        "value": false
-      },
-      "NextRun": {
-        "type": "datetime",
-        "value": "2023-01-01 00:00:00",
-        "validate": "datetime"
-      },
-      "Command": {
-        "type": "input",
-        "value": "EventSp",
-        "display": "hide"
-      },
-      "SuccessInterval": {
-        "type": "input",
-        "value": 30,
-        "display": "hide"
-      },
-      "FailureInterval": {
-        "type": "input",
-        "value": 30,
-        "display": "hide"
-      },
-      "ServerUpdate": {
-        "type": "input",
-        "value": "00:00",
-        "display": "hide"
-      }
-    },
-    "Campaign": {
-      "Name": {
-        "type": "input",
-        "value": "sp",
-        "display": "hide"
-      },
-      "Event": {
-        "type": "select",
-        "value": "campaign_main",
-        "option": [
-          "event_20210422_cn",
-          "event_20230223_cn",
           "event_20220224_cn",
-          "event_20200806_cn",
-          "event_20210610_tw",
-          "event_20210225_cn",
-          "event_20211229_cn",
-          "event_20221222_cn",
-          "event_20221124_cn",
-          "event_20210325_cn",
-          "event_20201229_cn",
-          "event_20211111_cn",
-          "event_20210121_cn",
-          "event_20220915_cn",
-          "event_20210916_cn",
-          "event_20200903_en",
-          "event_20220818_cn",
-          "event_20220324_cn",
-          "event_20211028_cn",
-          "event_20220728_cn",
-          "event_20200917_cn",
-          "event_20201029_cn",
-          "event_20200820_cn",
-          "event_20201012_cn",
-          "event_20210527_cn",
-          "event_20220526_cn",
-          "event_20220428_cn",
-          "event_20220414_cn",
-          "event_20220407_tw",
           "event_20220310_tw",
-          "event_20200603_cn",
-          "event_20220210_cn",
-          "event_20211125_cn",
-          "event_20211028_tw",
-          "event_20210722_cn",
-          "event_20210819_cn",
-          "event_20200723_cn",
-          "event_20210624_cn",
-          "event_20210624_tw",
-          "event_20210527_tw",
-          "event_20210429_tw",
-          "event_20210415_tw",
-          "event_20210225_tw",
-          "event_20201126_cn",
-          "event_20200312_cn",
-          "event_20201002_en",
-          "event_20200716_en",
-          "event_20200611_en",
-          "event_20200603_en",
-          "event_20200521_en",
-          "event_20200521_cn",
-          "event_20200507_cn",
-          "event_20200423_cn",
-          "event_20200326_cn",
-          "event_20200227_cn"
+          "event_20220324_cn",
+          "event_20220407_tw",
+          "event_20220414_cn",
+          "event_20220428_cn",
+          "event_20220526_cn",
+          "event_20220728_cn",
+          "event_20220818_cn",
+          "event_20220915_cn",
+          "event_20221124_cn",
+          "event_20221222_cn",
+          "event_20230223_cn",
+          "event_20230525_cn",
+          "event_20230803_cn",
+          "event_20230817_cn",
+          "event_20230914_cn",
+          "event_20231026_cn",
+          "event_20231123_cn",
+          "event_20231221_cn"
         ],
         "display": "disabled",
-        "cn": "event_20210422_cn",
-        "en": "event_20210422_cn",
-        "jp": "event_20210422_cn",
-        "tw": "event_20220224_cn"
-      },
-      "Mode": {
-        "type": "select",
-        "value": "normal",
-        "option": [
-          "normal",
-          "hard"
+        "option_bold": [
+          "event_20210527_cn",
+          "event_20211229_cn"
         ],
-        "display": "hide"
-      },
-      "UseClearMode": {
-        "type": "checkbox",
-        "value": true
-      },
-      "UseFleetLock": {
-        "type": "checkbox",
-        "value": true
-      },
-      "UseAutoSearch": {
-        "type": "checkbox",
-        "value": true
-      },
-      "Use2xBook": {
-        "type": "checkbox",
-        "value": false,
-        "display": "hide"
-      },
-      "AmbushEvade": {
-        "type": "checkbox",
-        "value": true,
-        "display": "hide"
-      }
-    },
-    "StopCondition": {
-      "RunCount": {
-        "type": "input",
-        "value": 0,
-        "display": "hide"
-      },
-      "OilLimit": {
-        "type": "input",
-        "value": 1000
-      },
-      "MapAchievement": {
-        "type": "select",
-        "value": "non_stop",
-        "option": [
-          "non_stop",
-          "100_percent_clear",
-          "map_3_stars",
-          "threat_safe",
-          "threat_safe_without_3_stars"
-        ],
-        "display": "hide"
-      },
-      "StageIncrease": {
-        "type": "checkbox",
-        "value": false,
-        "display": "hide"
-      },
-      "GetNewShip": {
-        "type": "checkbox",
-        "value": false,
-        "display": "hide"
-      },
-      "ReachLevel": {
-        "type": "input",
-        "value": 0,
-        "display": "hide"
-      }
-    },
-    "Fleet": {
-      "Fleet1": {
-        "type": "select",
-        "value": 1,
-        "option": [
-          1,
-          2,
-          3,
-          4,
-          5,
-          6
-        ]
-      },
-      "Fleet1Formation": {
-        "type": "select",
-        "value": "double_line",
-        "option": [
-          "line_ahead",
-          "double_line",
-          "diamond"
-        ]
-      },
-      "Fleet1Mode": {
-        "type": "select",
-        "value": "combat_auto",
-        "option": [
-          "combat_auto",
-          "combat_manual",
-          "stand_still_in_the_middle",
-          "hide_in_bottom_left"
-        ]
-      },
-      "Fleet1Step": {
-        "type": "select",
-        "value": 3,
-        "option": [
-          2,
-          3,
-          4,
-          5
-        ]
-      },
-      "Fleet2": {
-        "type": "select",
-        "value": 2,
-        "option": [
-          0,
-          1,
-          2,
-          3,
-          4,
-          5,
-          6
-        ]
-      },
-      "Fleet2Formation": {
-        "type": "select",
-        "value": "double_line",
-        "option": [
-          "line_ahead",
-          "double_line",
-          "diamond"
-        ]
-      },
-      "Fleet2Mode": {
-        "type": "select",
-        "value": "combat_auto",
-        "option": [
-          "combat_auto",
-          "combat_manual",
-          "stand_still_in_the_middle",
-          "hide_in_bottom_left"
-        ]
-      },
-      "Fleet2Step": {
-        "type": "select",
-        "value": 2,
-        "option": [
-          2,
-          3,
-          4,
-          5
-        ]
-      },
-      "FleetOrder": {
-        "type": "select",
-        "value": "fleet1_mob_fleet2_boss",
-        "option": [
-          "fleet1_mob_fleet2_boss",
-          "fleet1_boss_fleet2_mob",
-          "fleet1_all_fleet2_standby",
-          "fleet1_standby_fleet2_all"
-        ]
-      }
-    },
-    "Submarine": {
-      "Fleet": {
-        "type": "select",
-        "value": 0,
-        "option": [
-          0,
-          1,
-          2
-        ]
-      },
-      "Mode": {
-        "type": "select",
-        "value": "do_not_use",
-        "option": [
-          "do_not_use",
-          "hunt_only",
-          "boss_only",
-          "hunt_and_boss",
-          "every_combat"
-        ]
-      },
-      "AutoSearchMode": {
-        "type": "select",
-        "value": "sub_standby",
-        "option": [
-          "sub_standby",
-          "sub_auto_call"
-        ],
-        "display": "hide"
-      },
-      "DistanceToBoss": {
-        "type": "select",
-        "value": "2_grid_to_boss",
-        "option": [
-          "to_boss_position",
-          "1_grid_to_boss",
-          "2_grid_to_boss",
-          "use_open_ocean_support"
-        ]
-      }
-    },
-    "Emotion": {
-      "Mode": {
-        "type": "select",
-        "value": "calculate",
-        "option": [
-          "calculate",
-          "ignore",
-          "calculate_ignore"
-        ]
-      },
-      "Fleet1Value": {
-        "type": "input",
-        "value": 119
-      },
-      "Fleet1Record": {
-        "type": "datetime",
-        "value": "2023-01-01 00:00:00",
-        "validate": "datetime",
-        "display": "disabled"
-      },
-      "Fleet1Control": {
-        "type": "select",
-        "value": "prevent_yellow_face",
-        "option": [
-          "keep_exp_bonus",
-          "prevent_green_face",
-          "prevent_yellow_face",
-          "prevent_red_face"
-        ]
-      },
-      "Fleet1Recover": {
-        "type": "select",
-        "value": "not_in_dormitory",
-        "option": [
-          "not_in_dormitory",
-          "dormitory_floor_1",
-          "dormitory_floor_2"
-        ]
-      },
-      "Fleet1Oath": {
-        "type": "checkbox",
-        "value": false
-      },
-      "Fleet2Value": {
-        "type": "input",
-        "value": 119
-      },
-      "Fleet2Record": {
-        "type": "datetime",
-        "value": "2023-01-01 00:00:00",
-        "validate": "datetime",
-        "display": "disabled"
-      },
-      "Fleet2Control": {
-        "type": "select",
-        "value": "prevent_yellow_face",
-        "option": [
-          "keep_exp_bonus",
-          "prevent_green_face",
-          "prevent_yellow_face",
-          "prevent_red_face"
-        ]
-      },
-      "Fleet2Recover": {
-        "type": "select",
-        "value": "not_in_dormitory",
-        "option": [
-          "not_in_dormitory",
-          "dormitory_floor_1",
-          "dormitory_floor_2"
-        ]
-      },
-      "Fleet2Oath": {
-        "type": "checkbox",
-        "value": false
-      }
-    },
-    "HpControl": {
-      "UseHpBalance": {
-        "type": "checkbox",
-        "value": false
-      },
-      "UseEmergencyRepair": {
-        "type": "checkbox",
-        "value": false
-      },
-      "UseLowHpRetreat": {
-        "type": "checkbox",
-        "value": false
-      },
-      "HpBalanceThreshold": {
-        "type": "input",
-        "value": 0.2
-      },
-      "HpBalanceWeight": {
-        "type": "input",
-        "value": "1000, 1000, 1000"
-      },
-      "RepairUseSingleThreshold": {
-        "type": "input",
-        "value": 0.3
-      },
-      "RepairUseMultiThreshold": {
-        "type": "input",
-        "value": 0.6
-      },
-      "LowHpRetreatThreshold": {
-        "type": "input",
-        "value": 0.3
-      }
-    },
-    "EnemyPriority": {
-      "EnemyScaleBalanceWeight": {
-        "type": "select",
-        "value": "default_mode",
-        "option": [
-          "default_mode",
-          "S3_enemy_first",
-          "S1_enemy_first"
-        ]
-      }
-    },
-    "Storage": {
-      "Storage": {
-        "type": "storage",
-        "value": {},
-        "valuetype": "ignore",
-        "display": "disabled"
-      }
-    }
-  },
-  "WarArchives": {
-    "Scheduler": {
-      "Enable": {
-        "type": "checkbox",
-        "value": false
-      },
-      "NextRun": {
-        "type": "datetime",
-        "value": "2023-01-01 00:00:00",
-        "validate": "datetime"
-      },
-      "Command": {
-        "type": "input",
-        "value": "WarArchives",
-        "display": "hide"
-      },
-      "SuccessInterval": {
-        "type": "input",
-        "value": 30,
-        "display": "hide"
-      },
-      "FailureInterval": {
-        "type": "input",
-        "value": 30,
-        "display": "hide"
-      },
-      "ServerUpdate": {
-        "type": "input",
-        "value": "00:00",
-        "display": "hide"
-      }
-    },
-    "Campaign": {
-      "Name": {
-        "type": "input",
-        "value": "12-4"
-      },
-      "Event": {
-        "type": "select",
-        "value": "campaign_main",
-        "option": [
-          "war_archives_20210819_cn",
-          "war_archives_20200903_cn",
-          "war_archives_20201029_cn",
-          "war_archives_20200806_cn",
-          "war_archives_20210624_cn",
-          "war_archives_20210325_cn",
-          "war_archives_20190911_cn",
-          "war_archives_20211014_cn",
-          "war_archives_20200820_cn",
-          "war_archives_20181227_cn",
-          "war_archives_20180726_cn",
-          "war_archives_20180607_cn",
-          "war_archives_20190221_en",
-          "war_archives_20191010_en",
-          "war_archives_20181026_en",
-          "war_archives_20190620_en",
-          "war_archives_20190321_en",
-          "war_archives_20191031_en",
-          "war_archives_20181020_en"
-        ],
-        "cn": "war_archives_20210819_cn",
-        "en": "war_archives_20210819_cn",
-        "jp": "war_archives_20210819_cn",
-        "tw": "war_archives_20181227_cn"
+        "cn": "event_20211229_cn",
+        "en": "event_20211229_cn",
+        "jp": "event_20211229_cn",
+        "tw": "event_20210527_cn"
       },
       "Mode": {
         "type": "select",
@@ -6114,7 +3158,7 @@
       },
       "Fleet1Record": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime",
         "display": "disabled"
       },
@@ -6147,7 +3191,7 @@
       },
       "Fleet2Record": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime",
         "display": "disabled"
       },
@@ -6233,11 +3277,15 @@
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
-        "value": false
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
       },
       "NextRun": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime"
       },
       "Command": {
@@ -6284,21 +3332,25 @@
         "display": "hide"
       },
       "Event": {
-        "type": "select",
+        "type": "state",
         "value": "campaign_main",
         "option": [
-          "raid_20220127",
-          "raid_20230118",
-          "raid_20221027",
-          "raid_20220630",
+          "raid_20200624",
           "raid_20210708",
-          "raid_20200624"
+          "raid_20220127",
+          "raid_20220630",
+          "raid_20221027",
+          "raid_20230118",
+          "raid_20230629"
         ],
-        "display": "disabled",
-        "tw": "raid_20220127",
-        "cn": "raid_20230118",
-        "en": "raid_20230118",
-        "jp": "raid_20230118"
+        "option_bold": [
+          "raid_20230629",
+          "raid_20221027"
+        ],
+        "cn": "raid_20230629",
+        "en": "raid_20230629",
+        "jp": "raid_20230629",
+        "tw": "raid_20221027"
       },
       "Mode": {
         "type": "select",
@@ -6388,7 +3440,7 @@
       },
       "Fleet1Record": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime",
         "display": "disabled"
       },
@@ -6462,15 +3514,3018 @@
       }
     }
   },
+  "Coalition": {
+    "Scheduler": {
+      "Enable": {
+        "type": "checkbox",
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
+      },
+      "NextRun": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      },
+      "Command": {
+        "type": "input",
+        "value": "Coalition",
+        "display": "hide"
+      },
+      "SuccessInterval": {
+        "type": "input",
+        "value": 30,
+        "display": "hide"
+      },
+      "FailureInterval": {
+        "type": "input",
+        "value": 30,
+        "display": "hide"
+      },
+      "ServerUpdate": {
+        "type": "input",
+        "value": "00:00",
+        "display": "hide"
+      }
+    },
+    "Campaign": {
+      "Name": {
+        "type": "input",
+        "value": "12-4"
+      },
+      "Event": {
+        "type": "state",
+        "value": "campaign_main",
+        "option": [
+          "coalition_20230323"
+        ],
+        "option_bold": [
+          "coalition_20230323"
+        ],
+        "cn": "coalition_20230323",
+        "en": "coalition_20230323",
+        "jp": "coalition_20230323",
+        "tw": "coalition_20230323"
+      },
+      "Mode": {
+        "type": "select",
+        "value": "normal",
+        "option": [
+          "normal",
+          "hard"
+        ],
+        "display": "hide"
+      },
+      "UseClearMode": {
+        "type": "checkbox",
+        "value": true,
+        "display": "hide"
+      },
+      "UseFleetLock": {
+        "type": "checkbox",
+        "value": true,
+        "display": "hide"
+      },
+      "UseAutoSearch": {
+        "type": "checkbox",
+        "value": false,
+        "display": "hide"
+      },
+      "Use2xBook": {
+        "type": "checkbox",
+        "value": false,
+        "display": "hide"
+      },
+      "AmbushEvade": {
+        "type": "checkbox",
+        "value": true,
+        "display": "hide"
+      }
+    },
+    "Coalition": {
+      "Fleet": {
+        "type": "select",
+        "value": "single",
+        "option": [
+          "single",
+          "multi"
+        ]
+      }
+    },
+    "StopCondition": {
+      "RunCount": {
+        "type": "input",
+        "value": 0
+      },
+      "OilLimit": {
+        "type": "input",
+        "value": 1000
+      },
+      "MapAchievement": {
+        "type": "select",
+        "value": "non_stop",
+        "option": [
+          "non_stop",
+          "100_percent_clear",
+          "map_3_stars",
+          "threat_safe",
+          "threat_safe_without_3_stars"
+        ],
+        "display": "hide"
+      },
+      "StageIncrease": {
+        "type": "checkbox",
+        "value": false,
+        "display": "hide"
+      },
+      "GetNewShip": {
+        "type": "checkbox",
+        "value": false,
+        "display": "hide"
+      },
+      "ReachLevel": {
+        "type": "input",
+        "value": 0,
+        "display": "hide"
+      }
+    },
+    "Emotion": {
+      "Mode": {
+        "type": "select",
+        "value": "calculate",
+        "option": [
+          "calculate",
+          "ignore",
+          "calculate_ignore"
+        ]
+      },
+      "Fleet1Value": {
+        "type": "input",
+        "value": 119
+      },
+      "Fleet1Record": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime",
+        "display": "disabled"
+      },
+      "Fleet1Control": {
+        "type": "select",
+        "value": "prevent_yellow_face",
+        "option": [
+          "keep_exp_bonus",
+          "prevent_green_face",
+          "prevent_yellow_face",
+          "prevent_red_face"
+        ]
+      },
+      "Fleet1Recover": {
+        "type": "select",
+        "value": "not_in_dormitory",
+        "option": [
+          "not_in_dormitory",
+          "dormitory_floor_1",
+          "dormitory_floor_2"
+        ]
+      },
+      "Fleet1Oath": {
+        "type": "checkbox",
+        "value": false
+      },
+      "Fleet2Value": {
+        "type": "input",
+        "value": 119,
+        "display": "hide"
+      },
+      "Fleet2Record": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime",
+        "display": "hide"
+      },
+      "Fleet2Control": {
+        "type": "select",
+        "value": "prevent_yellow_face",
+        "option": [
+          "keep_exp_bonus",
+          "prevent_green_face",
+          "prevent_yellow_face",
+          "prevent_red_face"
+        ],
+        "display": "hide"
+      },
+      "Fleet2Recover": {
+        "type": "select",
+        "value": "not_in_dormitory",
+        "option": [
+          "not_in_dormitory",
+          "dormitory_floor_1",
+          "dormitory_floor_2"
+        ],
+        "display": "hide"
+      },
+      "Fleet2Oath": {
+        "type": "checkbox",
+        "value": false,
+        "display": "hide"
+      }
+    },
+    "Storage": {
+      "Storage": {
+        "type": "storage",
+        "value": {},
+        "valuetype": "ignore",
+        "display": "disabled"
+      }
+    }
+  },
+  "MaritimeEscort": {
+    "Scheduler": {
+      "Enable": {
+        "type": "checkbox",
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
+      },
+      "NextRun": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      },
+      "Command": {
+        "type": "input",
+        "value": "MaritimeEscort",
+        "display": "hide"
+      },
+      "SuccessInterval": {
+        "type": "input",
+        "value": 30,
+        "display": "hide"
+      },
+      "FailureInterval": {
+        "type": "input",
+        "value": 30,
+        "display": "hide"
+      },
+      "ServerUpdate": {
+        "type": "input",
+        "value": "00:00",
+        "display": "hide"
+      }
+    },
+    "MaritimeEscort": {
+      "Enable": {
+        "type": "checkbox",
+        "value": true
+      }
+    },
+    "Storage": {
+      "Storage": {
+        "type": "storage",
+        "value": {},
+        "valuetype": "ignore",
+        "display": "disabled"
+      }
+    }
+  },
+  "WarArchives": {
+    "Scheduler": {
+      "Enable": {
+        "type": "checkbox",
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
+      },
+      "NextRun": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      },
+      "Command": {
+        "type": "input",
+        "value": "WarArchives",
+        "display": "hide"
+      },
+      "SuccessInterval": {
+        "type": "input",
+        "value": 30,
+        "display": "hide"
+      },
+      "FailureInterval": {
+        "type": "input",
+        "value": 30,
+        "display": "hide"
+      },
+      "ServerUpdate": {
+        "type": "input",
+        "value": "00:00",
+        "display": "hide"
+      }
+    },
+    "Campaign": {
+      "Name": {
+        "type": "input",
+        "value": "12-4"
+      },
+      "Event": {
+        "type": "select",
+        "value": "campaign_main",
+        "option": [
+          "war_archives_20180607_cn",
+          "war_archives_20180726_cn",
+          "war_archives_20181020_en",
+          "war_archives_20181026_en",
+          "war_archives_20181227_cn",
+          "war_archives_20190221_en",
+          "war_archives_20190321_en",
+          "war_archives_20190620_en",
+          "war_archives_20190911_cn",
+          "war_archives_20191010_en",
+          "war_archives_20191031_en",
+          "war_archives_20200806_cn",
+          "war_archives_20200820_cn",
+          "war_archives_20200903_cn",
+          "war_archives_20200917_cn",
+          "war_archives_20201029_cn",
+          "war_archives_20201229_cn",
+          "war_archives_20210325_cn",
+          "war_archives_20210527_cn",
+          "war_archives_20210624_cn",
+          "war_archives_20210819_cn",
+          "war_archives_20211014_cn",
+          "war_archives_20211028_cn",
+          "war_archives_20220210_cn",
+          "war_archives_20220414_cn"
+        ],
+        "option_bold": [
+          "war_archives_20210527_cn",
+          "war_archives_20220414_cn"
+        ],
+        "cn": "war_archives_20210527_cn",
+        "en": "war_archives_20210527_cn",
+        "jp": "war_archives_20210527_cn",
+        "tw": "war_archives_20220414_cn"
+      },
+      "Mode": {
+        "type": "select",
+        "value": "normal",
+        "option": [
+          "normal",
+          "hard"
+        ],
+        "display": "hide"
+      },
+      "UseClearMode": {
+        "type": "checkbox",
+        "value": true
+      },
+      "UseFleetLock": {
+        "type": "checkbox",
+        "value": true
+      },
+      "UseAutoSearch": {
+        "type": "checkbox",
+        "value": true
+      },
+      "Use2xBook": {
+        "type": "checkbox",
+        "value": false
+      },
+      "AmbushEvade": {
+        "type": "checkbox",
+        "value": true,
+        "display": "hide"
+      }
+    },
+    "StopCondition": {
+      "RunCount": {
+        "type": "input",
+        "value": 0
+      },
+      "OilLimit": {
+        "type": "input",
+        "value": 1000
+      },
+      "MapAchievement": {
+        "type": "select",
+        "value": "non_stop",
+        "option": [
+          "non_stop",
+          "100_percent_clear",
+          "map_3_stars",
+          "threat_safe",
+          "threat_safe_without_3_stars"
+        ]
+      },
+      "StageIncrease": {
+        "type": "checkbox",
+        "value": false
+      },
+      "GetNewShip": {
+        "type": "checkbox",
+        "value": false
+      },
+      "ReachLevel": {
+        "type": "input",
+        "value": 0
+      }
+    },
+    "Fleet": {
+      "Fleet1": {
+        "type": "select",
+        "value": 1,
+        "option": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "Fleet1Formation": {
+        "type": "select",
+        "value": "double_line",
+        "option": [
+          "line_ahead",
+          "double_line",
+          "diamond"
+        ]
+      },
+      "Fleet1Mode": {
+        "type": "select",
+        "value": "combat_auto",
+        "option": [
+          "combat_auto",
+          "combat_manual",
+          "stand_still_in_the_middle",
+          "hide_in_bottom_left"
+        ]
+      },
+      "Fleet1Step": {
+        "type": "select",
+        "value": 3,
+        "option": [
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "Fleet2": {
+        "type": "select",
+        "value": 2,
+        "option": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "Fleet2Formation": {
+        "type": "select",
+        "value": "double_line",
+        "option": [
+          "line_ahead",
+          "double_line",
+          "diamond"
+        ]
+      },
+      "Fleet2Mode": {
+        "type": "select",
+        "value": "combat_auto",
+        "option": [
+          "combat_auto",
+          "combat_manual",
+          "stand_still_in_the_middle",
+          "hide_in_bottom_left"
+        ]
+      },
+      "Fleet2Step": {
+        "type": "select",
+        "value": 2,
+        "option": [
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "FleetOrder": {
+        "type": "select",
+        "value": "fleet1_mob_fleet2_boss",
+        "option": [
+          "fleet1_mob_fleet2_boss",
+          "fleet1_boss_fleet2_mob",
+          "fleet1_all_fleet2_standby",
+          "fleet1_standby_fleet2_all"
+        ]
+      }
+    },
+    "Submarine": {
+      "Fleet": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          1,
+          2
+        ]
+      },
+      "Mode": {
+        "type": "select",
+        "value": "do_not_use",
+        "option": [
+          "do_not_use",
+          "hunt_only",
+          "boss_only",
+          "hunt_and_boss",
+          "every_combat"
+        ]
+      },
+      "AutoSearchMode": {
+        "type": "select",
+        "value": "sub_standby",
+        "option": [
+          "sub_standby",
+          "sub_auto_call"
+        ]
+      },
+      "DistanceToBoss": {
+        "type": "select",
+        "value": "2_grid_to_boss",
+        "option": [
+          "to_boss_position",
+          "1_grid_to_boss",
+          "2_grid_to_boss",
+          "use_open_ocean_support"
+        ]
+      }
+    },
+    "Emotion": {
+      "Mode": {
+        "type": "select",
+        "value": "calculate",
+        "option": [
+          "calculate",
+          "ignore",
+          "calculate_ignore"
+        ]
+      },
+      "Fleet1Value": {
+        "type": "input",
+        "value": 119
+      },
+      "Fleet1Record": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime",
+        "display": "disabled"
+      },
+      "Fleet1Control": {
+        "type": "select",
+        "value": "prevent_yellow_face",
+        "option": [
+          "keep_exp_bonus",
+          "prevent_green_face",
+          "prevent_yellow_face",
+          "prevent_red_face"
+        ]
+      },
+      "Fleet1Recover": {
+        "type": "select",
+        "value": "not_in_dormitory",
+        "option": [
+          "not_in_dormitory",
+          "dormitory_floor_1",
+          "dormitory_floor_2"
+        ]
+      },
+      "Fleet1Oath": {
+        "type": "checkbox",
+        "value": false
+      },
+      "Fleet2Value": {
+        "type": "input",
+        "value": 119
+      },
+      "Fleet2Record": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime",
+        "display": "disabled"
+      },
+      "Fleet2Control": {
+        "type": "select",
+        "value": "prevent_yellow_face",
+        "option": [
+          "keep_exp_bonus",
+          "prevent_green_face",
+          "prevent_yellow_face",
+          "prevent_red_face"
+        ]
+      },
+      "Fleet2Recover": {
+        "type": "select",
+        "value": "not_in_dormitory",
+        "option": [
+          "not_in_dormitory",
+          "dormitory_floor_1",
+          "dormitory_floor_2"
+        ]
+      },
+      "Fleet2Oath": {
+        "type": "checkbox",
+        "value": false
+      }
+    },
+    "HpControl": {
+      "UseHpBalance": {
+        "type": "checkbox",
+        "value": false
+      },
+      "UseEmergencyRepair": {
+        "type": "checkbox",
+        "value": false
+      },
+      "UseLowHpRetreat": {
+        "type": "checkbox",
+        "value": false
+      },
+      "HpBalanceThreshold": {
+        "type": "input",
+        "value": 0.2
+      },
+      "HpBalanceWeight": {
+        "type": "input",
+        "value": "1000, 1000, 1000"
+      },
+      "RepairUseSingleThreshold": {
+        "type": "input",
+        "value": 0.3
+      },
+      "RepairUseMultiThreshold": {
+        "type": "input",
+        "value": 0.6
+      },
+      "LowHpRetreatThreshold": {
+        "type": "input",
+        "value": 0.3
+      }
+    },
+    "EnemyPriority": {
+      "EnemyScaleBalanceWeight": {
+        "type": "select",
+        "value": "default_mode",
+        "option": [
+          "default_mode",
+          "S3_enemy_first",
+          "S1_enemy_first"
+        ]
+      }
+    },
+    "Storage": {
+      "Storage": {
+        "type": "storage",
+        "value": {},
+        "valuetype": "ignore",
+        "display": "disabled"
+      }
+    }
+  },
+  "EventA": {
+    "Scheduler": {
+      "Enable": {
+        "type": "checkbox",
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
+      },
+      "NextRun": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      },
+      "Command": {
+        "type": "input",
+        "value": "EventA",
+        "display": "hide"
+      },
+      "SuccessInterval": {
+        "type": "input",
+        "value": 30,
+        "display": "hide"
+      },
+      "FailureInterval": {
+        "type": "input",
+        "value": 30,
+        "display": "hide"
+      },
+      "ServerUpdate": {
+        "type": "input",
+        "value": "00:00",
+        "display": "hide"
+      }
+    },
+    "EventDaily": {
+      "StageFilter": {
+        "type": "textarea",
+        "value": "A1 > A2 > A3"
+      },
+      "LastStage": {
+        "type": "input",
+        "value": 0
+      }
+    },
+    "Campaign": {
+      "Name": {
+        "type": "input",
+        "value": "dynamic",
+        "display": "hide"
+      },
+      "Event": {
+        "type": "state",
+        "value": "campaign_main",
+        "option": [
+          "event_20200227_cn",
+          "event_20200312_cn",
+          "event_20200326_cn",
+          "event_20200423_cn",
+          "event_20200507_cn",
+          "event_20200521_cn",
+          "event_20200521_en",
+          "event_20200603_cn",
+          "event_20200603_en",
+          "event_20200611_en",
+          "event_20200716_en",
+          "event_20200723_cn",
+          "event_20200806_cn",
+          "event_20200820_cn",
+          "event_20200903_en",
+          "event_20200917_cn",
+          "event_20201002_en",
+          "event_20201012_cn",
+          "event_20201029_cn",
+          "event_20201126_cn",
+          "event_20201229_cn",
+          "event_20210121_cn",
+          "event_20210225_cn",
+          "event_20210225_tw",
+          "event_20210325_cn",
+          "event_20210415_tw",
+          "event_20210422_cn",
+          "event_20210429_tw",
+          "event_20210527_cn",
+          "event_20210527_tw",
+          "event_20210610_tw",
+          "event_20210624_cn",
+          "event_20210624_tw",
+          "event_20210722_cn",
+          "event_20210819_cn",
+          "event_20210916_cn",
+          "event_20211028_cn",
+          "event_20211028_tw",
+          "event_20211111_cn",
+          "event_20211125_cn",
+          "event_20211229_cn",
+          "event_20220210_cn",
+          "event_20220224_cn",
+          "event_20220310_tw",
+          "event_20220324_cn",
+          "event_20220407_tw",
+          "event_20220414_cn",
+          "event_20220428_cn",
+          "event_20220526_cn",
+          "event_20220728_cn",
+          "event_20220818_cn",
+          "event_20220915_cn",
+          "event_20221124_cn",
+          "event_20221222_cn",
+          "event_20230223_cn",
+          "event_20230525_cn",
+          "event_20230803_cn",
+          "event_20230817_cn",
+          "event_20230914_cn",
+          "event_20231026_cn",
+          "event_20231123_cn",
+          "event_20231221_cn"
+        ],
+        "option_bold": [
+          "event_20210527_cn",
+          "event_20211229_cn"
+        ],
+        "cn": "event_20211229_cn",
+        "en": "event_20211229_cn",
+        "jp": "event_20211229_cn",
+        "tw": "event_20210527_cn"
+      },
+      "Mode": {
+        "type": "select",
+        "value": "normal",
+        "option": [
+          "normal",
+          "hard"
+        ],
+        "display": "hide"
+      },
+      "UseClearMode": {
+        "type": "checkbox",
+        "value": true
+      },
+      "UseFleetLock": {
+        "type": "checkbox",
+        "value": true
+      },
+      "UseAutoSearch": {
+        "type": "checkbox",
+        "value": true
+      },
+      "Use2xBook": {
+        "type": "checkbox",
+        "value": false,
+        "display": "hide"
+      },
+      "AmbushEvade": {
+        "type": "checkbox",
+        "value": true,
+        "display": "hide"
+      }
+    },
+    "StopCondition": {
+      "RunCount": {
+        "type": "input",
+        "value": 0,
+        "display": "hide"
+      },
+      "OilLimit": {
+        "type": "input",
+        "value": 1000
+      },
+      "MapAchievement": {
+        "type": "select",
+        "value": "non_stop",
+        "option": [
+          "non_stop",
+          "100_percent_clear",
+          "map_3_stars",
+          "threat_safe",
+          "threat_safe_without_3_stars"
+        ],
+        "display": "hide"
+      },
+      "StageIncrease": {
+        "type": "checkbox",
+        "value": false,
+        "display": "hide"
+      },
+      "GetNewShip": {
+        "type": "checkbox",
+        "value": false,
+        "display": "hide"
+      },
+      "ReachLevel": {
+        "type": "input",
+        "value": 0,
+        "display": "hide"
+      }
+    },
+    "Fleet": {
+      "Fleet1": {
+        "type": "select",
+        "value": 1,
+        "option": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "Fleet1Formation": {
+        "type": "select",
+        "value": "double_line",
+        "option": [
+          "line_ahead",
+          "double_line",
+          "diamond"
+        ]
+      },
+      "Fleet1Mode": {
+        "type": "select",
+        "value": "combat_auto",
+        "option": [
+          "combat_auto",
+          "combat_manual",
+          "stand_still_in_the_middle",
+          "hide_in_bottom_left"
+        ]
+      },
+      "Fleet1Step": {
+        "type": "select",
+        "value": 3,
+        "option": [
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "Fleet2": {
+        "type": "select",
+        "value": 2,
+        "option": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "Fleet2Formation": {
+        "type": "select",
+        "value": "double_line",
+        "option": [
+          "line_ahead",
+          "double_line",
+          "diamond"
+        ]
+      },
+      "Fleet2Mode": {
+        "type": "select",
+        "value": "combat_auto",
+        "option": [
+          "combat_auto",
+          "combat_manual",
+          "stand_still_in_the_middle",
+          "hide_in_bottom_left"
+        ]
+      },
+      "Fleet2Step": {
+        "type": "select",
+        "value": 2,
+        "option": [
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "FleetOrder": {
+        "type": "select",
+        "value": "fleet1_mob_fleet2_boss",
+        "option": [
+          "fleet1_mob_fleet2_boss",
+          "fleet1_boss_fleet2_mob",
+          "fleet1_all_fleet2_standby",
+          "fleet1_standby_fleet2_all"
+        ]
+      }
+    },
+    "Submarine": {
+      "Fleet": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          1,
+          2
+        ]
+      },
+      "Mode": {
+        "type": "select",
+        "value": "do_not_use",
+        "option": [
+          "do_not_use",
+          "hunt_only",
+          "boss_only",
+          "hunt_and_boss",
+          "every_combat"
+        ]
+      },
+      "AutoSearchMode": {
+        "type": "select",
+        "value": "sub_standby",
+        "option": [
+          "sub_standby",
+          "sub_auto_call"
+        ]
+      },
+      "DistanceToBoss": {
+        "type": "select",
+        "value": "2_grid_to_boss",
+        "option": [
+          "to_boss_position",
+          "1_grid_to_boss",
+          "2_grid_to_boss",
+          "use_open_ocean_support"
+        ]
+      }
+    },
+    "Emotion": {
+      "Mode": {
+        "type": "select",
+        "value": "calculate",
+        "option": [
+          "calculate",
+          "ignore",
+          "calculate_ignore"
+        ]
+      },
+      "Fleet1Value": {
+        "type": "input",
+        "value": 119
+      },
+      "Fleet1Record": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime",
+        "display": "disabled"
+      },
+      "Fleet1Control": {
+        "type": "select",
+        "value": "prevent_yellow_face",
+        "option": [
+          "keep_exp_bonus",
+          "prevent_green_face",
+          "prevent_yellow_face",
+          "prevent_red_face"
+        ]
+      },
+      "Fleet1Recover": {
+        "type": "select",
+        "value": "not_in_dormitory",
+        "option": [
+          "not_in_dormitory",
+          "dormitory_floor_1",
+          "dormitory_floor_2"
+        ]
+      },
+      "Fleet1Oath": {
+        "type": "checkbox",
+        "value": false
+      },
+      "Fleet2Value": {
+        "type": "input",
+        "value": 119
+      },
+      "Fleet2Record": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime",
+        "display": "disabled"
+      },
+      "Fleet2Control": {
+        "type": "select",
+        "value": "prevent_yellow_face",
+        "option": [
+          "keep_exp_bonus",
+          "prevent_green_face",
+          "prevent_yellow_face",
+          "prevent_red_face"
+        ]
+      },
+      "Fleet2Recover": {
+        "type": "select",
+        "value": "not_in_dormitory",
+        "option": [
+          "not_in_dormitory",
+          "dormitory_floor_1",
+          "dormitory_floor_2"
+        ]
+      },
+      "Fleet2Oath": {
+        "type": "checkbox",
+        "value": false
+      }
+    },
+    "HpControl": {
+      "UseHpBalance": {
+        "type": "checkbox",
+        "value": false
+      },
+      "UseEmergencyRepair": {
+        "type": "checkbox",
+        "value": false
+      },
+      "UseLowHpRetreat": {
+        "type": "checkbox",
+        "value": false
+      },
+      "HpBalanceThreshold": {
+        "type": "input",
+        "value": 0.2
+      },
+      "HpBalanceWeight": {
+        "type": "input",
+        "value": "1000, 1000, 1000"
+      },
+      "RepairUseSingleThreshold": {
+        "type": "input",
+        "value": 0.3
+      },
+      "RepairUseMultiThreshold": {
+        "type": "input",
+        "value": 0.6
+      },
+      "LowHpRetreatThreshold": {
+        "type": "input",
+        "value": 0.3
+      }
+    },
+    "EnemyPriority": {
+      "EnemyScaleBalanceWeight": {
+        "type": "select",
+        "value": "default_mode",
+        "option": [
+          "default_mode",
+          "S3_enemy_first",
+          "S1_enemy_first"
+        ]
+      }
+    },
+    "Storage": {
+      "Storage": {
+        "type": "storage",
+        "value": {},
+        "valuetype": "ignore",
+        "display": "disabled"
+      }
+    }
+  },
+  "EventB": {
+    "Scheduler": {
+      "Enable": {
+        "type": "checkbox",
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
+      },
+      "NextRun": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      },
+      "Command": {
+        "type": "input",
+        "value": "EventB",
+        "display": "hide"
+      },
+      "SuccessInterval": {
+        "type": "input",
+        "value": 30,
+        "display": "hide"
+      },
+      "FailureInterval": {
+        "type": "input",
+        "value": 30,
+        "display": "hide"
+      },
+      "ServerUpdate": {
+        "type": "input",
+        "value": "00:00",
+        "display": "hide"
+      }
+    },
+    "EventDaily": {
+      "StageFilter": {
+        "type": "textarea",
+        "value": "B1 > B2 > B3"
+      },
+      "LastStage": {
+        "type": "input",
+        "value": 0
+      }
+    },
+    "Campaign": {
+      "Name": {
+        "type": "input",
+        "value": "dynamic",
+        "display": "hide"
+      },
+      "Event": {
+        "type": "state",
+        "value": "campaign_main",
+        "option": [
+          "event_20200227_cn",
+          "event_20200312_cn",
+          "event_20200326_cn",
+          "event_20200423_cn",
+          "event_20200507_cn",
+          "event_20200521_cn",
+          "event_20200521_en",
+          "event_20200603_cn",
+          "event_20200603_en",
+          "event_20200611_en",
+          "event_20200716_en",
+          "event_20200723_cn",
+          "event_20200806_cn",
+          "event_20200820_cn",
+          "event_20200903_en",
+          "event_20200917_cn",
+          "event_20201002_en",
+          "event_20201012_cn",
+          "event_20201029_cn",
+          "event_20201126_cn",
+          "event_20201229_cn",
+          "event_20210121_cn",
+          "event_20210225_cn",
+          "event_20210225_tw",
+          "event_20210325_cn",
+          "event_20210415_tw",
+          "event_20210422_cn",
+          "event_20210429_tw",
+          "event_20210527_cn",
+          "event_20210527_tw",
+          "event_20210610_tw",
+          "event_20210624_cn",
+          "event_20210624_tw",
+          "event_20210722_cn",
+          "event_20210819_cn",
+          "event_20210916_cn",
+          "event_20211028_cn",
+          "event_20211028_tw",
+          "event_20211111_cn",
+          "event_20211125_cn",
+          "event_20211229_cn",
+          "event_20220210_cn",
+          "event_20220224_cn",
+          "event_20220310_tw",
+          "event_20220324_cn",
+          "event_20220407_tw",
+          "event_20220414_cn",
+          "event_20220428_cn",
+          "event_20220526_cn",
+          "event_20220728_cn",
+          "event_20220818_cn",
+          "event_20220915_cn",
+          "event_20221124_cn",
+          "event_20221222_cn",
+          "event_20230223_cn",
+          "event_20230525_cn",
+          "event_20230803_cn",
+          "event_20230817_cn",
+          "event_20230914_cn",
+          "event_20231026_cn",
+          "event_20231123_cn",
+          "event_20231221_cn"
+        ],
+        "option_bold": [
+          "event_20210527_cn",
+          "event_20211229_cn"
+        ],
+        "cn": "event_20211229_cn",
+        "en": "event_20211229_cn",
+        "jp": "event_20211229_cn",
+        "tw": "event_20210527_cn"
+      },
+      "Mode": {
+        "type": "select",
+        "value": "normal",
+        "option": [
+          "normal",
+          "hard"
+        ],
+        "display": "hide"
+      },
+      "UseClearMode": {
+        "type": "checkbox",
+        "value": true
+      },
+      "UseFleetLock": {
+        "type": "checkbox",
+        "value": true
+      },
+      "UseAutoSearch": {
+        "type": "checkbox",
+        "value": true
+      },
+      "Use2xBook": {
+        "type": "checkbox",
+        "value": false,
+        "display": "hide"
+      },
+      "AmbushEvade": {
+        "type": "checkbox",
+        "value": true,
+        "display": "hide"
+      }
+    },
+    "StopCondition": {
+      "RunCount": {
+        "type": "input",
+        "value": 0,
+        "display": "hide"
+      },
+      "OilLimit": {
+        "type": "input",
+        "value": 1000
+      },
+      "MapAchievement": {
+        "type": "select",
+        "value": "non_stop",
+        "option": [
+          "non_stop",
+          "100_percent_clear",
+          "map_3_stars",
+          "threat_safe",
+          "threat_safe_without_3_stars"
+        ],
+        "display": "hide"
+      },
+      "StageIncrease": {
+        "type": "checkbox",
+        "value": false,
+        "display": "hide"
+      },
+      "GetNewShip": {
+        "type": "checkbox",
+        "value": false,
+        "display": "hide"
+      },
+      "ReachLevel": {
+        "type": "input",
+        "value": 0,
+        "display": "hide"
+      }
+    },
+    "Fleet": {
+      "Fleet1": {
+        "type": "select",
+        "value": 1,
+        "option": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "Fleet1Formation": {
+        "type": "select",
+        "value": "double_line",
+        "option": [
+          "line_ahead",
+          "double_line",
+          "diamond"
+        ]
+      },
+      "Fleet1Mode": {
+        "type": "select",
+        "value": "combat_auto",
+        "option": [
+          "combat_auto",
+          "combat_manual",
+          "stand_still_in_the_middle",
+          "hide_in_bottom_left"
+        ]
+      },
+      "Fleet1Step": {
+        "type": "select",
+        "value": 3,
+        "option": [
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "Fleet2": {
+        "type": "select",
+        "value": 2,
+        "option": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "Fleet2Formation": {
+        "type": "select",
+        "value": "double_line",
+        "option": [
+          "line_ahead",
+          "double_line",
+          "diamond"
+        ]
+      },
+      "Fleet2Mode": {
+        "type": "select",
+        "value": "combat_auto",
+        "option": [
+          "combat_auto",
+          "combat_manual",
+          "stand_still_in_the_middle",
+          "hide_in_bottom_left"
+        ]
+      },
+      "Fleet2Step": {
+        "type": "select",
+        "value": 2,
+        "option": [
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "FleetOrder": {
+        "type": "select",
+        "value": "fleet1_mob_fleet2_boss",
+        "option": [
+          "fleet1_mob_fleet2_boss",
+          "fleet1_boss_fleet2_mob",
+          "fleet1_all_fleet2_standby",
+          "fleet1_standby_fleet2_all"
+        ]
+      }
+    },
+    "Submarine": {
+      "Fleet": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          1,
+          2
+        ]
+      },
+      "Mode": {
+        "type": "select",
+        "value": "do_not_use",
+        "option": [
+          "do_not_use",
+          "hunt_only",
+          "boss_only",
+          "hunt_and_boss",
+          "every_combat"
+        ]
+      },
+      "AutoSearchMode": {
+        "type": "select",
+        "value": "sub_standby",
+        "option": [
+          "sub_standby",
+          "sub_auto_call"
+        ]
+      },
+      "DistanceToBoss": {
+        "type": "select",
+        "value": "2_grid_to_boss",
+        "option": [
+          "to_boss_position",
+          "1_grid_to_boss",
+          "2_grid_to_boss",
+          "use_open_ocean_support"
+        ]
+      }
+    },
+    "Emotion": {
+      "Mode": {
+        "type": "select",
+        "value": "calculate",
+        "option": [
+          "calculate",
+          "ignore",
+          "calculate_ignore"
+        ]
+      },
+      "Fleet1Value": {
+        "type": "input",
+        "value": 119
+      },
+      "Fleet1Record": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime",
+        "display": "disabled"
+      },
+      "Fleet1Control": {
+        "type": "select",
+        "value": "prevent_yellow_face",
+        "option": [
+          "keep_exp_bonus",
+          "prevent_green_face",
+          "prevent_yellow_face",
+          "prevent_red_face"
+        ]
+      },
+      "Fleet1Recover": {
+        "type": "select",
+        "value": "not_in_dormitory",
+        "option": [
+          "not_in_dormitory",
+          "dormitory_floor_1",
+          "dormitory_floor_2"
+        ]
+      },
+      "Fleet1Oath": {
+        "type": "checkbox",
+        "value": false
+      },
+      "Fleet2Value": {
+        "type": "input",
+        "value": 119
+      },
+      "Fleet2Record": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime",
+        "display": "disabled"
+      },
+      "Fleet2Control": {
+        "type": "select",
+        "value": "prevent_yellow_face",
+        "option": [
+          "keep_exp_bonus",
+          "prevent_green_face",
+          "prevent_yellow_face",
+          "prevent_red_face"
+        ]
+      },
+      "Fleet2Recover": {
+        "type": "select",
+        "value": "not_in_dormitory",
+        "option": [
+          "not_in_dormitory",
+          "dormitory_floor_1",
+          "dormitory_floor_2"
+        ]
+      },
+      "Fleet2Oath": {
+        "type": "checkbox",
+        "value": false
+      }
+    },
+    "HpControl": {
+      "UseHpBalance": {
+        "type": "checkbox",
+        "value": false
+      },
+      "UseEmergencyRepair": {
+        "type": "checkbox",
+        "value": false
+      },
+      "UseLowHpRetreat": {
+        "type": "checkbox",
+        "value": false
+      },
+      "HpBalanceThreshold": {
+        "type": "input",
+        "value": 0.2
+      },
+      "HpBalanceWeight": {
+        "type": "input",
+        "value": "1000, 1000, 1000"
+      },
+      "RepairUseSingleThreshold": {
+        "type": "input",
+        "value": 0.3
+      },
+      "RepairUseMultiThreshold": {
+        "type": "input",
+        "value": 0.6
+      },
+      "LowHpRetreatThreshold": {
+        "type": "input",
+        "value": 0.3
+      }
+    },
+    "EnemyPriority": {
+      "EnemyScaleBalanceWeight": {
+        "type": "select",
+        "value": "default_mode",
+        "option": [
+          "default_mode",
+          "S3_enemy_first",
+          "S1_enemy_first"
+        ]
+      }
+    },
+    "Storage": {
+      "Storage": {
+        "type": "storage",
+        "value": {},
+        "valuetype": "ignore",
+        "display": "disabled"
+      }
+    }
+  },
+  "EventC": {
+    "Scheduler": {
+      "Enable": {
+        "type": "checkbox",
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
+      },
+      "NextRun": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      },
+      "Command": {
+        "type": "input",
+        "value": "EventC",
+        "display": "hide"
+      },
+      "SuccessInterval": {
+        "type": "input",
+        "value": 30,
+        "display": "hide"
+      },
+      "FailureInterval": {
+        "type": "input",
+        "value": 30,
+        "display": "hide"
+      },
+      "ServerUpdate": {
+        "type": "input",
+        "value": "00:00",
+        "display": "hide"
+      }
+    },
+    "EventDaily": {
+      "StageFilter": {
+        "type": "textarea",
+        "value": "C1 > C2 > C3"
+      },
+      "LastStage": {
+        "type": "input",
+        "value": 0
+      }
+    },
+    "Campaign": {
+      "Name": {
+        "type": "input",
+        "value": "dynamic",
+        "display": "hide"
+      },
+      "Event": {
+        "type": "state",
+        "value": "campaign_main",
+        "option": [
+          "event_20200227_cn",
+          "event_20200312_cn",
+          "event_20200326_cn",
+          "event_20200423_cn",
+          "event_20200507_cn",
+          "event_20200521_cn",
+          "event_20200521_en",
+          "event_20200603_cn",
+          "event_20200603_en",
+          "event_20200611_en",
+          "event_20200716_en",
+          "event_20200723_cn",
+          "event_20200806_cn",
+          "event_20200820_cn",
+          "event_20200903_en",
+          "event_20200917_cn",
+          "event_20201002_en",
+          "event_20201012_cn",
+          "event_20201029_cn",
+          "event_20201126_cn",
+          "event_20201229_cn",
+          "event_20210121_cn",
+          "event_20210225_cn",
+          "event_20210225_tw",
+          "event_20210325_cn",
+          "event_20210415_tw",
+          "event_20210422_cn",
+          "event_20210429_tw",
+          "event_20210527_cn",
+          "event_20210527_tw",
+          "event_20210610_tw",
+          "event_20210624_cn",
+          "event_20210624_tw",
+          "event_20210722_cn",
+          "event_20210819_cn",
+          "event_20210916_cn",
+          "event_20211028_cn",
+          "event_20211028_tw",
+          "event_20211111_cn",
+          "event_20211125_cn",
+          "event_20211229_cn",
+          "event_20220210_cn",
+          "event_20220224_cn",
+          "event_20220310_tw",
+          "event_20220324_cn",
+          "event_20220407_tw",
+          "event_20220414_cn",
+          "event_20220428_cn",
+          "event_20220526_cn",
+          "event_20220728_cn",
+          "event_20220818_cn",
+          "event_20220915_cn",
+          "event_20221124_cn",
+          "event_20221222_cn",
+          "event_20230223_cn",
+          "event_20230525_cn",
+          "event_20230803_cn",
+          "event_20230817_cn",
+          "event_20230914_cn",
+          "event_20231026_cn",
+          "event_20231123_cn",
+          "event_20231221_cn"
+        ],
+        "option_bold": [
+          "event_20210527_cn",
+          "event_20211229_cn"
+        ],
+        "cn": "event_20211229_cn",
+        "en": "event_20211229_cn",
+        "jp": "event_20211229_cn",
+        "tw": "event_20210527_cn"
+      },
+      "Mode": {
+        "type": "select",
+        "value": "normal",
+        "option": [
+          "normal",
+          "hard"
+        ],
+        "display": "hide"
+      },
+      "UseClearMode": {
+        "type": "checkbox",
+        "value": true
+      },
+      "UseFleetLock": {
+        "type": "checkbox",
+        "value": true
+      },
+      "UseAutoSearch": {
+        "type": "checkbox",
+        "value": true
+      },
+      "Use2xBook": {
+        "type": "checkbox",
+        "value": false,
+        "display": "hide"
+      },
+      "AmbushEvade": {
+        "type": "checkbox",
+        "value": true,
+        "display": "hide"
+      }
+    },
+    "StopCondition": {
+      "RunCount": {
+        "type": "input",
+        "value": 0,
+        "display": "hide"
+      },
+      "OilLimit": {
+        "type": "input",
+        "value": 1000
+      },
+      "MapAchievement": {
+        "type": "select",
+        "value": "non_stop",
+        "option": [
+          "non_stop",
+          "100_percent_clear",
+          "map_3_stars",
+          "threat_safe",
+          "threat_safe_without_3_stars"
+        ],
+        "display": "hide"
+      },
+      "StageIncrease": {
+        "type": "checkbox",
+        "value": false,
+        "display": "hide"
+      },
+      "GetNewShip": {
+        "type": "checkbox",
+        "value": false,
+        "display": "hide"
+      },
+      "ReachLevel": {
+        "type": "input",
+        "value": 0,
+        "display": "hide"
+      }
+    },
+    "Fleet": {
+      "Fleet1": {
+        "type": "select",
+        "value": 1,
+        "option": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "Fleet1Formation": {
+        "type": "select",
+        "value": "double_line",
+        "option": [
+          "line_ahead",
+          "double_line",
+          "diamond"
+        ]
+      },
+      "Fleet1Mode": {
+        "type": "select",
+        "value": "combat_auto",
+        "option": [
+          "combat_auto",
+          "combat_manual",
+          "stand_still_in_the_middle",
+          "hide_in_bottom_left"
+        ]
+      },
+      "Fleet1Step": {
+        "type": "select",
+        "value": 3,
+        "option": [
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "Fleet2": {
+        "type": "select",
+        "value": 2,
+        "option": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "Fleet2Formation": {
+        "type": "select",
+        "value": "double_line",
+        "option": [
+          "line_ahead",
+          "double_line",
+          "diamond"
+        ]
+      },
+      "Fleet2Mode": {
+        "type": "select",
+        "value": "combat_auto",
+        "option": [
+          "combat_auto",
+          "combat_manual",
+          "stand_still_in_the_middle",
+          "hide_in_bottom_left"
+        ]
+      },
+      "Fleet2Step": {
+        "type": "select",
+        "value": 2,
+        "option": [
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "FleetOrder": {
+        "type": "select",
+        "value": "fleet1_mob_fleet2_boss",
+        "option": [
+          "fleet1_mob_fleet2_boss",
+          "fleet1_boss_fleet2_mob",
+          "fleet1_all_fleet2_standby",
+          "fleet1_standby_fleet2_all"
+        ]
+      }
+    },
+    "Submarine": {
+      "Fleet": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          1,
+          2
+        ]
+      },
+      "Mode": {
+        "type": "select",
+        "value": "do_not_use",
+        "option": [
+          "do_not_use",
+          "hunt_only",
+          "boss_only",
+          "hunt_and_boss",
+          "every_combat"
+        ]
+      },
+      "AutoSearchMode": {
+        "type": "select",
+        "value": "sub_standby",
+        "option": [
+          "sub_standby",
+          "sub_auto_call"
+        ]
+      },
+      "DistanceToBoss": {
+        "type": "select",
+        "value": "2_grid_to_boss",
+        "option": [
+          "to_boss_position",
+          "1_grid_to_boss",
+          "2_grid_to_boss",
+          "use_open_ocean_support"
+        ]
+      }
+    },
+    "Emotion": {
+      "Mode": {
+        "type": "select",
+        "value": "calculate",
+        "option": [
+          "calculate",
+          "ignore",
+          "calculate_ignore"
+        ]
+      },
+      "Fleet1Value": {
+        "type": "input",
+        "value": 119
+      },
+      "Fleet1Record": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime",
+        "display": "disabled"
+      },
+      "Fleet1Control": {
+        "type": "select",
+        "value": "prevent_yellow_face",
+        "option": [
+          "keep_exp_bonus",
+          "prevent_green_face",
+          "prevent_yellow_face",
+          "prevent_red_face"
+        ]
+      },
+      "Fleet1Recover": {
+        "type": "select",
+        "value": "not_in_dormitory",
+        "option": [
+          "not_in_dormitory",
+          "dormitory_floor_1",
+          "dormitory_floor_2"
+        ]
+      },
+      "Fleet1Oath": {
+        "type": "checkbox",
+        "value": false
+      },
+      "Fleet2Value": {
+        "type": "input",
+        "value": 119
+      },
+      "Fleet2Record": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime",
+        "display": "disabled"
+      },
+      "Fleet2Control": {
+        "type": "select",
+        "value": "prevent_yellow_face",
+        "option": [
+          "keep_exp_bonus",
+          "prevent_green_face",
+          "prevent_yellow_face",
+          "prevent_red_face"
+        ]
+      },
+      "Fleet2Recover": {
+        "type": "select",
+        "value": "not_in_dormitory",
+        "option": [
+          "not_in_dormitory",
+          "dormitory_floor_1",
+          "dormitory_floor_2"
+        ]
+      },
+      "Fleet2Oath": {
+        "type": "checkbox",
+        "value": false
+      }
+    },
+    "HpControl": {
+      "UseHpBalance": {
+        "type": "checkbox",
+        "value": false
+      },
+      "UseEmergencyRepair": {
+        "type": "checkbox",
+        "value": false
+      },
+      "UseLowHpRetreat": {
+        "type": "checkbox",
+        "value": false
+      },
+      "HpBalanceThreshold": {
+        "type": "input",
+        "value": 0.2
+      },
+      "HpBalanceWeight": {
+        "type": "input",
+        "value": "1000, 1000, 1000"
+      },
+      "RepairUseSingleThreshold": {
+        "type": "input",
+        "value": 0.3
+      },
+      "RepairUseMultiThreshold": {
+        "type": "input",
+        "value": 0.6
+      },
+      "LowHpRetreatThreshold": {
+        "type": "input",
+        "value": 0.3
+      }
+    },
+    "EnemyPriority": {
+      "EnemyScaleBalanceWeight": {
+        "type": "select",
+        "value": "default_mode",
+        "option": [
+          "default_mode",
+          "S3_enemy_first",
+          "S1_enemy_first"
+        ]
+      }
+    },
+    "Storage": {
+      "Storage": {
+        "type": "storage",
+        "value": {},
+        "valuetype": "ignore",
+        "display": "disabled"
+      }
+    }
+  },
+  "EventD": {
+    "Scheduler": {
+      "Enable": {
+        "type": "checkbox",
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
+      },
+      "NextRun": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      },
+      "Command": {
+        "type": "input",
+        "value": "EventD",
+        "display": "hide"
+      },
+      "SuccessInterval": {
+        "type": "input",
+        "value": 30,
+        "display": "hide"
+      },
+      "FailureInterval": {
+        "type": "input",
+        "value": 30,
+        "display": "hide"
+      },
+      "ServerUpdate": {
+        "type": "input",
+        "value": "00:00",
+        "display": "hide"
+      }
+    },
+    "EventDaily": {
+      "StageFilter": {
+        "type": "textarea",
+        "value": "D1 > D2 > D3"
+      },
+      "LastStage": {
+        "type": "input",
+        "value": 0
+      }
+    },
+    "Campaign": {
+      "Name": {
+        "type": "input",
+        "value": "dynamic",
+        "display": "hide"
+      },
+      "Event": {
+        "type": "state",
+        "value": "campaign_main",
+        "option": [
+          "event_20200227_cn",
+          "event_20200312_cn",
+          "event_20200326_cn",
+          "event_20200423_cn",
+          "event_20200507_cn",
+          "event_20200521_cn",
+          "event_20200521_en",
+          "event_20200603_cn",
+          "event_20200603_en",
+          "event_20200611_en",
+          "event_20200716_en",
+          "event_20200723_cn",
+          "event_20200806_cn",
+          "event_20200820_cn",
+          "event_20200903_en",
+          "event_20200917_cn",
+          "event_20201002_en",
+          "event_20201012_cn",
+          "event_20201029_cn",
+          "event_20201126_cn",
+          "event_20201229_cn",
+          "event_20210121_cn",
+          "event_20210225_cn",
+          "event_20210225_tw",
+          "event_20210325_cn",
+          "event_20210415_tw",
+          "event_20210422_cn",
+          "event_20210429_tw",
+          "event_20210527_cn",
+          "event_20210527_tw",
+          "event_20210610_tw",
+          "event_20210624_cn",
+          "event_20210624_tw",
+          "event_20210722_cn",
+          "event_20210819_cn",
+          "event_20210916_cn",
+          "event_20211028_cn",
+          "event_20211028_tw",
+          "event_20211111_cn",
+          "event_20211125_cn",
+          "event_20211229_cn",
+          "event_20220210_cn",
+          "event_20220224_cn",
+          "event_20220310_tw",
+          "event_20220324_cn",
+          "event_20220407_tw",
+          "event_20220414_cn",
+          "event_20220428_cn",
+          "event_20220526_cn",
+          "event_20220728_cn",
+          "event_20220818_cn",
+          "event_20220915_cn",
+          "event_20221124_cn",
+          "event_20221222_cn",
+          "event_20230223_cn",
+          "event_20230525_cn",
+          "event_20230803_cn",
+          "event_20230817_cn",
+          "event_20230914_cn",
+          "event_20231026_cn",
+          "event_20231123_cn",
+          "event_20231221_cn"
+        ],
+        "option_bold": [
+          "event_20210527_cn",
+          "event_20211229_cn"
+        ],
+        "cn": "event_20211229_cn",
+        "en": "event_20211229_cn",
+        "jp": "event_20211229_cn",
+        "tw": "event_20210527_cn"
+      },
+      "Mode": {
+        "type": "select",
+        "value": "normal",
+        "option": [
+          "normal",
+          "hard"
+        ],
+        "display": "hide"
+      },
+      "UseClearMode": {
+        "type": "checkbox",
+        "value": true
+      },
+      "UseFleetLock": {
+        "type": "checkbox",
+        "value": true
+      },
+      "UseAutoSearch": {
+        "type": "checkbox",
+        "value": true
+      },
+      "Use2xBook": {
+        "type": "checkbox",
+        "value": false,
+        "display": "hide"
+      },
+      "AmbushEvade": {
+        "type": "checkbox",
+        "value": true,
+        "display": "hide"
+      }
+    },
+    "StopCondition": {
+      "RunCount": {
+        "type": "input",
+        "value": 0,
+        "display": "hide"
+      },
+      "OilLimit": {
+        "type": "input",
+        "value": 1000
+      },
+      "MapAchievement": {
+        "type": "select",
+        "value": "non_stop",
+        "option": [
+          "non_stop",
+          "100_percent_clear",
+          "map_3_stars",
+          "threat_safe",
+          "threat_safe_without_3_stars"
+        ],
+        "display": "hide"
+      },
+      "StageIncrease": {
+        "type": "checkbox",
+        "value": false,
+        "display": "hide"
+      },
+      "GetNewShip": {
+        "type": "checkbox",
+        "value": false,
+        "display": "hide"
+      },
+      "ReachLevel": {
+        "type": "input",
+        "value": 0,
+        "display": "hide"
+      }
+    },
+    "Fleet": {
+      "Fleet1": {
+        "type": "select",
+        "value": 1,
+        "option": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "Fleet1Formation": {
+        "type": "select",
+        "value": "double_line",
+        "option": [
+          "line_ahead",
+          "double_line",
+          "diamond"
+        ]
+      },
+      "Fleet1Mode": {
+        "type": "select",
+        "value": "combat_auto",
+        "option": [
+          "combat_auto",
+          "combat_manual",
+          "stand_still_in_the_middle",
+          "hide_in_bottom_left"
+        ]
+      },
+      "Fleet1Step": {
+        "type": "select",
+        "value": 3,
+        "option": [
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "Fleet2": {
+        "type": "select",
+        "value": 2,
+        "option": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "Fleet2Formation": {
+        "type": "select",
+        "value": "double_line",
+        "option": [
+          "line_ahead",
+          "double_line",
+          "diamond"
+        ]
+      },
+      "Fleet2Mode": {
+        "type": "select",
+        "value": "combat_auto",
+        "option": [
+          "combat_auto",
+          "combat_manual",
+          "stand_still_in_the_middle",
+          "hide_in_bottom_left"
+        ]
+      },
+      "Fleet2Step": {
+        "type": "select",
+        "value": 2,
+        "option": [
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "FleetOrder": {
+        "type": "select",
+        "value": "fleet1_mob_fleet2_boss",
+        "option": [
+          "fleet1_mob_fleet2_boss",
+          "fleet1_boss_fleet2_mob",
+          "fleet1_all_fleet2_standby",
+          "fleet1_standby_fleet2_all"
+        ]
+      }
+    },
+    "Submarine": {
+      "Fleet": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          1,
+          2
+        ]
+      },
+      "Mode": {
+        "type": "select",
+        "value": "do_not_use",
+        "option": [
+          "do_not_use",
+          "hunt_only",
+          "boss_only",
+          "hunt_and_boss",
+          "every_combat"
+        ]
+      },
+      "AutoSearchMode": {
+        "type": "select",
+        "value": "sub_standby",
+        "option": [
+          "sub_standby",
+          "sub_auto_call"
+        ]
+      },
+      "DistanceToBoss": {
+        "type": "select",
+        "value": "2_grid_to_boss",
+        "option": [
+          "to_boss_position",
+          "1_grid_to_boss",
+          "2_grid_to_boss",
+          "use_open_ocean_support"
+        ]
+      }
+    },
+    "Emotion": {
+      "Mode": {
+        "type": "select",
+        "value": "calculate",
+        "option": [
+          "calculate",
+          "ignore",
+          "calculate_ignore"
+        ]
+      },
+      "Fleet1Value": {
+        "type": "input",
+        "value": 119
+      },
+      "Fleet1Record": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime",
+        "display": "disabled"
+      },
+      "Fleet1Control": {
+        "type": "select",
+        "value": "prevent_yellow_face",
+        "option": [
+          "keep_exp_bonus",
+          "prevent_green_face",
+          "prevent_yellow_face",
+          "prevent_red_face"
+        ]
+      },
+      "Fleet1Recover": {
+        "type": "select",
+        "value": "not_in_dormitory",
+        "option": [
+          "not_in_dormitory",
+          "dormitory_floor_1",
+          "dormitory_floor_2"
+        ]
+      },
+      "Fleet1Oath": {
+        "type": "checkbox",
+        "value": false
+      },
+      "Fleet2Value": {
+        "type": "input",
+        "value": 119
+      },
+      "Fleet2Record": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime",
+        "display": "disabled"
+      },
+      "Fleet2Control": {
+        "type": "select",
+        "value": "prevent_yellow_face",
+        "option": [
+          "keep_exp_bonus",
+          "prevent_green_face",
+          "prevent_yellow_face",
+          "prevent_red_face"
+        ]
+      },
+      "Fleet2Recover": {
+        "type": "select",
+        "value": "not_in_dormitory",
+        "option": [
+          "not_in_dormitory",
+          "dormitory_floor_1",
+          "dormitory_floor_2"
+        ]
+      },
+      "Fleet2Oath": {
+        "type": "checkbox",
+        "value": false
+      }
+    },
+    "HpControl": {
+      "UseHpBalance": {
+        "type": "checkbox",
+        "value": false
+      },
+      "UseEmergencyRepair": {
+        "type": "checkbox",
+        "value": false
+      },
+      "UseLowHpRetreat": {
+        "type": "checkbox",
+        "value": false
+      },
+      "HpBalanceThreshold": {
+        "type": "input",
+        "value": 0.2
+      },
+      "HpBalanceWeight": {
+        "type": "input",
+        "value": "1000, 1000, 1000"
+      },
+      "RepairUseSingleThreshold": {
+        "type": "input",
+        "value": 0.3
+      },
+      "RepairUseMultiThreshold": {
+        "type": "input",
+        "value": 0.6
+      },
+      "LowHpRetreatThreshold": {
+        "type": "input",
+        "value": 0.3
+      }
+    },
+    "EnemyPriority": {
+      "EnemyScaleBalanceWeight": {
+        "type": "select",
+        "value": "default_mode",
+        "option": [
+          "default_mode",
+          "S3_enemy_first",
+          "S1_enemy_first"
+        ]
+      }
+    },
+    "Storage": {
+      "Storage": {
+        "type": "storage",
+        "value": {},
+        "valuetype": "ignore",
+        "display": "disabled"
+      }
+    }
+  },
+  "EventSp": {
+    "Scheduler": {
+      "Enable": {
+        "type": "checkbox",
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
+      },
+      "NextRun": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      },
+      "Command": {
+        "type": "input",
+        "value": "EventSp",
+        "display": "hide"
+      },
+      "SuccessInterval": {
+        "type": "input",
+        "value": 30,
+        "display": "hide"
+      },
+      "FailureInterval": {
+        "type": "input",
+        "value": 30,
+        "display": "hide"
+      },
+      "ServerUpdate": {
+        "type": "input",
+        "value": "00:00",
+        "display": "hide"
+      }
+    },
+    "Campaign": {
+      "Name": {
+        "type": "input",
+        "value": "sp",
+        "display": "hide"
+      },
+      "Event": {
+        "type": "state",
+        "value": "campaign_main",
+        "option": [
+          "event_20200227_cn",
+          "event_20200312_cn",
+          "event_20200326_cn",
+          "event_20200423_cn",
+          "event_20200507_cn",
+          "event_20200521_cn",
+          "event_20200521_en",
+          "event_20200603_cn",
+          "event_20200603_en",
+          "event_20200611_en",
+          "event_20200716_en",
+          "event_20200723_cn",
+          "event_20200806_cn",
+          "event_20200820_cn",
+          "event_20200903_en",
+          "event_20200917_cn",
+          "event_20201002_en",
+          "event_20201012_cn",
+          "event_20201029_cn",
+          "event_20201126_cn",
+          "event_20201229_cn",
+          "event_20210121_cn",
+          "event_20210225_cn",
+          "event_20210225_tw",
+          "event_20210325_cn",
+          "event_20210415_tw",
+          "event_20210422_cn",
+          "event_20210429_tw",
+          "event_20210527_cn",
+          "event_20210527_tw",
+          "event_20210610_tw",
+          "event_20210624_cn",
+          "event_20210624_tw",
+          "event_20210722_cn",
+          "event_20210819_cn",
+          "event_20210916_cn",
+          "event_20211028_cn",
+          "event_20211028_tw",
+          "event_20211111_cn",
+          "event_20211125_cn",
+          "event_20211229_cn",
+          "event_20220210_cn",
+          "event_20220224_cn",
+          "event_20220310_tw",
+          "event_20220324_cn",
+          "event_20220407_tw",
+          "event_20220414_cn",
+          "event_20220428_cn",
+          "event_20220526_cn",
+          "event_20220728_cn",
+          "event_20220818_cn",
+          "event_20220915_cn",
+          "event_20221124_cn",
+          "event_20221222_cn",
+          "event_20230223_cn",
+          "event_20230525_cn",
+          "event_20230803_cn",
+          "event_20230817_cn",
+          "event_20230914_cn",
+          "event_20231026_cn",
+          "event_20231123_cn",
+          "event_20231221_cn"
+        ],
+        "option_bold": [
+          "event_20210527_cn",
+          "event_20211229_cn"
+        ],
+        "cn": "event_20211229_cn",
+        "en": "event_20211229_cn",
+        "jp": "event_20211229_cn",
+        "tw": "event_20210527_cn"
+      },
+      "Mode": {
+        "type": "select",
+        "value": "normal",
+        "option": [
+          "normal",
+          "hard"
+        ],
+        "display": "hide"
+      },
+      "UseClearMode": {
+        "type": "checkbox",
+        "value": true
+      },
+      "UseFleetLock": {
+        "type": "checkbox",
+        "value": true
+      },
+      "UseAutoSearch": {
+        "type": "checkbox",
+        "value": true
+      },
+      "Use2xBook": {
+        "type": "checkbox",
+        "value": false,
+        "display": "hide"
+      },
+      "AmbushEvade": {
+        "type": "checkbox",
+        "value": true,
+        "display": "hide"
+      }
+    },
+    "StopCondition": {
+      "RunCount": {
+        "type": "input",
+        "value": 0,
+        "display": "hide"
+      },
+      "OilLimit": {
+        "type": "input",
+        "value": 1000
+      },
+      "MapAchievement": {
+        "type": "select",
+        "value": "non_stop",
+        "option": [
+          "non_stop",
+          "100_percent_clear",
+          "map_3_stars",
+          "threat_safe",
+          "threat_safe_without_3_stars"
+        ],
+        "display": "hide"
+      },
+      "StageIncrease": {
+        "type": "checkbox",
+        "value": false,
+        "display": "hide"
+      },
+      "GetNewShip": {
+        "type": "checkbox",
+        "value": false,
+        "display": "hide"
+      },
+      "ReachLevel": {
+        "type": "input",
+        "value": 0,
+        "display": "hide"
+      }
+    },
+    "Fleet": {
+      "Fleet1": {
+        "type": "select",
+        "value": 1,
+        "option": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "Fleet1Formation": {
+        "type": "select",
+        "value": "double_line",
+        "option": [
+          "line_ahead",
+          "double_line",
+          "diamond"
+        ]
+      },
+      "Fleet1Mode": {
+        "type": "select",
+        "value": "combat_auto",
+        "option": [
+          "combat_auto",
+          "combat_manual",
+          "stand_still_in_the_middle",
+          "hide_in_bottom_left"
+        ]
+      },
+      "Fleet1Step": {
+        "type": "select",
+        "value": 3,
+        "option": [
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "Fleet2": {
+        "type": "select",
+        "value": 2,
+        "option": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "Fleet2Formation": {
+        "type": "select",
+        "value": "double_line",
+        "option": [
+          "line_ahead",
+          "double_line",
+          "diamond"
+        ]
+      },
+      "Fleet2Mode": {
+        "type": "select",
+        "value": "combat_auto",
+        "option": [
+          "combat_auto",
+          "combat_manual",
+          "stand_still_in_the_middle",
+          "hide_in_bottom_left"
+        ]
+      },
+      "Fleet2Step": {
+        "type": "select",
+        "value": 2,
+        "option": [
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "FleetOrder": {
+        "type": "select",
+        "value": "fleet1_mob_fleet2_boss",
+        "option": [
+          "fleet1_mob_fleet2_boss",
+          "fleet1_boss_fleet2_mob",
+          "fleet1_all_fleet2_standby",
+          "fleet1_standby_fleet2_all"
+        ]
+      }
+    },
+    "Submarine": {
+      "Fleet": {
+        "type": "select",
+        "value": 0,
+        "option": [
+          0,
+          1,
+          2
+        ]
+      },
+      "Mode": {
+        "type": "select",
+        "value": "do_not_use",
+        "option": [
+          "do_not_use",
+          "hunt_only",
+          "boss_only",
+          "hunt_and_boss",
+          "every_combat"
+        ]
+      },
+      "AutoSearchMode": {
+        "type": "select",
+        "value": "sub_standby",
+        "option": [
+          "sub_standby",
+          "sub_auto_call"
+        ],
+        "display": "hide"
+      },
+      "DistanceToBoss": {
+        "type": "select",
+        "value": "2_grid_to_boss",
+        "option": [
+          "to_boss_position",
+          "1_grid_to_boss",
+          "2_grid_to_boss",
+          "use_open_ocean_support"
+        ]
+      }
+    },
+    "Emotion": {
+      "Mode": {
+        "type": "select",
+        "value": "calculate",
+        "option": [
+          "calculate",
+          "ignore",
+          "calculate_ignore"
+        ]
+      },
+      "Fleet1Value": {
+        "type": "input",
+        "value": 119
+      },
+      "Fleet1Record": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime",
+        "display": "disabled"
+      },
+      "Fleet1Control": {
+        "type": "select",
+        "value": "prevent_yellow_face",
+        "option": [
+          "keep_exp_bonus",
+          "prevent_green_face",
+          "prevent_yellow_face",
+          "prevent_red_face"
+        ]
+      },
+      "Fleet1Recover": {
+        "type": "select",
+        "value": "not_in_dormitory",
+        "option": [
+          "not_in_dormitory",
+          "dormitory_floor_1",
+          "dormitory_floor_2"
+        ]
+      },
+      "Fleet1Oath": {
+        "type": "checkbox",
+        "value": false
+      },
+      "Fleet2Value": {
+        "type": "input",
+        "value": 119
+      },
+      "Fleet2Record": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime",
+        "display": "disabled"
+      },
+      "Fleet2Control": {
+        "type": "select",
+        "value": "prevent_yellow_face",
+        "option": [
+          "keep_exp_bonus",
+          "prevent_green_face",
+          "prevent_yellow_face",
+          "prevent_red_face"
+        ]
+      },
+      "Fleet2Recover": {
+        "type": "select",
+        "value": "not_in_dormitory",
+        "option": [
+          "not_in_dormitory",
+          "dormitory_floor_1",
+          "dormitory_floor_2"
+        ]
+      },
+      "Fleet2Oath": {
+        "type": "checkbox",
+        "value": false
+      }
+    },
+    "HpControl": {
+      "UseHpBalance": {
+        "type": "checkbox",
+        "value": false
+      },
+      "UseEmergencyRepair": {
+        "type": "checkbox",
+        "value": false
+      },
+      "UseLowHpRetreat": {
+        "type": "checkbox",
+        "value": false
+      },
+      "HpBalanceThreshold": {
+        "type": "input",
+        "value": 0.2
+      },
+      "HpBalanceWeight": {
+        "type": "input",
+        "value": "1000, 1000, 1000"
+      },
+      "RepairUseSingleThreshold": {
+        "type": "input",
+        "value": 0.3
+      },
+      "RepairUseMultiThreshold": {
+        "type": "input",
+        "value": 0.6
+      },
+      "LowHpRetreatThreshold": {
+        "type": "input",
+        "value": 0.3
+      }
+    },
+    "EnemyPriority": {
+      "EnemyScaleBalanceWeight": {
+        "type": "select",
+        "value": "default_mode",
+        "option": [
+          "default_mode",
+          "S3_enemy_first",
+          "S1_enemy_first"
+        ]
+      }
+    },
+    "Storage": {
+      "Storage": {
+        "type": "storage",
+        "value": {},
+        "valuetype": "ignore",
+        "display": "disabled"
+      }
+    }
+  },
   "RaidDaily": {
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
-        "value": false
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
       },
       "NextRun": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime"
       },
       "Command": {
@@ -6507,21 +6562,25 @@
         "display": "hide"
       },
       "Event": {
-        "type": "select",
+        "type": "state",
         "value": "campaign_main",
         "option": [
-          "raid_20220127",
-          "raid_20230118",
-          "raid_20221027",
-          "raid_20220630",
+          "raid_20200624",
           "raid_20210708",
-          "raid_20200624"
+          "raid_20220127",
+          "raid_20220630",
+          "raid_20221027",
+          "raid_20230118",
+          "raid_20230629"
         ],
-        "display": "disabled",
-        "tw": "raid_20220127",
-        "cn": "raid_20230118",
-        "en": "raid_20230118",
-        "jp": "raid_20230118"
+        "option_bold": [
+          "raid_20230629",
+          "raid_20221027"
+        ],
+        "cn": "raid_20230629",
+        "en": "raid_20230629",
+        "jp": "raid_20230629",
+        "tw": "raid_20221027"
       },
       "Mode": {
         "type": "select",
@@ -6612,7 +6671,7 @@
       },
       "Fleet1Record": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime",
         "display": "disabled"
       },
@@ -6686,20 +6745,24 @@
       }
     }
   },
-  "MaritimeEscort": {
+  "CoalitionSp": {
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
-        "value": false
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
       },
       "NextRun": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime"
       },
       "Command": {
         "type": "input",
-        "value": "MaritimeEscort",
+        "value": "CoalitionSp",
         "display": "hide"
       },
       "SuccessInterval": {
@@ -6718,10 +6781,187 @@
         "display": "hide"
       }
     },
-    "MaritimeEscort": {
-      "Enable": {
+    "Campaign": {
+      "Name": {
+        "type": "input",
+        "value": "sp",
+        "display": "hide"
+      },
+      "Event": {
+        "type": "state",
+        "value": "campaign_main",
+        "option": [
+          "coalition_20230323"
+        ],
+        "option_bold": [
+          "coalition_20230323"
+        ],
+        "cn": "coalition_20230323",
+        "en": "coalition_20230323",
+        "jp": "coalition_20230323",
+        "tw": "coalition_20230323"
+      },
+      "Mode": {
+        "type": "select",
+        "value": "normal",
+        "option": [
+          "normal",
+          "hard"
+        ],
+        "display": "hide"
+      },
+      "UseClearMode": {
         "type": "checkbox",
-        "value": true
+        "value": true,
+        "display": "hide"
+      },
+      "UseFleetLock": {
+        "type": "checkbox",
+        "value": true,
+        "display": "hide"
+      },
+      "UseAutoSearch": {
+        "type": "checkbox",
+        "value": false,
+        "display": "hide"
+      },
+      "Use2xBook": {
+        "type": "checkbox",
+        "value": false,
+        "display": "hide"
+      },
+      "AmbushEvade": {
+        "type": "checkbox",
+        "value": true,
+        "display": "hide"
+      }
+    },
+    "Coalition": {
+      "Fleet": {
+        "type": "select",
+        "value": "single",
+        "option": [
+          "single",
+          "multi"
+        ]
+      }
+    },
+    "StopCondition": {
+      "RunCount": {
+        "type": "input",
+        "value": 0
+      },
+      "OilLimit": {
+        "type": "input",
+        "value": 1000
+      },
+      "MapAchievement": {
+        "type": "select",
+        "value": "non_stop",
+        "option": [
+          "non_stop",
+          "100_percent_clear",
+          "map_3_stars",
+          "threat_safe",
+          "threat_safe_without_3_stars"
+        ],
+        "display": "hide"
+      },
+      "StageIncrease": {
+        "type": "checkbox",
+        "value": false,
+        "display": "hide"
+      },
+      "GetNewShip": {
+        "type": "checkbox",
+        "value": false,
+        "display": "hide"
+      },
+      "ReachLevel": {
+        "type": "input",
+        "value": 0,
+        "display": "hide"
+      }
+    },
+    "Emotion": {
+      "Mode": {
+        "type": "select",
+        "value": "calculate",
+        "option": [
+          "calculate",
+          "ignore",
+          "calculate_ignore"
+        ]
+      },
+      "Fleet1Value": {
+        "type": "input",
+        "value": 119
+      },
+      "Fleet1Record": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime",
+        "display": "disabled"
+      },
+      "Fleet1Control": {
+        "type": "select",
+        "value": "prevent_yellow_face",
+        "option": [
+          "keep_exp_bonus",
+          "prevent_green_face",
+          "prevent_yellow_face",
+          "prevent_red_face"
+        ]
+      },
+      "Fleet1Recover": {
+        "type": "select",
+        "value": "not_in_dormitory",
+        "option": [
+          "not_in_dormitory",
+          "dormitory_floor_1",
+          "dormitory_floor_2"
+        ]
+      },
+      "Fleet1Oath": {
+        "type": "checkbox",
+        "value": false
+      },
+      "Fleet2Value": {
+        "type": "input",
+        "value": 119,
+        "display": "hide"
+      },
+      "Fleet2Record": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime",
+        "display": "hide"
+      },
+      "Fleet2Control": {
+        "type": "select",
+        "value": "prevent_yellow_face",
+        "option": [
+          "keep_exp_bonus",
+          "prevent_green_face",
+          "prevent_yellow_face",
+          "prevent_red_face"
+        ],
+        "display": "hide"
+      },
+      "Fleet2Recover": {
+        "type": "select",
+        "value": "not_in_dormitory",
+        "option": [
+          "not_in_dormitory",
+          "dormitory_floor_1",
+          "dormitory_floor_2"
+        ],
+        "display": "hide"
+      },
+      "Fleet2Oath": {
+        "type": "checkbox",
+        "value": false,
+        "display": "hide"
       }
     },
     "Storage": {
@@ -6738,11 +6978,16 @@
       "Enable": {
         "type": "lock",
         "value": true,
-        "display": "disabled"
+        "option": [
+          true
+        ],
+        "option_bold": [
+          true
+        ]
       },
       "NextRun": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime"
       },
       "Command": {
@@ -6801,11 +7046,15 @@
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
-        "value": true
+        "value": true,
+        "option": [
+          true,
+          false
+        ]
       },
       "NextRun": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime"
       },
       "Command": {
@@ -6892,11 +7141,16 @@
       "Enable": {
         "type": "lock",
         "value": true,
-        "display": "disabled"
+        "option": [
+          true
+        ],
+        "option_bold": [
+          true
+        ]
       },
       "NextRun": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime"
       },
       "Command": {
@@ -6957,9 +7211,12 @@
       },
       "PresetFilter": {
         "type": "select",
-        "value": "series_5_blueprint_152",
+        "value": "series_6_blueprint_203",
         "option": [
           "custom",
+          "series_6_blueprint_203",
+          "series_6_blueprint_only",
+          "series_6_203_only",
           "series_5_blueprint_152",
           "series_5_blueprint_only",
           "series_5_152_only",
@@ -6993,11 +7250,15 @@
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
-        "value": true
+        "value": true,
+        "option": [
+          true,
+          false
+        ]
       },
       "NextRun": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime"
       },
       "Command": {
@@ -7035,6 +7296,25 @@
         "value": "20000 > 10000 > 5000 > 3000 > 2000 > 1000"
       }
     },
+    "BuyFurniture": {
+      "Enable": {
+        "type": "checkbox",
+        "value": false
+      },
+      "BuyOption": {
+        "type": "select",
+        "value": "all",
+        "option": [
+          "set",
+          "all"
+        ]
+      },
+      "LastRun": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      }
+    },
     "Storage": {
       "Storage": {
         "type": "storage",
@@ -7048,11 +7328,15 @@
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
-        "value": true
+        "value": true,
+        "option": [
+          true,
+          false
+        ]
       },
       "NextRun": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime"
       },
       "Command": {
@@ -7125,11 +7409,15 @@
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
-        "value": true
+        "value": true,
+        "option": [
+          true,
+          false
+        ]
       },
       "NextRun": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime"
       },
       "Command": {
@@ -7207,11 +7495,16 @@
       "Enable": {
         "type": "lock",
         "value": true,
-        "display": "disabled"
+        "option": [
+          true
+        ],
+        "option_bold": [
+          true
+        ]
       },
       "NextRun": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime"
       },
       "Command": {
@@ -7270,11 +7563,15 @@
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
-        "value": false
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
       },
       "NextRun": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime"
       },
       "Command": {
@@ -7315,7 +7612,7 @@
       },
       "EscortMissionFleet": {
         "type": "select",
-        "value": 5,
+        "value": 1,
         "option": [
           1,
           2,
@@ -7337,7 +7634,7 @@
       },
       "AdvanceMissionFleet": {
         "type": "select",
-        "value": 5,
+        "value": 1,
         "option": [
           1,
           2,
@@ -7359,7 +7656,7 @@
       },
       "FierceAssaultFleet": {
         "type": "select",
-        "value": 5,
+        "value": 1,
         "option": [
           1,
           2,
@@ -7381,7 +7678,7 @@
       },
       "TacticalTrainingFleet": {
         "type": "select",
-        "value": 5,
+        "value": 1,
         "option": [
           1,
           2,
@@ -7412,7 +7709,28 @@
       },
       "ModuleDevelopmentFleet": {
         "type": "select",
-        "value": 5,
+        "value": 1,
+        "option": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "EmergencyModuleDevelopment": {
+        "type": "select",
+        "value": "first",
+        "option": [
+          "skip",
+          "first",
+          "second"
+        ]
+      },
+      "EmergencyModuleDevelopmentFleet": {
+        "type": "select",
+        "value": 1,
         "option": [
           1,
           2,
@@ -7436,11 +7754,15 @@
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
-        "value": false
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
       },
       "NextRun": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime"
       },
       "Command": {
@@ -7491,11 +7813,15 @@
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
-        "value": false
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
       },
       "NextRun": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime"
       },
       "Command": {
@@ -7546,13 +7872,19 @@
         "type": "input",
         "value": 1
       },
-      "ExercisePreserve": {
-        "type": "input",
-        "value": 0
-      },
-      "EmptyOnceOnSecondFriday": {
-        "type": "checkbox",
-        "value": false
+      "ExerciseStrategy": {
+        "type": "select",
+        "value": "aggressive",
+        "option": [
+          "aggressive",
+          "fri18",
+          "sat0",
+          "sat12",
+          "sat18",
+          "sun0",
+          "sun12",
+          "sun18"
+        ]
       },
       "LowHpThreshold": {
         "type": "input",
@@ -7568,7 +7900,7 @@
       },
       "OpponentRefreshRecord": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime"
       }
     },
@@ -7585,11 +7917,15 @@
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
-        "value": false
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
       },
       "NextRun": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime"
       },
       "Command": {
@@ -7626,6 +7962,10 @@
         "type": "checkbox",
         "value": false
       },
+      "ConsumeCoins": {
+        "type": "checkbox",
+        "value": false
+      },
       "Filter": {
         "type": "textarea",
         "value": "BookRedT3 > BookYellowT3 > BookBlueT3 > BookRedT2\n> Cube\n> FoodT6 > FoodT5"
@@ -7644,11 +7984,15 @@
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
-        "value": false
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
       },
       "NextRun": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime"
       },
       "Command": {
@@ -7903,11 +8247,15 @@
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
-        "value": false
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
       },
       "NextRun": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime"
       },
       "Command": {
@@ -8008,11 +8356,15 @@
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
-        "value": false
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
       },
       "NextRun": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime"
       },
       "Command": {
@@ -8086,11 +8438,15 @@
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
-        "value": true
+        "value": true,
+        "option": [
+          true,
+          false
+        ]
       },
       "NextRun": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime"
       },
       "Command": {
@@ -8172,6 +8528,51 @@
       }
     }
   },
+  "Minigame": {
+    "Scheduler": {
+      "Enable": {
+        "type": "checkbox",
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
+      },
+      "NextRun": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      },
+      "Command": {
+        "type": "input",
+        "value": "Minigame",
+        "display": "hide"
+      },
+      "SuccessInterval": {
+        "type": "input",
+        "value": 0,
+        "display": "hide"
+      },
+      "FailureInterval": {
+        "type": "input",
+        "value": 120,
+        "display": "hide"
+      },
+      "ServerUpdate": {
+        "type": "input",
+        "value": "00:00",
+        "display": "hide"
+      }
+    },
+    "Storage": {
+      "Storage": {
+        "type": "storage",
+        "value": {},
+        "valuetype": "ignore",
+        "display": "disabled"
+      }
+    }
+  },
   "OpsiGeneral": {
     "OpsiGeneral": {
       "UseLogger": {
@@ -8220,11 +8621,15 @@
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
-        "value": false
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
       },
       "NextRun": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime"
       },
       "Command": {
@@ -8261,6 +8666,10 @@
         "type": "checkbox",
         "value": true
       },
+      "DossierAutoAttackMode": {
+        "type": "checkbox",
+        "value": false
+      },
       "RequestAssist": {
         "type": "checkbox",
         "value": true
@@ -8283,11 +8692,15 @@
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
-        "value": false
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
       },
       "NextRun": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime"
       },
       "Command": {
@@ -8330,11 +8743,15 @@
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
-        "value": false
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
       },
       "NextRun": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime"
       },
       "Command": {
@@ -8411,11 +8828,15 @@
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
-        "value": false
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
       },
       "NextRun": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime"
       },
       "Command": {
@@ -8458,11 +8879,15 @@
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
-        "value": false
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
       },
       "NextRun": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime"
       },
       "Command": {
@@ -8489,7 +8914,7 @@
     "OpsiVoucher": {
       "Filter": {
         "type": "textarea",
-        "value": "LoggerAbyssal > LoggerObscure > Book > Coin"
+        "value": "LoggerAbyssal > LoggerObscure > Book > Coin > Fragment"
       }
     },
     "Storage": {
@@ -8505,11 +8930,15 @@
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
-        "value": false
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
       },
       "NextRun": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime"
       },
       "Command": {
@@ -8582,11 +9011,15 @@
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
-        "value": false
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
       },
       "NextRun": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime"
       },
       "Command": {
@@ -8655,11 +9088,15 @@
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
-        "value": false
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
       },
       "NextRun": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime"
       },
       "Command": {
@@ -8708,11 +9145,15 @@
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
-        "value": false
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
       },
       "NextRun": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime"
       },
       "Command": {
@@ -8775,11 +9216,15 @@
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
-        "value": false
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
       },
       "NextRun": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime"
       },
       "Command": {
@@ -8815,6 +9260,34 @@
         "value": "Fleet-4 > CallSubmarine > Fleet-2 > Fleet-3 > Fleet-1"
       }
     },
+    "OpsiFleet": {
+      "Fleet": {
+        "type": "select",
+        "value": 1,
+        "option": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "display": "hide"
+      },
+      "FleetMode": {
+        "type": "select",
+        "value": "combat_auto",
+        "option": [
+          "combat_auto",
+          "combat_manual",
+          "stand_still_in_the_middle",
+          "hide_in_bottom_left"
+        ]
+      },
+      "Submarine": {
+        "type": "checkbox",
+        "value": true,
+        "display": "hide"
+      }
+    },
     "Storage": {
       "Storage": {
         "type": "storage",
@@ -8828,11 +9301,15 @@
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
-        "value": false
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
       },
       "NextRun": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime"
       },
       "Command": {
@@ -8893,11 +9370,15 @@
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
-        "value": false
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
       },
       "NextRun": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime"
       },
       "Command": {
@@ -8981,11 +9462,15 @@
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
-        "value": false
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
       },
       "NextRun": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime"
       },
       "Command": {
@@ -9005,7 +9490,7 @@
       },
       "ServerUpdate": {
         "type": "input",
-        "value": "00:00",
+        "value": "00:00, 12:00",
         "display": "hide"
       }
     },
@@ -9060,11 +9545,15 @@
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
-        "value": false
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
       },
       "NextRun": {
         "type": "datetime",
-        "value": "2023-01-01 00:00:00",
+        "value": "2020-01-01 00:00:00",
         "validate": "datetime"
       },
       "Command": {
@@ -9171,7 +9660,8 @@
     "AzurLaneUncensored": {
       "Repository": {
         "type": "input",
-        "value": "https://gitee.com/LmeSzinc/AzurLaneUncensored"
+        "value": "https://gitee.com/LmeSzinc/AzurLaneUncensored",
+        "display": "disabled"
       }
     },
     "Storage": {
@@ -9195,27 +9685,12 @@
         "type": "checkbox",
         "value": false
       },
-      "ServerLocation": {
-        "type": "select",
-        "value": "cn",
-        "option": [
-          "cn",
-          "jp",
-          "en",
-          "tw"
-        ]
-      },
       "GGMethod": {
         "type": "select",
         "value": "u2",
         "option": [
-          "screenshot",
           "u2"
         ]
-      },
-      "GGPanelConfirmTime": {
-        "type": "input",
-        "value": 5
       },
       "RestartATX": {
         "type": "checkbox",
@@ -9231,11 +9706,20 @@
       },
       "RestartEverytime": {
         "type": "checkbox",
+        "value": true,
+        "display": "disabled"
+      },
+      "RepushLua": {
+        "type": "checkbox",
         "value": true
       },
       "GGMultiplyingFactor": {
         "type": "input",
         "value": 200
+      },
+      "Timeout": {
+        "type": "input",
+        "value": 120
       },
       "DisabledTask": {
         "type": "select",

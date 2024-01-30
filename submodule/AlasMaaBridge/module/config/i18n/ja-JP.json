@@ -1,9 +1,5 @@
 {
   "Menu": {
-    "Task": {
-      "name": "Menu.Task.name",
-      "help": "Menu.Task.help"
-    },
     "Maa": {
       "name": "Menu.Maa.name",
       "help": "Menu.Maa.help"
@@ -479,7 +475,8 @@
       "name": "MaaRoguelike.Theme.name",
       "help": "MaaRoguelike.Theme.help",
       "Phantom": "Phantom",
-      "Mizuki": "Mizuki"
+      "Mizuki": "Mizuki",
+      "Sami": "Sami"
     },
     "Mode": {
       "name": "MaaRoguelike.Mode.name",

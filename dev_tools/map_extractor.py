@@ -216,6 +216,38 @@ DIC_SIREN_NAME_CHI_TO_ENG = {
     # Revelations of Dust
     'xiafei': 'Joffre',
     'lemaer': 'LeMars',
+
+    # Confluence of Nothingness
+    'shenyuanboss4': 'AbyssalBoss4',
+    'shenyuanboss4_alter': 'AbyssalBoss4',
+    'shenyuanboss5': 'AbyssalBoss5',
+    'shenyuanboss5_alter': 'AbyssalBoss5',
+    'sairenquzhu_m': 'DD',
+    'sairenqingxun_m': 'CL',
+    'sairenzhongxun_m': 'CAred',
+    'sairenzhanlie_m': 'BBred',
+    'sairenhangmu_m': 'CV',
+    'sairenqianting_m': 'SS',
+
+    # The Fool's Scales
+    'sairenboss18': 'SirenBoss18',
+    'sairenboss19': 'SirenBoss19',
+    'srjiaohuangjijia': 'Dilloy',
+
+    # Effulgence Before Eclipse
+    'chuyue': 'Hatsuzuki',
+    'zhaozhi': 'Asanagi',
+    'ruifeng': 'Zuiho',
+
+    'shanluan_sairenquzhu': 'SK_DD',
+    'shanluan_sairenqingxun': 'SK_CL',
+    'shanluan_sairenzhongxun': 'SK_CA',
+    'shanluan_sairenzhanlie': 'SK_BB',
+    'shanluan_sairenhangmu': 'SK_CV',
+
+    # Light-Chasing Sea of Stars
+    'sairenboss10': 'Sirenboss10',
+    'UDFsairen_baolei_2': 'UDFFortress2',
 }
 
 
@@ -635,10 +667,11 @@ Arguments:
     IS_WAR_ARCHIVES: True if retrieved map is to be
                      adapted for war_archives usage
 """
-FILE = ''
-FOLDER = './campaign/test'
-KEYWORD = ''
-SELECT = False
+FILE = r'E:\ProgramData\Pycharm\AzurLaneLuaScripts'
+# FILE = r'C:\Users\LmeSzinc\Documents\Tencent Files\1737696436\FileRecv\碧蓝航线修改\sc文件修改教程\ljd-master2.1.0\chapter_template.lua'
+FOLDER = './campaign/event_20231221_cn'
+KEYWORD = '星之海'
+SELECT = True
 OVERWRITE = True
 IS_WAR_ARCHIVES = False
 ENEMY_FILTER = '1L > 1M > 1E > 1C > 2L > 2M > 2E > 2C > 3L > 3M > 3E > 3C'

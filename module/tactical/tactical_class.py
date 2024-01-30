@@ -1,4 +1,3 @@
-import re
 from datetime import datetime
 
 import module.config.server as server
@@ -12,13 +11,11 @@ from module.handler.assets import GET_MISSION, POPUP_CANCEL, POPUP_CONFIRM
 from module.logger import logger
 from module.map.map_grids import SelectedGrids
 from module.ocr.ocr import DigitCounter, Duration, Ocr
-from module.retire.assets import DOCK_EMPTY, DOCK_CHECK, SHIP_CONFIRM
-from module.retire.dock import CARD_GRIDS, Dock, CARD_LEVEL_GRIDS
+from module.retire.assets import DOCK_CHECK, DOCK_EMPTY, SHIP_CONFIRM
+from module.retire.dock import CARD_GRIDS, CARD_LEVEL_GRIDS, Dock
 from module.tactical.assets import *
-from module.ui.assets import (BACK_ARROW, MAIN_GOTO_REWARD,
-                              REWARD_GOTO_TACTICAL, REWARD_CHECK,
-                              TACTICAL_CHECK)
-from module.ui.ui import page_reward
+from module.ui.assets import (BACK_ARROW, MAIN_GOTO_REWARD, REWARD_CHECK, REWARD_GOTO_TACTICAL, TACTICAL_CHECK)
+from module.ui.page import page_reward
 
 SKILL_GRIDS = ButtonGrid(origin=(315, 140), delta=(621, 132), button_shape=(621, 119), grid_shape=(1, 3), name='SKILL')
 SKILL_LEVEL_GRIDS = SKILL_GRIDS.crop(area=(406, 98, 618, 116), name='EXP')
@@ -284,6 +281,7 @@ class RewardTacticalClass(Dock):
         if not self._tactical_books_get():
             return False
 
+        self.device.click_record_clear()
         # Ensure first book is focused
         # For slow PCs, selection may have changed
         first = self.books[0]
@@ -543,6 +541,10 @@ class RewardTacticalClass(Dock):
 
     def select_suitable_ship(self):
         logger.hr(f'Select suitable ship')
+
+        # reset filter
+        self.dock_filter_set()
+
         # Set if favorite from config
         self.dock_favourite_set(enable=self.config.AddNewStudent_Favorite)
 
@@ -619,8 +621,12 @@ class RewardTacticalClass(Dock):
             level = skill_level.upper().replace(' ', '')
             # Empty skill slot
             # Probably because all favourite ships have their skill leveled max.
-            # '———l'
+            # '———l', '—l'
+            if not level:
+                continue
             if re.search(r'[—\-一]{2,}', level):
+                continue
+            if re.search(r'[—一]+', level):
                 continue
             # Use 'MA' as a part of `MAX`.
             # SKILL_LEVEL_GRIDS may move a little lower for unknown reason, OCR results are like:

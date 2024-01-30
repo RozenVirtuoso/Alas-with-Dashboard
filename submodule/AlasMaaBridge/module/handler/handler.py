@@ -8,7 +8,7 @@ from typing import Any
 
 from cached_property import cached_property
 
-from deploy.config import DeployConfig
+from deploy.Windows.config import DeployConfig
 from module.base.timer import Timer
 from module.config.utils import read_file, deep_get, get_server_last_update
 from module.device.connection_attr import ConnectionAttr
@@ -289,6 +289,7 @@ class AssistantHandler:
             else:
                 self.config.task_delay(success=False)
         else:
+            self.config.task_call('MaaAward', force_call=False)
             self.config.task_delay(success=True)
 
     def recruit(self):
@@ -324,7 +325,7 @@ class AssistantHandler:
         args = {
             "facility": self.split_filter(self.config.MaaInfrast_Facility),
             "drones": self.config.MaaInfrast_Drones,
-            "threshold": self.config.MaaInfrast_WorkThreshold,
+            "threshold": self.config.MaaInfrast_WorkThreshold / 24,
             "replenish": self.config.MaaInfrast_Replenish,
             "dorm_notstationed_enabled": self.config.MaaInfrast_Notstationed,
             "dorm_trust_enabled": self.config.MaaInfrast_Trust
@@ -391,7 +392,7 @@ class AssistantHandler:
             else:
                 self.config.task_delay(target=end_time + datetime.timedelta(minutes=1))
         else:
-            if self.config.MaaInfrast_WorkThreshold >= self.config.MaaInfrast_ShiftThreshold:
+            if self.config.MaaInfrast_WorkThreshold <= self.config.MaaInfrast_ShiftThreshold:
                 logger.warning('基建换班心情阈值必须小于基建工作心情阈值，请调整基建设置')
                 raise RequestHumanTakeover
 

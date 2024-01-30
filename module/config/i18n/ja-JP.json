@@ -1,9 +1,5 @@
 {
   "Menu": {
-    "Task": {
-      "name": "",
-      "help": ""
-    },
     "Alas": {
       "name": "Alas",
       "help": ""
@@ -15,6 +11,10 @@
     "Event": {
       "name": "イベント",
       "help": ""
+    },
+    "EventDaily": {
+      "name": "Menu.EventDaily.name",
+      "help": "Menu.EventDaily.help"
     },
     "Reward": {
       "name": "収穫",
@@ -62,10 +62,6 @@
       "name": "Commission Farming",
       "help": ""
     },
-    "Sos": {
-      "name": "Sos",
-      "help": ""
-    },
     "EventGeneral": {
       "name": "イベント共通設定",
       "help": ""
@@ -81,6 +77,22 @@
     "Event3": {
       "name": "Task.Event3.name",
       "help": "Task.Event3.help"
+    },
+    "Raid": {
+      "name": "Raid",
+      "help": ""
+    },
+    "Coalition": {
+      "name": "Task.Coalition.name",
+      "help": "Task.Coalition.help"
+    },
+    "MaritimeEscort": {
+      "name": "Maritime Escort",
+      "help": ""
+    },
+    "WarArchives": {
+      "name": "作戦履歴",
+      "help": ""
     },
     "EventA": {
       "name": "毎日イベント海域A",
@@ -102,21 +114,13 @@
       "name": "毎日イベント海域SP",
       "help": ""
     },
-    "WarArchives": {
-      "name": "作戦履歴",
-      "help": ""
-    },
-    "Raid": {
-      "name": "Raid",
-      "help": ""
-    },
     "RaidDaily": {
       "name": "Raid Daily",
       "help": ""
     },
-    "MaritimeEscort": {
-      "name": "Maritime Escort",
-      "help": ""
+    "CoalitionSp": {
+      "name": "Task.CoalitionSp.name",
+      "help": "Task.CoalitionSp.help"
     },
     "Commission": {
       "name": "委託",
@@ -177,6 +181,10 @@
     "Freebies": {
       "name": "他ギフト",
       "help": ""
+    },
+    "Minigame": {
+      "name": "Task.Minigame.name",
+      "help": "Task.Minigame.help"
     },
     "OpsiGeneral": {
       "name": "一般設定",
@@ -266,7 +274,9 @@
     },
     "Enable": {
       "name": "Scheduler.Enable.name",
-      "help": "Scheduler.Enable.help"
+      "help": "Scheduler.Enable.help",
+      "True": "True",
+      "False": "False"
     },
     "NextRun": {
       "name": "Scheduler.NextRun.name",
@@ -314,10 +324,13 @@
       "com.bilibili.blhx.nearme.gamecenter": "CN com.bilibili.blhx.nearme.gamecenter",
       "com.bilibili.blhx.vivo": "CN com.bilibili.blhx.vivo",
       "com.bilibili.blhx.mz": "CN com.bilibili.blhx.mz",
+      "com.bilibili.blhx.dl": "CN com.bilibili.blhx.dl",
+      "com.bilibili.blhx.lenovo": "CN com.bilibili.blhx.lenovo",
       "com.bilibili.blhx.uc": "CN com.bilibili.blhx.uc",
       "com.bilibili.blhx.mzw": "CN com.bilibili.blhx.mzw",
       "com.yiwu.blhx.yx15": "CN com.yiwu.blhx.yx15",
       "com.bilibili.blhx.m4399": "CN com.bilibili.blhx.m4399",
+      "com.bilibili.blhx.bilibiliMove": "CN com.bilibili.blhx.bilibiliMove",
       "com.hkmanjuu.azurlane.gp.mc": "TW com.hkmanjuu.azurlane.gp.mc"
     },
     "ServerName": {
@@ -347,6 +360,7 @@
       "cn_android-20": "[国服] 水星行动",
       "cn_android-21": "[国服] 莱茵河卫兵",
       "cn_android-22": "[国服] 北极光计划",
+      "cn_android-23": "[国服] 长戟计划",
       "cn_ios-0": "[国服] 夏威夷",
       "cn_ios-1": "[国服] 珊瑚海",
       "cn_ios-2": "[国服] 中途岛",
@@ -362,11 +376,13 @@
       "cn_channel-1": "[国服] 大西洋宪章",
       "cn_channel-2": "[国服] 十字军行动",
       "cn_channel-3": "[国服] 龙骑兵行动",
+      "cn_channel-4": "[国服] 冥王星行动",
       "en-0": "[EN] Avrora",
       "en-1": "[EN] Lexington",
       "en-2": "[EN] Sandy",
       "en-3": "[EN] Washington",
       "en-4": "[EN] Amagi",
+      "en-5": "[EN] Little Enterprise",
       "jp-0": "[JP] ブレスト",
       "jp-1": "[JP] 横須賀",
       "jp-2": "[JP] 佐世保",
@@ -417,26 +433,36 @@
       "help": "Emulator.AdbRestart.help"
     }
   },
-  "RestartEmulator": {
+  "EmulatorInfo": {
     "_info": {
-      "name": "RestartEmulator._info.name",
-      "help": "RestartEmulator._info.help"
+      "name": "EmulatorInfo._info.name",
+      "help": "EmulatorInfo._info.help"
     },
-    "Enable": {
-      "name": "RestartEmulator.Enable.name",
-      "help": "RestartEmulator.Enable.help"
+    "Emulator": {
+      "name": "EmulatorInfo.Emulator.name",
+      "help": "EmulatorInfo.Emulator.help",
+      "auto": "auto",
+      "NoxPlayer": "NoxPlayer",
+      "NoxPlayer64": "NoxPlayer64",
+      "BlueStacks4": "BlueStacks4",
+      "BlueStacks5": "BlueStacks5",
+      "BlueStacks4HyperV": "BlueStacks4HyperV",
+      "BlueStacks5HyperV": "BlueStacks5HyperV",
+      "LDPlayer3": "LDPlayer3",
+      "LDPlayer4": "LDPlayer4",
+      "LDPlayer9": "LDPlayer9",
+      "MuMuPlayer": "MuMuPlayer",
+      "MuMuPlayerX": "MuMuPlayerX",
+      "MuMuPlayer12": "MuMuPlayer12",
+      "MEmuPlayer": "MEmuPlayer"
     },
-    "EmulatorData": {
-      "name": "RestartEmulator.EmulatorData.name",
-      "help": "RestartEmulator.EmulatorData.help"
+    "name": {
+      "name": "EmulatorInfo.name.name",
+      "help": "EmulatorInfo.name.help"
     },
-    "ErrorRestart": {
-      "name": "RestartEmulator.ErrorRestart.name",
-      "help": "RestartEmulator.ErrorRestart.help"
-    },
-    "DailyRestart": {
-      "name": "RestartEmulator.DailyRestart.name",
-      "help": "RestartEmulator.DailyRestart.help"
+    "path": {
+      "name": "EmulatorInfo.path.name",
+      "help": "EmulatorInfo.path.help"
     }
   },
   "Error": {
@@ -503,8 +529,7 @@
       "name": "DropRecord.API.name",
       "help": "DropRecord.API.help",
       "default": "default",
-      "cn_gz_reverse_proxy": "cn_gz_reverse_proxy",
-      "cn_sh_reverse_proxy": "cn_sh_reverse_proxy"
+      "cn_gz_reverse_proxy": "cn_gz_reverse_proxy"
     },
     "ResearchRecord": {
       "name": "DropRecord.ResearchRecord.name",
@@ -574,12 +599,6 @@
       "help": "OneClickRetire.KeepLimitBreak.help",
       "keep_limit_break": "keep_limit_break",
       "do_not_keep": "do_not_keep"
-    },
-    "RetireAmount": {
-      "name": "OneClickRetire.RetireAmount.name",
-      "help": "OneClickRetire.RetireAmount.help",
-      "retire_all": "retire_all",
-      "retire_10": "retire_10"
     }
   },
   "Enhance": {
@@ -643,86 +662,101 @@
       "name": "Campaign.Event.name",
       "help": "Campaign.Event.help",
       "campaign_main": "campaign_main",
-      "event_20210422_cn": "讃える復興の迷路",
-      "event_20230223_cn": "黙示の遺構",
-      "event_20220224_cn": "鳴動せし星霜の淵",
-      "event_20200806_cn": "鉄血鮫とエニグマ（復刻）",
-      "raid_20220127": "秘密事件調査",
-      "raid_20230118": "冬の案内人",
-      "event_20210610_tw": "復刻夜幕下的歸途",
-      "event_20210225_cn": "暁射す氷華の嵐（復刻）",
-      "event_20211229_cn": "遡望せし虹彩の塔",
-      "event_20221222_cn": "積重なる事象の幻界",
-      "event_20221124_cn": "錬金術士と謎の遺跡群島",
-      "event_20210325_cn": "開かれし紺碧の砂箱（復刻）",
-      "event_20201229_cn": "虚畳なりし限象（復刻）",
-      "event_20211111_cn": "燈火のシニエ",
-      "raid_20221027": "戦え！ロイヤルメイド隊3rd",
-      "event_20210121_cn": "悲歎せし焔海の詩（復刻）",
-      "event_20220915_cn": "赫の涙月 菫の暁風",
-      "event_20210916_cn": "駆けよ 碧海の吹き風",
-      "event_20200903_en": "輝ける峡湾の星（復刻）",
-      "event_20220818_cn": "結像点作戦",
-      "event_20220324_cn": "幻像の塔",
-      "event_20211028_cn": "神穹を衝く聖歌（復刻）",
-      "event_20220728_cn": "鋼鷲の冒険譚",
-      "event_20200917_cn": "刹那觀る胡蝶の夢（復刻）",
-      "event_20201029_cn": "激唱のユニバース",
-      "raid_20220630": "アイリスの天使",
-      "raid_20210708": "交錯する新たな波 (復刻)",
-      "event_20200820_cn": "黒鉄の楽章 誓いの海（復刻）",
-      "event_20201012_cn": "奔る彩帆の青（復刻）",
-      "event_20210527_cn": "照らす螺旋の鏡海",
-      "event_20220526_cn": "诚閃の剣 搖光の城",
-      "raid_20200624": "特別演習超空強襲波（復刻）",
-      "event_20220428_cn": "吟ずる瑠璃の楽章",
-      "event_20220414_cn": "極夜照らす幻光（復刻）",
-      "event_20220407_tw": "蒼紅的迴響(復刻)",
-      "event_20220310_tw": "復刻斯圖爾特的硝煙",
+      "coalition_20230323": "星霜海嵐",
+      "event_20200227_cn": "凍絶の北海",
+      "event_20200312_cn": "南洋に靡く硝煙（復刻）",
+      "event_20200326_cn": "闇靄払う銀翼",
+      "event_20200423_cn": "縹映る深緋の残響（復刻）",
+      "event_20200507_cn": "帰路は海色の陰りへと",
+      "event_20200521_cn": "神穹を衝く聖歌",
+      "event_20200521_en": "Iris of Light and Dark Rerun",
       "event_20200603_cn": "峡湾間の反撃（復刻）",
-      "event_20220210_cn": "凍絶の北海（復刻）",
-      "event_20211125_cn": "弧光は交わる世界にて",
-      "event_20211028_tw": "復刻光與影的鳶尾之華",
-      "event_20210722_cn": "海に響くアイドルの歌",
-      "event_20210819_cn": "闇靄払う銀翼（復刻）",
+      "event_20200603_en": "Prelude under the Moon Rerun",
+      "event_20200611_en": "Skybound Oratorio",
+      "event_20200716_en": "Ink Stained Steel Sakura Rerun",
       "event_20200723_cn": "極夜照らす幻光",
+      "event_20200806_cn": "鉄血鮫とエニグマ（復刻）",
+      "event_20200820_cn": "黒鉄の楽章 誓いの海（復刻）",
+      "event_20200903_en": "輝ける峡湾の星（復刻）",
+      "event_20200917_cn": "刹那觀る胡蝶の夢（復刻）",
+      "event_20201002_en": "Counterattack Within the Fjord",
+      "event_20201012_cn": "奔る彩帆の青（復刻）",
+      "event_20201029_cn": "激唱のユニバース",
+      "event_20201126_cn": "バケーションレーン",
+      "event_20201229_cn": "虚畳なりし限象（復刻）",
+      "event_20210121_cn": "悲歎せし焔海の詩（復刻）",
+      "event_20210225_cn": "暁射す氷華の嵐（復刻）",
+      "event_20210225_tw": "北境序曲",
+      "event_20210325_cn": "開かれし紺碧の砂箱（復刻）",
+      "event_20210415_tw": "復刻圍剿施佩伯爵",
+      "event_20210422_cn": "讃える復興の迷路（復刻）",
+      "event_20210429_tw": "復刻墨染的鋼鐵之花",
+      "event_20210527_cn": "照らす螺旋の鏡海（復刻）",
+      "event_20210527_tw": "微層混合",
+      "event_20210610_tw": "復刻夜幕下的歸途",
       "event_20210624_cn": "翳りし満ちる影の華(復刻)",
       "event_20210624_tw": "穹頂下的聖詠曲",
-      "event_20210527_tw": "微層混合",
-      "event_20210429_tw": "復刻墨染的鋼鐵之花",
-      "event_20210415_tw": "復刻圍剿施佩伯爵",
-      "event_20210225_tw": "北境序曲",
-      "event_20201126_cn": "バケーションレーン",
-      "event_20200312_cn": "南洋に靡く硝煙（復刻）",
-      "event_20201002_en": "Counterattack Within the Fjord",
-      "event_20200716_en": "Ink Stained Steel Sakura Rerun",
-      "event_20200611_en": "Skybound Oratorio",
-      "event_20200603_en": "Prelude under the Moon Rerun",
-      "event_20200521_en": "Iris of Light and Dark Rerun",
-      "event_20200521_cn": "神穹を衝く聖歌",
-      "event_20200507_cn": "帰路は海色の陰りへと",
-      "event_20200423_cn": "縹映る深緋の残響（復刻）",
-      "event_20200326_cn": "闇靄払う銀翼",
-      "event_20200227_cn": "凍絶の北海",
-      "war_archives_20210819_cn": "檔案 闇靄払う銀翼",
-      "war_archives_20200903_cn": "檔案 輝ける峡湾の星",
-      "war_archives_20201029_cn": "檔案 激唱のユニバース",
-      "war_archives_20200806_cn": "檔案 鉄血鮫とエニグマ",
-      "war_archives_20210624_cn": "檔案 翳りし満ちる影の華",
-      "war_archives_20210325_cn": "檔案 開かれし紺碧の砂箱",
-      "war_archives_20190911_cn": "檔案 悲歎せし焔海の詩",
-      "war_archives_20211014_cn": "檔案 激奏のポラリス",
-      "war_archives_20200820_cn": "檔案 黒鉄の楽章 誓いの海",
-      "war_archives_20181227_cn": "檔案 縹映る深緋の残響",
-      "war_archives_20180726_cn": "檔案 光と影のアイリス",
+      "event_20210722_cn": "海に響くアイドルの歌",
+      "event_20210819_cn": "闇靄払う銀翼（復刻）",
+      "event_20210916_cn": "駆けよ 碧海の吹き風（復刻）",
+      "event_20211028_cn": "神穹を衝く聖歌（復刻）",
+      "event_20211028_tw": "復刻光與影的鳶尾之華",
+      "event_20211111_cn": "復刻-燈火のシニエ",
+      "event_20211125_cn": "弧光は交わる世界にて（復刻）",
+      "event_20211229_cn": "遡望せし虹彩の塔（復刻）",
+      "event_20220210_cn": "凍絶の北海（復刻）",
+      "event_20220224_cn": "鳴動せし星霜の淵",
+      "event_20220310_tw": "復刻斯圖爾特的硝煙",
+      "event_20220324_cn": "幻像の塔",
+      "event_20220407_tw": "蒼紅的迴響(復刻)",
+      "event_20220414_cn": "極夜照らす幻光（復刻）",
+      "event_20220428_cn": "吟ずる瑠璃の楽章",
+      "event_20220526_cn": "诚閃の剣 搖光の城",
+      "event_20220728_cn": "鋼鷲の冒険譚",
+      "event_20220818_cn": "結像点作戦",
+      "event_20220915_cn": "赫の涙月 菫の暁風",
+      "event_20221124_cn": "錬金術士と謎の遺跡群島",
+      "event_20221222_cn": "積重なる事象の幻界",
+      "event_20230223_cn": "黙示の遺構",
+      "event_20230525_cn": "覆天せし万象の塵",
+      "event_20230803_cn": "燃ゆる聖都の回想曲",
+      "event_20230817_cn": "愚者の天秤",
+      "event_20230914_cn": "須臾望月抄",
+      "event_20231026_cn": "テンペスタと若返りの泉",
+      "event_20231123_cn": "蒼閃忍法帖",
+      "event_20231221_cn": "光追う星の海",
+      "raid_20200624": "特別演習超空強襲波（復刻）",
+      "raid_20210708": "交錯する新たな波 (復刻)",
+      "raid_20220127": "秘密事件調査",
+      "raid_20220630": "アイリスの天使",
+      "raid_20221027": "戦え！ロイヤルメイド隊3rd",
+      "raid_20230118": "冬の案内人",
+      "raid_20230629": "緑地伽話",
       "war_archives_20180607_cn": "檔案 墨染まりし鋼の桜",
-      "war_archives_20190221_en": "檔案 凛冽なりし冬の王冠",
-      "war_archives_20191010_en": "檔案 アドミラル・グラーフ・シュペー追撃戦",
+      "war_archives_20180726_cn": "檔案 光と影のアイリス",
+      "war_archives_20181020_en": "檔案 努力希望と計画",
       "war_archives_20181026_en": "檔案 闇に堕ちた青き翼",
-      "war_archives_20190620_en": "檔案 栄光なる最終戦",
+      "war_archives_20181227_cn": "檔案 縹映る深緋の残響",
+      "war_archives_20190221_en": "檔案 凛冽なりし冬の王冠",
       "war_archives_20190321_en": "檔案 紅染の来訪者",
+      "war_archives_20190620_en": "檔案 栄光なる最終戦",
+      "war_archives_20190911_cn": "檔案 悲歎せし焔海の詩",
+      "war_archives_20191010_en": "檔案 アドミラル・グラーフ・シュペー追撃戦",
       "war_archives_20191031_en": "檔案 鏡写されし異色",
-      "war_archives_20181020_en": "檔案 努力希望と計画"
+      "war_archives_20200806_cn": "檔案 鉄血鮫とエニグマ",
+      "war_archives_20200820_cn": "檔案 黒鉄の楽章 誓いの海",
+      "war_archives_20200903_cn": "檔案 輝ける峡湾の星",
+      "war_archives_20200917_cn": "檔案 刹那觀る胡蝶の夢",
+      "war_archives_20201029_cn": "檔案 激唱のユニバース",
+      "war_archives_20201229_cn": "檔案 虚畳なりし限象",
+      "war_archives_20210325_cn": "檔案 開かれし紺碧の砂箱",
+      "war_archives_20210527_cn": "檔案 照らす螺旋の鏡海",
+      "war_archives_20210624_cn": "檔案 翳りし満ちる影の華",
+      "war_archives_20210819_cn": "檔案 闇靄払う銀翼",
+      "war_archives_20211014_cn": "檔案 激奏のポラリス",
+      "war_archives_20211028_cn": "檔案 神穹を衝く聖歌",
+      "war_archives_20220210_cn": "檔案 凍絶の北海",
+      "war_archives_20220414_cn": "檔案 極夜照らす幻光"
     },
     "Mode": {
       "name": "Campaign.Mode.name",
@@ -1097,6 +1131,7 @@
     "ChangeVanguard": {
       "name": "GemsFarming.ChangeVanguard.name",
       "help": "GemsFarming.ChangeVanguard.help",
+      "disabled": "disabled",
       "ship": "ship",
       "ship_equip": "ship_equip"
     },
@@ -1214,6 +1249,18 @@
     "Enable": {
       "name": "MaritimeEscort.Enable.name",
       "help": "MaritimeEscort.Enable.help"
+    }
+  },
+  "Coalition": {
+    "_info": {
+      "name": "Coalition._info.name",
+      "help": "Coalition._info.help"
+    },
+    "Fleet": {
+      "name": "Coalition.Fleet.name",
+      "help": "Coalition.Fleet.help",
+      "single": "single",
+      "multi": "multi"
     }
   },
   "Commission": {
@@ -1336,6 +1383,9 @@
       "name": "Research.PresetFilter.name",
       "help": "Research.PresetFilter.help",
       "custom": "custom",
+      "series_6_blueprint_203": "series_6_blueprint_203",
+      "series_6_blueprint_only": "series_6_blueprint_only",
+      "series_6_203_only": "series_6_203_only",
       "series_5_blueprint_152": "series_5_blueprint_152",
       "series_5_blueprint_only": "series_5_blueprint_only",
       "series_5_152_only": "series_5_152_only",
@@ -1371,6 +1421,26 @@
     "FeedFilter": {
       "name": "Dorm.FeedFilter.name",
       "help": "Dorm.FeedFilter.help"
+    }
+  },
+  "BuyFurniture": {
+    "_info": {
+      "name": "BuyFurniture._info.name",
+      "help": "BuyFurniture._info.help"
+    },
+    "Enable": {
+      "name": "BuyFurniture.Enable.name",
+      "help": "BuyFurniture.Enable.help"
+    },
+    "BuyOption": {
+      "name": "BuyFurniture.BuyOption.name",
+      "help": "BuyFurniture.BuyOption.help",
+      "set": "set",
+      "all": "all"
+    },
+    "LastRun": {
+      "name": "BuyFurniture.LastRun.name",
+      "help": "BuyFurniture.LastRun.help"
     }
   },
   "Meowfficer": {
@@ -1505,6 +1575,10 @@
     "BuySkinBox": {
       "name": "GeneralShop.BuySkinBox.name",
       "help": "GeneralShop.BuySkinBox.help"
+    },
+    "ConsumeCoins": {
+      "name": "GeneralShop.ConsumeCoins.name",
+      "help": "GeneralShop.ConsumeCoins.help"
     },
     "Filter": {
       "name": "GeneralShop.Filter.name",
@@ -1871,6 +1945,16 @@
       "6": "6"
     }
   },
+  "Minigame": {
+    "_info": {
+      "name": "Minigame._info.name",
+      "help": "Minigame._info.help"
+    },
+    "Collect": {
+      "name": "Minigame.Collect.name",
+      "help": "Minigame.Collect.help"
+    }
+  },
   "Daily": {
     "_info": {
       "name": "Daily._info.name",
@@ -1976,6 +2060,23 @@
       "4": "4",
       "5": "5",
       "6": "6"
+    },
+    "EmergencyModuleDevelopment": {
+      "name": "Daily.EmergencyModuleDevelopment.name",
+      "help": "Daily.EmergencyModuleDevelopment.help",
+      "skip": "skip",
+      "first": "first",
+      "second": "second"
+    },
+    "EmergencyModuleDevelopmentFleet": {
+      "name": "Daily.EmergencyModuleDevelopmentFleet.name",
+      "help": "Daily.EmergencyModuleDevelopmentFleet.help",
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6"
     }
   },
   "Hard": {
@@ -2021,13 +2122,17 @@
       "name": "Exercise.OpponentTrial.name",
       "help": "Exercise.OpponentTrial.help"
     },
-    "ExercisePreserve": {
-      "name": "Exercise.ExercisePreserve.name",
-      "help": "Exercise.ExercisePreserve.help"
-    },
-    "EmptyOnceOnSecondFriday": {
-      "name": "Exercise.EmptyOnceOnSecondFriday.name",
-      "help": "Exercise.EmptyOnceOnSecondFriday.help"
+    "ExerciseStrategy": {
+      "name": "Exercise.ExerciseStrategy.name",
+      "help": "Exercise.ExerciseStrategy.help",
+      "aggressive": "aggressive",
+      "fri18": "fri18",
+      "sat0": "sat0",
+      "sat12": "sat12",
+      "sat18": "sat18",
+      "sun0": "sun0",
+      "sun12": "sun12",
+      "sun18": "sun18"
     },
     "LowHpThreshold": {
       "name": "Exercise.LowHpThreshold.name",
@@ -2124,6 +2229,10 @@
     "OneHitMode": {
       "name": "OpsiAshBeacon.OneHitMode.name",
       "help": "OpsiAshBeacon.OneHitMode.help"
+    },
+    "DossierAutoAttackMode": {
+      "name": "OpsiAshBeacon.DossierAutoAttackMode.name",
+      "help": "OpsiAshBeacon.DossierAutoAttackMode.help"
     },
     "RequestAssist": {
       "name": "OpsiAshBeacon.RequestAssist.name",
@@ -2385,23 +2494,10 @@
       "name": "GGHandler.Enabled.name",
       "help": "GGHandler.Enabled.help"
     },
-    "ServerLocation": {
-      "name": "GGHandler.ServerLocation.name",
-      "help": "GGHandler.ServerLocation.help",
-      "cn": "cn",
-      "jp": "jp",
-      "en": "en",
-      "tw": "tw"
-    },
     "GGMethod": {
       "name": "GGHandler.GGMethod.name",
       "help": "GGHandler.GGMethod.help",
-      "screenshot": "screenshot",
       "u2": "u2"
-    },
-    "GGPanelConfirmTime": {
-      "name": "GGHandler.GGPanelConfirmTime.name",
-      "help": "GGHandler.GGPanelConfirmTime.help"
     },
     "RestartATX": {
       "name": "GGHandler.RestartATX.name",
@@ -2419,9 +2515,17 @@
       "name": "GGHandler.RestartEverytime.name",
       "help": "GGHandler.RestartEverytime.help"
     },
+    "RepushLua": {
+      "name": "GGHandler.RepushLua.name",
+      "help": "GGHandler.RepushLua.help"
+    },
     "GGMultiplyingFactor": {
       "name": "GGHandler.GGMultiplyingFactor.name",
       "help": "GGHandler.GGMultiplyingFactor.help"
+    },
+    "Timeout": {
+      "name": "GGHandler.Timeout.name",
+      "help": "GGHandler.Timeout.help"
     },
     "DisabledTask": {
       "name": "GGHandler.DisabledTask.name",
@@ -2691,6 +2795,7 @@
   "Gui": {
     "Aside": {
       "Install": "インストール",
+      "Home": "Gui.Aside.Home",
       "Develop": "開発",
       "Performance": "機能",
       "Setting": "設定",
@@ -2767,7 +2872,29 @@
       "CopyFrom": "既存コンフィグからコピー",
       "Confirm": "追加",
       "FileExist": "既存コンフィグと同じネーミングとなっていますから別名前を入力してください",
-      "InvalidChar": "コンフィグ名には下記の文字を含めることはできません：.\\/:*?\"<>|"
+      "InvalidChar": "コンフィグ名には下記の文字を含めることはできません：.\\/:*?\"<>|",
+      "InvalidPrefixTemplate": "設定ファイル名は temlpate で始めることはできません",
+      "Manage": "管理"
+    },
+    "AppManage": {
+      "PageTitle": "コンフィグ管理",
+      "TitleNew": "コンフィグを追加",
+      "NewName": "コンフィグ名",
+      "CopyFrom": "既存コンフィグからコピー",
+      "NameExist": "コンフィグ名が既に存在しています",
+      "InvalidChar": "コンフィグ名には下記の文字を含めることはできません：.\\/:*?\"<>|",
+      "InvalidPrefixTemplate": "設定ファイル名は temlpate で始めることはできません",
+      "Back": "戻る",
+      "New": "追加",
+      "Import": "インポート",
+      "Export": "エクスポート",
+      "Delete": "削除",
+      "OverrideWarning": "This will override the current config!",
+      "ImportSuccess": "インポート成功",
+      "NewSuccess": "追加成功",
+      "Name": "コンフィグ名",
+      "Mod": "モジュール",
+      "Actions": "操作"
     },
     "Update": {
       "UpToDate": "今Alasは最新バージョンです",
@@ -2798,7 +2925,9 @@
     },
     "Text": {
       "InvalidFeedBack": "フォーマットエラー。 例：{0}",
-      "Clear": "消除"
+      "Clear": "消除",
+      "EnterPassword": "パスワードを入力してください",
+      "ChooseFile": "ファイルを選択してください"
     }
   }
 }

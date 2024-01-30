@@ -200,12 +200,19 @@ class RewardGacha(GachaUI, GeneralShop, Retirement):
         confirm_mode = True  # Drill, Lock Ship
         # Clear button offset, or will click at the PLUS button of gems or HOME button
         STORY_SKIP.clear_offset()
+        queue_clean = True
         while 1:
             if skip_first_screenshot:
                 skip_first_screenshot = False
             else:
                 self.device.screenshot()
 
+            if self.appear(BUILD_QUEUE_EMPTY, offset=(20, 20)) and queue_clean:
+                self.gacha_side_navbar_ensure(upper=1)
+                break
+            else:
+                queue_clean = False
+            
             if self.appear_then_click(BUILD_FINISH_ORDERS, interval=3):
                 confirm_timer.reset()
                 continue
@@ -236,6 +243,11 @@ class RewardGacha(GachaUI, GeneralShop, Retirement):
             if self.appear(BUILD_SUBMIT_ORDERS) or self.appear(BUILD_SUBMIT_WW_ORDERS):
                 if confirm_timer.reached():
                     break
+
+        # Wishing pool no longer shows coins, go back to normal pools
+        if self.appear(BUILD_SUBMIT_WW_ORDERS):
+            logger.info('In wishing pool, go back to normal pools')
+            self.gacha_side_navbar_ensure(upper=1)
 
     def gacha_submit(self, skip_first_screenshot=True):
         """
@@ -275,15 +287,16 @@ class RewardGacha(GachaUI, GeneralShop, Retirement):
         # Go to Gacha
         self.ui_goto_gacha()
 
+        # OCR Gold and Cubes
+        self.device.screenshot()
+        self.shop_currency()
+        self.build_cube_count = OCR_BUILD_CUBE_COUNT.ocr(self.device.image)
+
         # Flush queue of any pre-existing
         # builds to ensure starting fresh
         # Upon exit, expected to be in
         # main Build page
         self.gacha_flush_queue()
-
-        # OCR Gold and Cubes
-        self.shop_currency()
-        self.build_cube_count = OCR_BUILD_CUBE_COUNT.ocr(self.device.image)
 
         # Transition to appropriate target construction pool
         # Returns appropriate costs for gacha as well

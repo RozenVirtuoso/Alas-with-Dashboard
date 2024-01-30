@@ -1,6 +1,6 @@
 from module.gg_handler.gg_data import GGData
 from module.gg_handler.gg_u2 import GGU2
-from module.gg_handler.gg_screenshot import GGScreenshot
+# from module.gg_handler.gg_screenshot import GGScreenshot
 from module.config.utils import deep_get, deep_set
 from module.logger import logger
 from module.base.timer import timeout
@@ -31,7 +31,7 @@ class GGHandler:
         for _ in range(2):
             try:
                 if _crashed:
-                    timeout(self.handle_before_restart, timeout_sec=60)
+                    timeout(self.handle_u2_restart, timeout_sec=60)
                 if not timeout(LoginHandler(config=self.config, device=self.device).app_restart, timeout_sec=600):
                     break
                 raise RuntimeError
@@ -40,14 +40,8 @@ class GGHandler:
             except Exception as e:
                 logger.exception(e)
                 if _crashed:
-                    from module.notify import handle_notify
-                    handle_notify(self.config.Error_OnePushConfig,
-                                  title=f"Alas <{self.config.config_name}> crashed",
-                                  content=f"<{self.config.config_name}> "
-                                          f"RequestHumanTakeover.\n"
-                                          f"Maybe your emulator died."
-                                  )
-                    exit(1)
+                    logger.critical('Maybe your emulator died, trying to restart it')
+                    self.device.emulator_start()
                 _crashed = True
 
     def set(self, mode=True):
@@ -56,15 +50,21 @@ class GGHandler:
             Args:
                 mode: bool
         """
-        logger.hr('Enabling GG')
         gg_package_name = deep_get(self.config.data, keys='GameManager.GGHandler.GGPackageName')
         if mode:
-            if self.method == 'screenshot' or gg_package_name == 'com.':
-                GGScreenshot(config=self.config, device=self.device) \
-                    .gg_set(mode=True, factor=self.factor)
-            elif self.method == 'u2':
-                GGU2(config=self.config, device=self.device) \
-                    .set_on(factor=self.factor)
+            logger.hr('Enabling GG')
+            # if self.method == 'screenshot' or gg_package_name == 'com.':
+            #     GGScreenshot(config=self.config, device=self.device) \
+            #         .gg_set(mode=True, factor=self.factor)
+            # elif self.method == 'u2':
+            #     GGU2(config=self.config, device=self.device) \
+            #         .set_on(factor=self.factor)
+            self.handle_u2_restart()
+            success = timeout(GGU2(config=self.config, device=self.device).set_on, timeout_sec=deep_get(self.config.data, "GameManager.GGHandler.Timeout"), factor=self.factor)
+            if success:
+                from module.exception import GameStuckError
+                raise GameStuckError
+            # Not support screenshot anymore
         else:
             self.gg_reset()
 
@@ -76,12 +76,13 @@ class GGHandler:
             bool: Whether GG error panel occurs
         """
         gg_package_name = deep_get(self.config.data, keys='GameManager.GGHandler.GGPackageName')
-        if self.method == 'screenshot' or gg_package_name == 'com.':
-            return \
-                GGScreenshot(config=self.config, device=self.device).skip_error()
-        elif self.method == 'u2':
-            return \
-                GGU2(config=self.config, device=self.device).skip_error()
+        # if self.method == 'screenshot' or gg_package_name == 'com.':
+        #     return \
+        #         GGScreenshot(config=self.config, device=self.device).skip_error()
+        # elif self.method == 'u2':
+        #     return \
+        #         GGU2(config=self.config, device=self.device).skip_error()
+        return GGU2(config=self.config, device=self.device).skip_error()  # Not support screenshot anymore
 
     def check_config(self) -> dict:
         """
@@ -102,20 +103,21 @@ class GGHandler:
             f'Enabled={gg_data["gg_enable"]} AutoRestart={gg_data["gg_auto"]} Current stage={gg_data["gg_on"]}')
         return gg_data
 
-    def handle_before_restart(self):
+    def handle_u2_restart(self):
         _need_restart_atx = deep_get(d=self.config.data, keys='GameManager.GGHandler.RestartATX')
         if _need_restart_atx:
             try:
                 timeout(self.device.restart_atx, 60)
             except Exception:
-                from module.notify import handle_notify
-                handle_notify(self.config.Error_OnePushConfig,
-                              title=f"Alas <{self.config.config_name}> Emulator error",
-                              content=f"<{self.config.config_name}> RequestHumanTakeover\nMaybe your emulator died", )
-                exit(1)
+                logger.critical('Maybe your emulator died, trying to restart it')
+                self.device.emulator_start()
             import uiautomator2 as u2
             logger.info('Reset UiAutomator')
-            u2.connect(self.device.serial).reset_uiautomator()
+            try:
+                u2.connect(self.device.serial).reset_uiautomator()
+            except Exception:
+                logger.critical('Maybe your emulator died, trying to restart it')
+                self.device.emulator_start()
 
     def handle_restart(self):
         """
@@ -217,6 +219,9 @@ class GGHandler:
             'disable_exercise'
             'enable_all'
         """
+        _disabled = [
+            'minigame'
+        ]
         _group_exercise = [
             'exercise'
         ]
@@ -226,7 +231,9 @@ class GGHandler:
         ]
         _group_raid = [
             'raid',
-            'raid_daily'
+            'raid_daily',
+            'coalition',
+            'coalition_sp'
         ]
         _group_personal_choice = [
             'guild'
@@ -266,19 +273,19 @@ class GGHandler:
         # Handle ignorance
 
         if _disabled_task == 'disable_meta_and_exercise':
-            _disabled = _group_exercise + _group_meta
+            _disabled += _group_exercise + _group_meta
             _enabled = _group_enabled + _group_raid + _group_personal_choice
         elif _disabled_task == 'disable_exercise':
-            _disabled = _group_exercise
+            _disabled += _group_exercise
             _enabled = _group_enabled + _group_personal_choice + _group_raid + _group_meta
         elif _disabled_task == 'enable_all':
             _enabled = _group_enabled + _group_personal_choice + _group_raid + _group_meta + _group_exercise
-            _disabled = []
+            # _disabled = []
         elif _disabled_task == 'disable_guild_and_dangerous':
-            _disabled = _group_exercise + _group_meta + _group_raid + _group_personal_choice
+            _disabled += _group_exercise + _group_meta + _group_raid + _group_personal_choice
             _enabled = _group_enabled
         else:  # _disabled_task == 'disable_all_dangerous_task':
-            _disabled = _group_exercise + _group_meta + _group_raid
+            _disabled += _group_exercise + _group_meta + _group_raid
             _enabled = _group_enabled + _group_personal_choice
 
         if task in _disabled:

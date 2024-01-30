@@ -5,12 +5,14 @@ from module.ocr.ocr import DigitYuv
 from module.os_handler.assets import *
 from module.os_handler.map_event import MapEventHandler
 from module.os_handler.os_status import OSStatus
-from module.statistics.item import Item, ItemGrid
+from module.statistics.item import ItemGrid
+from module.base.decorator import Config
 
 
 class OSShopPrice(DigitYuv):
     def after_process(self, result):
         result = result.replace('I', '1').replace('D', '0').replace('S', '5')
+        result = result.replace('B', '8')
 
         prev = result
         if result.startswith('0'):
@@ -31,14 +33,48 @@ class OSShopHandler(OSStatus, MapEventHandler):
         logger.info(f'Yellow coins: {self._shop_yellow_coins}, purple coins: {self._shop_purple_coins}')
 
     @cached_property
+    @Config.when(SERVER='tw')
     def os_shop_items(self):
         """
         Returns:
             ItemGrid:
         """
         shop_grid = ButtonGrid(
-            origin=(237, 219), delta=(189, 224), button_shape=(98, 98), grid_shape=(4, 2), name='SHOP_GRID')
-        shop_items = ItemGrid(shop_grid, templates={}, amount_area=(60, 74, 96, 95))
+            origin=(233, 224), delta=(193, 228), button_shape=(98, 98), grid_shape=(4, 2), name='SHOP_GRID')
+        shop_items = ItemGrid(
+            shop_grid, templates={}, amount_area=(60, 74, 96, 95), price_area=(52, 132, 132, 165))
+        shop_items.price_ocr = OSShopPrice([], letter=(255, 223, 57), threshold=32, name='Price_ocr')
+        shop_items.load_template_folder('./assets/shop/os')
+        shop_items.load_cost_template_folder('./assets/shop/os_cost')
+        return shop_items
+    
+    @cached_property
+    @Config.when(SERVER='en')
+    def os_shop_items(self):
+        """
+        Returns:
+            ItemGrid:
+        """
+        shop_grid = ButtonGrid(
+            origin=(231, 222), delta=(190, 224), button_shape=(98, 98), grid_shape=(4, 2), name='SHOP_GRID')
+        shop_items = ItemGrid(
+            shop_grid, templates={}, amount_area=(60, 74, 96, 95), price_area=(52, 132, 132, 165))
+        shop_items.price_ocr = OSShopPrice([], letter=(255, 223, 57), threshold=32, name='Price_ocr')
+        shop_items.load_template_folder('./assets/shop/os')
+        shop_items.load_cost_template_folder('./assets/shop/os_cost')
+        return shop_items
+
+    @cached_property
+    @Config.when(SERVER=None)
+    def os_shop_items(self):
+        """
+        Returns:
+            ItemGrid:
+        """
+        shop_grid = ButtonGrid(
+            origin=(233, 224), delta=(193.2, 228), button_shape=(98, 98), grid_shape=(4, 2), name='SHOP_GRID')
+        shop_items = ItemGrid(
+            shop_grid, templates={}, amount_area=(60, 74, 96, 95), price_area=(52, 132, 132, 165))
         shop_items.price_ocr = OSShopPrice([], letter=(255, 223, 57), threshold=32, name='Price_ocr')
         shop_items.load_template_folder('./assets/shop/os')
         shop_items.load_cost_template_folder('./assets/shop/os_cost')
@@ -144,7 +180,7 @@ class OSShopHandler(OSStatus, MapEventHandler):
         self.interval_clear(PORT_SUPPLY_CHECK)
         self.interval_clear(SHOP_BUY_CONFIRM)
 
-        while 1:
+        while True:
             if skip_first_screenshot:
                 skip_first_screenshot = False
             else:

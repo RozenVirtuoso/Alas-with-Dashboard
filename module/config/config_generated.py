@@ -10,8 +10,8 @@ class GeneratedConfig:
     """
 
     # Group `Scheduler`
-    Scheduler_Enable = False
-    Scheduler_NextRun = datetime.datetime(2023, 1, 1, 0, 0)
+    Scheduler_Enable = False  # True, False
+    Scheduler_NextRun = datetime.datetime(2020, 1, 1, 0, 0)
     Scheduler_Command = 'Alas'
     Scheduler_SuccessInterval = 0
     Scheduler_FailureInterval = 120
@@ -19,18 +19,17 @@ class GeneratedConfig:
 
     # Group `Emulator`
     Emulator_Serial = 'auto'
-    Emulator_PackageName = 'auto'  # auto, com.bilibili.azurlane, com.YoStarEN.AzurLane, com.YoStarJP.AzurLane, com.hkmanjuu.azurlane.gp, com.bilibili.blhx.huawei, com.bilibili.blhx.mi, com.tencent.tmgp.bilibili.blhx, com.bilibili.blhx.baidu, com.bilibili.blhx.qihoo, com.bilibili.blhx.nearme.gamecenter, com.bilibili.blhx.vivo, com.bilibili.blhx.mz, com.bilibili.blhx.uc, com.bilibili.blhx.mzw, com.yiwu.blhx.yx15, com.bilibili.blhx.m4399, com.hkmanjuu.azurlane.gp.mc
-    Emulator_ServerName = 'disabled'  # disabled, cn_android-0, cn_android-1, cn_android-2, cn_android-3, cn_android-4, cn_android-5, cn_android-6, cn_android-7, cn_android-8, cn_android-9, cn_android-10, cn_android-11, cn_android-12, cn_android-13, cn_android-14, cn_android-15, cn_android-16, cn_android-17, cn_android-18, cn_android-19, cn_android-20, cn_android-21, cn_android-22, cn_ios-0, cn_ios-1, cn_ios-2, cn_ios-3, cn_ios-4, cn_ios-5, cn_ios-6, cn_ios-7, cn_ios-8, cn_ios-9, cn_ios-10, cn_channel-0, cn_channel-1, cn_channel-2, cn_channel-3, en-0, en-1, en-2, en-3, en-4, jp-0, jp-1, jp-2, jp-3, jp-4, jp-5, jp-6, jp-7, jp-8, jp-9, jp-10, jp-11, jp-12, jp-13, jp-14, jp-15, jp-16, jp-17
+    Emulator_PackageName = 'auto'  # auto, com.bilibili.azurlane, com.YoStarEN.AzurLane, com.YoStarJP.AzurLane, com.hkmanjuu.azurlane.gp, com.bilibili.blhx.huawei, com.bilibili.blhx.mi, com.tencent.tmgp.bilibili.blhx, com.bilibili.blhx.baidu, com.bilibili.blhx.qihoo, com.bilibili.blhx.nearme.gamecenter, com.bilibili.blhx.vivo, com.bilibili.blhx.mz, com.bilibili.blhx.dl, com.bilibili.blhx.lenovo, com.bilibili.blhx.uc, com.bilibili.blhx.mzw, com.yiwu.blhx.yx15, com.bilibili.blhx.m4399, com.bilibili.blhx.bilibiliMove, com.hkmanjuu.azurlane.gp.mc
+    Emulator_ServerName = 'disabled'  # disabled, cn_android-0, cn_android-1, cn_android-2, cn_android-3, cn_android-4, cn_android-5, cn_android-6, cn_android-7, cn_android-8, cn_android-9, cn_android-10, cn_android-11, cn_android-12, cn_android-13, cn_android-14, cn_android-15, cn_android-16, cn_android-17, cn_android-18, cn_android-19, cn_android-20, cn_android-21, cn_android-22, cn_android-23, cn_ios-0, cn_ios-1, cn_ios-2, cn_ios-3, cn_ios-4, cn_ios-5, cn_ios-6, cn_ios-7, cn_ios-8, cn_ios-9, cn_ios-10, cn_channel-0, cn_channel-1, cn_channel-2, cn_channel-3, cn_channel-4, en-0, en-1, en-2, en-3, en-4, en-5, jp-0, jp-1, jp-2, jp-3, jp-4, jp-5, jp-6, jp-7, jp-8, jp-9, jp-10, jp-11, jp-12, jp-13, jp-14, jp-15, jp-16, jp-17
     Emulator_ScreenshotMethod = 'auto'  # auto, ADB, ADB_nc, uiautomator2, aScreenCap, aScreenCap_nc, DroidCast, DroidCast_raw, scrcpy
     Emulator_ControlMethod = 'minitouch'  # ADB, uiautomator2, minitouch, Hermit, MaaTouch
     Emulator_ScreenshotDedithering = False
     Emulator_AdbRestart = False
 
-    # Group `RestartEmulator`
-    RestartEmulator_Enable = False
-    RestartEmulator_EmulatorData = 'emulator:\nname:\npath:'
-    RestartEmulator_ErrorRestart = False
-    RestartEmulator_DailyRestart = False
+    # Group `EmulatorInfo`
+    EmulatorInfo_Emulator = 'auto'  # auto, NoxPlayer, NoxPlayer64, BlueStacks4, BlueStacks5, BlueStacks4HyperV, BlueStacks5HyperV, LDPlayer3, LDPlayer4, LDPlayer9, MuMuPlayer, MuMuPlayerX, MuMuPlayer12, MEmuPlayer
+    EmulatorInfo_name = None
+    EmulatorInfo_path = None
 
     # Group `Error`
     Error_HandleError = True
@@ -47,7 +46,7 @@ class GeneratedConfig:
     # Group `DropRecord`
     DropRecord_SaveFolder = './screenshots'
     DropRecord_AzurStatsID = None
-    DropRecord_API = 'default'  # default, cn_gz_reverse_proxy, cn_sh_reverse_proxy
+    DropRecord_API = 'default'  # default, cn_gz_reverse_proxy
     DropRecord_ResearchRecord = 'do_not'  # do_not, save, upload, save_and_upload
     DropRecord_CommissionRecord = 'do_not'  # do_not, save, upload, save_and_upload
     DropRecord_CombatRecord = 'do_not'  # do_not, save
@@ -60,7 +59,6 @@ class GeneratedConfig:
 
     # Group `OneClickRetire`
     OneClickRetire_KeepLimitBreak = 'keep_limit_break'  # keep_limit_break, do_not_keep
-    OneClickRetire_RetireAmount = 'retire_all'  # retire_all, retire_10
 
     # Group `Enhance`
     Enhance_ShipToEnhance = 'all'  # all, favourite
@@ -112,12 +110,12 @@ class GeneratedConfig:
     # Group `Emotion`
     Emotion_Mode = 'calculate'  # calculate, ignore, calculate_ignore
     Emotion_Fleet1Value = 119
-    Emotion_Fleet1Record = datetime.datetime(2023, 1, 1, 0, 0)
+    Emotion_Fleet1Record = datetime.datetime(2020, 1, 1, 0, 0)
     Emotion_Fleet1Control = 'prevent_yellow_face'  # keep_exp_bonus, prevent_green_face, prevent_yellow_face, prevent_red_face
     Emotion_Fleet1Recover = 'not_in_dormitory'  # not_in_dormitory, dormitory_floor_1, dormitory_floor_2
     Emotion_Fleet1Oath = False
     Emotion_Fleet2Value = 119
-    Emotion_Fleet2Record = datetime.datetime(2023, 1, 1, 0, 0)
+    Emotion_Fleet2Record = datetime.datetime(2020, 1, 1, 0, 0)
     Emotion_Fleet2Control = 'prevent_yellow_face'  # keep_exp_bonus, prevent_green_face, prevent_yellow_face, prevent_red_face
     Emotion_Fleet2Recover = 'not_in_dormitory'  # not_in_dormitory, dormitory_floor_1, dormitory_floor_2
     Emotion_Fleet2Oath = False
@@ -151,7 +149,7 @@ class GeneratedConfig:
 
     # Group `GemsFarming`
     GemsFarming_ChangeFlagship = 'ship'  # ship, ship_equip
-    GemsFarming_ChangeVanguard = 'ship'  # ship, ship_equip
+    GemsFarming_ChangeVanguard = 'ship'  # disabled, ship, ship_equip
     GemsFarming_ALLowLowVanguardLevel = True
     GemsFarming_FleetNumberInHardMode = 0  # 0, 1, 2
     GemsFarming_StopIFAutoNotEnsured = True
@@ -160,7 +158,7 @@ class GeneratedConfig:
 
     # Group `EventGeneral`
     EventGeneral_PtLimit = 0
-    EventGeneral_TimeLimit = datetime.datetime(2023, 1, 1, 0, 0)
+    EventGeneral_TimeLimit = datetime.datetime(2020, 1, 1, 0, 0)
 
     # Group `TaskBalancer`
     TaskBalancer_Enable = False
@@ -180,6 +178,9 @@ class GeneratedConfig:
 
     # Group `MaritimeEscort`
     MaritimeEscort_Enable = True
+
+    # Group `Coalition`
+    Coalition_Fleet = 'single'  # single, multi
 
     # Group `Commission`
     Commission_PresetFilter = 'cube'  # cube, cube_24h, chip, chip_24h, oil, custom
@@ -206,13 +207,18 @@ class GeneratedConfig:
     Research_UseCoin = 'always_use'  # always_use, only_05_hour, only_no_project, do_not_use
     Research_UsePart = 'always_use'  # always_use, only_05_hour, only_no_project, do_not_use
     Research_AllowDelay = True
-    Research_PresetFilter = 'series_5_blueprint_152'  # custom, series_5_blueprint_152, series_5_blueprint_only, series_5_152_only, series_4_blueprint_tenrai, series_4_blueprint_only, series_4_tenrai_only, series_3_blueprint_234, series_3_blueprint_only, series_3_234_only, series_2_than_3_457_234, series_2_blueprint_457, series_2_blueprint_only, series_2_457_only
+    Research_PresetFilter = 'series_6_blueprint_203'  # custom, series_6_blueprint_203, series_6_blueprint_only, series_6_203_only, series_5_blueprint_152, series_5_blueprint_only, series_5_152_only, series_4_blueprint_tenrai, series_4_blueprint_only, series_4_tenrai_only, series_3_blueprint_234, series_3_blueprint_only, series_3_234_only, series_2_than_3_457_234, series_2_blueprint_457, series_2_blueprint_only, series_2_457_only
     Research_CustomFilter = 'S5-DR0.5 > S5-PRY0.5 > S5-H0.5 > S5-Q0.5 > S5-DR2.5 > 0.5 > S5-G1.5\n> S5-Q1 > S5-DR5 > S5-DR8 > S5-G4 > S5-PRY2.5 > 1 > S5-Q2 > reset\n> S5-G2.5 > S5-PRY5 > S5-PRY8 > 1.5 > 2 > S5-Q4 > 2.5 > 3\n> Q4 > G4 > 4 > 5 > S5-C6 > C6 > 6 > S5-C8 > 8\n> S5-C12 > 12'
 
     # Group `Dorm`
     Dorm_Collect = True
     Dorm_Feed = True
     Dorm_FeedFilter = '20000 > 10000 > 5000 > 3000 > 2000 > 1000'
+
+    # Group `BuyFurniture`
+    BuyFurniture_Enable = False
+    BuyFurniture_BuyOption = 'all'  # set, all
+    BuyFurniture_LastRun = datetime.datetime(2020, 1, 1, 0, 0)
 
     # Group `Meowfficer`
     Meowfficer_BuyAmount = 1
@@ -249,6 +255,7 @@ class GeneratedConfig:
     GeneralShop_UseGems = False
     GeneralShop_Refresh = False
     GeneralShop_BuySkinBox = False
+    GeneralShop_ConsumeCoins = False
     GeneralShop_Filter = 'BookRedT3 > BookYellowT3 > BookBlueT3 > BookRedT2\n> Cube\n> FoodT6 > FoodT5'
 
     # Group `GuildShop`
@@ -317,19 +324,24 @@ class GeneratedConfig:
     SupplyPack_Collect = True
     SupplyPack_DayOfWeek = 0  # 0, 1, 2, 3, 4, 5, 6
 
+    # Group `Minigame`
+    Minigame_Collect = False
+
     # Group `Daily`
     Daily_UseDailySkip = True
     Daily_EscortMission = 'first'  # skip, first, second, third
-    Daily_EscortMissionFleet = 5  # 1, 2, 3, 4, 5, 6
+    Daily_EscortMissionFleet = 1  # 1, 2, 3, 4, 5, 6
     Daily_AdvanceMission = 'first'  # skip, first, second, third
-    Daily_AdvanceMissionFleet = 5  # 1, 2, 3, 4, 5, 6
+    Daily_AdvanceMissionFleet = 1  # 1, 2, 3, 4, 5, 6
     Daily_FierceAssault = 'first'  # skip, first, second, third
-    Daily_FierceAssaultFleet = 5  # 1, 2, 3, 4, 5, 6
+    Daily_FierceAssaultFleet = 1  # 1, 2, 3, 4, 5, 6
     Daily_TacticalTraining = 'second'  # skip, first, second, third
-    Daily_TacticalTrainingFleet = 5  # 1, 2, 3, 4, 5, 6
+    Daily_TacticalTrainingFleet = 1  # 1, 2, 3, 4, 5, 6
     Daily_SupplyLineDisruption = 'second'  # skip, first, second, third
     Daily_ModuleDevelopment = 'first'  # skip, first, second
-    Daily_ModuleDevelopmentFleet = 5  # 1, 2, 3, 4, 5, 6
+    Daily_ModuleDevelopmentFleet = 1  # 1, 2, 3, 4, 5, 6
+    Daily_EmergencyModuleDevelopment = 'first'  # skip, first, second
+    Daily_EmergencyModuleDevelopmentFleet = 1  # 1, 2, 3, 4, 5, 6
 
     # Group `Hard`
     Hard_HardStage = '11-4'
@@ -339,12 +351,11 @@ class GeneratedConfig:
     Exercise_DelayUntilHoursBeforeNextUpdate = 12  # 1, 2, 3, 4, 5, 12
     Exercise_OpponentChooseMode = 'max_exp'  # max_exp, easiest, leftmost, easiest_else_exp
     Exercise_OpponentTrial = 1
-    Exercise_ExercisePreserve = 0
-    Exercise_EmptyOnceOnSecondFriday = False
+    Exercise_ExerciseStrategy = 'aggressive'  # aggressive, fri18, sat0, sat12, sat18, sun0, sun12, sun18
     Exercise_LowHpThreshold = 0.4
     Exercise_LowHpConfirmWait = 0.1
     Exercise_OpponentRefreshValue = 0
-    Exercise_OpponentRefreshRecord = datetime.datetime(2023, 1, 1, 0, 0)
+    Exercise_OpponentRefreshRecord = datetime.datetime(2020, 1, 1, 0, 0)
 
     # Group `Sos`
     Sos_Chapter = 3  # 3, 4, 5, 6, 7, 8, 9, 10
@@ -363,6 +374,7 @@ class GeneratedConfig:
     # Group `OpsiAshBeacon`
     OpsiAshBeacon_AttackMode = 'current'  # current, current_dossier
     OpsiAshBeacon_OneHitMode = True
+    OpsiAshBeacon_DossierAutoAttackMode = False
     OpsiAshBeacon_RequestAssist = True
     OpsiAshBeacon_EnsureFullyCollected = True
 
@@ -383,7 +395,7 @@ class GeneratedConfig:
     OpsiShop_BuySupply = True
 
     # Group `OpsiVoucher`
-    OpsiVoucher_Filter = 'LoggerAbyssal > LoggerObscure > Book > Coin'
+    OpsiVoucher_Filter = 'LoggerAbyssal > LoggerObscure > Book > Coin > Fragment'
 
     # Group `OpsiDaily`
     OpsiDaily_DoMission = True
@@ -430,14 +442,14 @@ class GeneratedConfig:
 
     # Group `GGHandler`
     GGHandler_Enabled = False
-    GGHandler_ServerLocation = 'cn'  # cn, jp, en, tw
-    GGHandler_GGMethod = 'u2'  # screenshot, u2
-    GGHandler_GGPanelConfirmTime = 5
+    GGHandler_GGMethod = 'u2'  # u2
     GGHandler_RestartATX = False
     GGHandler_GGPackageName = 'com.'
     GGHandler_AutoRestartGG = False
     GGHandler_RestartEverytime = True
+    GGHandler_RepushLua = True
     GGHandler_GGMultiplyingFactor = 200
+    GGHandler_Timeout = 120
     GGHandler_DisabledTask = 'disable_all_dangerous_task'  # disable_all_dangerous_task, disable_guild_and_dangerous, disable_exercise, enable_all
 
     # Group `PowerLimit`

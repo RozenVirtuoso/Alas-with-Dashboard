@@ -12,7 +12,7 @@ from module.map.map_grids import SelectedGrids
 from module.os.fleet import BossFleet
 from module.os.globe_operation import OSExploreError
 from module.os.map import OSMap
-from module.os_handler.action_point import OCR_OS_ADAPTABILITY
+from module.os_handler.action_point import OCR_OS_ADAPTABILITY, ActionPointLimit
 from module.os_handler.assets import OS_MONTHBOSS_NORMAL, OS_MONTHBOSS_HARD, EXCHANGE_CHECK, EXCHANGE_ENTER
 from module.shop.shop_voucher import VoucherShop
 
@@ -167,13 +167,19 @@ class OperationSiren(OSMap):
                 continue
 
         logger.hr('OpSi reset', level=3)
-        logger.hr('OpSi clear daily', level=1)
 
         def false_func(*args, **kwargs):
             return False
 
         self.is_in_opsi_explore = false_func
         self.config.task_switched = false_func
+
+        logger.hr('OpSi clear daily', level=1)
+        self.config.override(
+            OpsiGeneral_DoRandomMapEvent=True,
+            OpsiFleet_Fleet=self.config.cross_get('OpsiDaily.OpsiFleet.Fleet'),
+            OpsiFleet_Submarine=False,
+        )
         count = 0
         empty_trial = 0
         while 1:
@@ -229,7 +235,7 @@ class OperationSiren(OSMap):
                 self.os_order_execute(
                     recon_scan=True,
                     submarine_call=False)
-                self.run_auto_search(rescan=False)
+                self.run_auto_search(rescan='current')
                 self.map_exit()
                 self.handle_after_auto_search()
             else:
@@ -305,10 +311,14 @@ class OperationSiren(OSMap):
             self.config.override(
                 OpsiGeneral_DoRandomMapEvent=True,
                 OpsiGeneral_AkashiShopFilter='ActionPoint',
+                OpsiFleet_Submarine=False,
             )
             cd = self.nearest_task_cooling_down
             logger.attr('Task cooling down', cd)
-            if cd is not None:
+            # At the last day of every month, OpsiObscure and OpsiAbyssal are scheduled frequently
+            # Don't schedule after them
+            remain = get_os_reset_remain()
+            if cd is not None and remain > 0:
                 logger.info(f'Having task cooling down, delay OpsiMeowfficerFarming after it')
                 self.config.task_delay(target=cd.next_run)
                 self.config.task_stop()
@@ -331,11 +341,18 @@ class OperationSiren(OSMap):
                 # When not running CL1 and use oil
                 keep_current_ap = True
                 check_rest_ap = True
-                if self.is_cl1_enabled:
-                    check_rest_ap = False
                 if not self.is_cl1_enabled and self.config.OpsiGeneral_BuyActionPointLimit > 0:
                     keep_current_ap = False
-                self.action_point_set(cost=0, keep_current_ap=keep_current_ap, check_rest_ap=check_rest_ap)
+                if self.is_cl1_enabled and self.get_yellow_coins() >= self.config.OS_CL1_YELLOW_COINS_PRESERVE:
+                    check_rest_ap = False
+                    try:
+                        self.action_point_set(cost=0, keep_current_ap=keep_current_ap, check_rest_ap=check_rest_ap)
+                    except ActionPointLimit:
+                        self.config.task_delay(server_update=True)
+                        self.config.task_call('OpsiHazard1Leveling')
+                        self.config.task_stop()
+                else:
+                    self.action_point_set(cost=0, keep_current_ap=keep_current_ap, check_rest_ap=check_rest_ap)
                 ap_checked = True
 
             # (1252, 1012) is the coordinate of zone 134 (the center zone) in os_globe_map.png
@@ -401,12 +418,12 @@ class OperationSiren(OSMap):
 
             self.get_current_zone()
 
-            # Preset action point to 100
+            # Preset action point to 70
             # When running CL1 oil is for running CL1, not meowfficer farming
             keep_current_ap = True
             if self.config.OpsiGeneral_BuyActionPointLimit > 0:
                 keep_current_ap = False
-            self.action_point_set(cost=100, keep_current_ap=keep_current_ap, check_rest_ap=True)
+            self.action_point_set(cost=70, keep_current_ap=keep_current_ap, check_rest_ap=True)
             if self._action_point_total >= 3000:
                 with self.config.multi_set():
                     self.config.task_delay(server_update=True)
@@ -441,13 +458,6 @@ class OperationSiren(OSMap):
                 if current < next_run:
                     logger.info(f'Delay task `{task}` to {next_run}')
                     self.config.cross_set(keys=keys, value=next_run)
-
-            # ResetActionPointPreserve
-            # Unbound attribute, default to 500
-            preserve = self.config.OpsiMeowfficerFarming_ActionPointPreserve
-            logger.info(f'Set OpsiMeowfficerFarming.ActionPointPreserve to {preserve}')
-            self.config.cross_set(
-                keys='OpsiMeowfficerFarming.OpsiMeowfficerFarming.ActionPointPreserve', value=preserve)
 
     def _os_explore(self):
         """
@@ -554,7 +564,7 @@ class OperationSiren(OSMap):
         self.os_order_execute(
             recon_scan=True,
             submarine_call=self.config.OpsiFleet_Submarine)
-        self.run_auto_search(rescan=False)
+        self.run_auto_search(rescan='current')
 
         self.map_exit()
         self.handle_after_auto_search()
@@ -595,7 +605,8 @@ class OperationSiren(OSMap):
         logger.hr('OS clear abyssal', level=1)
         self.cl1_ap_preserve()
 
-        result = self.storage_get_next_item('ABYSSAL', use_logger=self.config.OpsiGeneral_UseLogger)
+        with self.config.temporary(STORY_ALLOW_SKIP=False):
+            result = self.storage_get_next_item('ABYSSAL', use_logger=self.config.OpsiGeneral_UseLogger)
         if not result:
             self.delay_abyssal(result=False)
 

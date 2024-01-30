@@ -323,6 +323,10 @@ class OSFleet(OSCamera, Combat, Fleet, OSAsh):
             if self.handle_os_game_tips():
                 confirm_timer.reset()
                 continue
+            if self.is_in_map_order():
+                self.order_quit()
+                confirm_timer.reset()
+                continue
 
             # Combat
             if self.combat_appear():
@@ -383,7 +387,7 @@ class OSFleet(OSCamera, Combat, Fleet, OSAsh):
         self.device.screenshot_interval_set()
         return result
 
-    def port_goto(self):
+    def port_goto(self, allow_port_arrive=True):
         """
         A simple and poor implement to goto port. Searching port on radar.
 
@@ -406,10 +410,10 @@ class OSFleet(OSCamera, Combat, Fleet, OSAsh):
 
             radar_arrive = np.linalg.norm(grid) == 0
             port_arrive = self.appear(PORT_ENTER, offset=(20, 20))
-            if port_arrive:
-                logger.info('Arrive port')
+            if allow_port_arrive and port_arrive:
+                logger.info('Arrive port (port_arrive)')
                 break
-            elif not port_arrive and radar_arrive:
+            elif allow_port_arrive and (not port_arrive and radar_arrive):
                 if confirm_timer.reached():
                     logger.warning('Arrive port on radar but port entrance not appear')
                     raise MapWalkError
@@ -417,6 +421,9 @@ class OSFleet(OSCamera, Combat, Fleet, OSAsh):
                     logger.info('Arrive port on radar but port entrance not appear, confirming')
                     self.device.screenshot()
                     continue
+            elif not allow_port_arrive and radar_arrive:
+                logger.info('Arrive port (radar_arrive)')
+                break
             else:
                 confirm_timer.reset()
 
@@ -528,6 +535,11 @@ class OSFleet(OSCamera, Combat, Fleet, OSAsh):
     def question_goto(self, has_fleet_step=False):
         logger.hr('Question goto')
         while 1:
+            # A game bug that AUTO_SEARCH_REWARD from the last cleared zone popups
+            if self.appear_then_click(AUTO_SEARCH_REWARD, offset=(50, 50), interval=3):
+                self.device.screenshot()
+                continue
+
             # Update local view
             # Not screenshots taking, reuse the old one
             self.update_os()

@@ -22,6 +22,11 @@ class AzurLaneAutoScript:
     def __init__(self, config_name='alas'):
         logger.hr('Start', level=0)
         self.config_name = config_name
+        # Skip first restart
+        self.is_first_task = True
+        # Failure count of tasks
+        # Key: str, task name, value: int, failure count
+        self.failure_record = {}
 
     @cached_property
     def config(self):
@@ -43,6 +48,9 @@ class AzurLaneAutoScript:
             return device
         except RequestHumanTakeover:
             logger.critical('Request human takeover')
+            exit(1)
+        except EmulatorNotRunningError:
+            logger.critical('EmulatorNotRunningError')
             exit(1)
         except Exception as e:
             logger.exception(e)
@@ -232,6 +240,10 @@ class AzurLaneAutoScript:
         from module.freebies.freebies import Freebies
         Freebies(config=self.config, device=self.device).run()
 
+    def minigame(self):
+        from module.minigame.minigame import Minigame
+        Minigame(config=self.config, device=self.device).run()
+
     def daily(self):
         from module.daily.daily import Daily
         Daily(config=self.config, device=self.device).run()
@@ -371,6 +383,14 @@ class AzurLaneAutoScript:
         from module.raid.run import RaidRun
         RaidRun(config=self.config, device=self.device).run()
 
+    def coalition(self):
+        from module.coalition.coalition import Coalition
+        Coalition(config=self.config, device=self.device).run()
+
+    def coalition_sp(self):
+        from module.coalition.coalition_sp import CoalitionSP
+        CoalitionSP(config=self.config, device=self.device).run()
+
     def c72_mystery_farming(self):
         from module.campaign.run import CampaignRun
         CampaignRun(config=self.config, device=self.device).run(
@@ -433,6 +453,7 @@ class AzurLaneAutoScript:
 
             if task.next_run > datetime.now():
                 logger.info(f'Wait until {task.next_run} for task `{task.command}`')
+                self.is_first_task = False
                 method = self.config.Optimization_WhenTaskQueueEmpty
                 if method == 'close_game':
                     logger.info('Close game during wait')
@@ -440,7 +461,7 @@ class AzurLaneAutoScript:
                     release_resources()
                     self.device.release_during_wait()
                     if not self.wait_until(task.next_run):
-                        del self.__dict__['config']
+                        del_cached_property(self, 'config')
                         continue
                     self.run('start')
                 elif method == 'goto_main':
@@ -449,35 +470,45 @@ class AzurLaneAutoScript:
                     release_resources()
                     self.device.release_during_wait()
                     if not self.wait_until(task.next_run):
-                        del self.__dict__['config']
+                        del_cached_property(self, 'config')
                         continue
                 elif method == 'stay_there':
                     logger.info('Stay there during wait')
                     release_resources()
                     self.device.release_during_wait()
                     if not self.wait_until(task.next_run):
-                        del self.__dict__['config']
+                        del_cached_property(self, 'config')
                         continue
                 else:
                     logger.warning(f'Invalid Optimization_WhenTaskQueueEmpty: {method}, fallback to stay_there')
                     release_resources()
                     self.device.release_during_wait()
                     if not self.wait_until(task.next_run):
-                        del self.__dict__['config']
+                        del_cached_property(self, 'config')
                         continue
             break
 
         AzurLaneConfig.is_hoarding_task = False
         return task.command
 
+    def gg_check(self):
+        if deep_get(self.config.data, "GameManager.GGHandler.Enabled"):
+            logger.info("GG is enabled, check gg package name")
+            if deep_get(self.config.data, "GameManager.GGHandler.GGPackageName") in self.device.list_package():
+                logger.info("GG package name exists")
+            else:
+                logger.critical("GG package name doesn't exist, please check your gg setting")
+                logger.critical("友情翻译：你他妈的GG包名填错了，滚去重填！！！")
+                exit(1)
+
     def loop(self):
+        self.gg_check()
         logger.set_file_logger(self.config_name)
         logger.info(f'Start scheduler loop: {self.config_name}')
-        is_first = True
         # Try forced task_call restart to reset GG status
         self.checker.wait_until_available()
         GGHandler(config=self.config, device=self.device).handle_restart_before_tasks()
-        failure_record = {}
+        check_fail = 0
         while 1:
             # Check update event from GUI
             if self.stop_event is not None:
@@ -502,18 +533,28 @@ class AzurLaneAutoScript:
 
             # Skip first restart
             if task == 'Restart':
-                if is_first:
+                if self.is_first_task:
                     logger.info('Skip task `Restart` at scheduler start')
                 else:
                     from module.handler.login import LoginHandler
                     LoginHandler(self.config, self.device).app_restart()
                 self.config.task_delay(server_update=True)
-                del self.__dict__['config']
+                del_cached_property(self, 'config')
                 continue
 
             # Check GG config before a task begins (to reset temporary config), and decide to enable it.
             GGHandler(config=self.config, device=self.device).check_config()
-            GGHandler(config=self.config, device=self.device).check_then_set_gg_status(inflection.underscore(task))
+            try:
+                GGHandler(config=self.config, device=self.device).check_then_set_gg_status(inflection.underscore(task))
+                check_fail = 0
+            except GameStuckError:
+                del_cached_property(self, 'config')
+                check_fail += 1
+                if check_fail <= 3:
+                    continue
+                else:
+                    logger.critical('Maybe your emulator died, trying to restart it')
+                    self.device.emulator_start()
 
             # Run
             logger.info(f'Scheduler: Start task `{task}`')
@@ -522,12 +563,12 @@ class AzurLaneAutoScript:
             logger.hr(task, level=0)
             success = self.run(inflection.underscore(task))
             logger.info(f'Scheduler: End task `{task}`')
-            is_first = False
+            self.is_first_task = False
 
             # Check failures
-            failed = deep_get(failure_record, keys=task, default=0)
+            failed = deep_get(self.failure_record, keys=task, default=0)
             failed = 0 if success else failed + 1
-            deep_set(failure_record, keys=task, value=failed)
+            deep_set(self.failure_record, keys=task, value=failed)
             if failed >= 3:
                 logger.critical(f"Task `{task}` failed 3 or more times.")
                 logger.critical("Possible reason #1: You haven't used it correctly. "
@@ -535,6 +576,7 @@ class AzurLaneAutoScript:
                 logger.critical("Possible reason #2: There is a problem with this task. "
                                 "Please contact developers or try to fix it yourself.")
                 logger.critical('Request human takeover')
+
                 handle_notify(
                     self.config.Error_OnePushConfig,
                     title=f"Alas <{self.config_name}> crashed",
@@ -543,11 +585,11 @@ class AzurLaneAutoScript:
                 exit(1)
 
             if success:
-                del self.__dict__['config']
+                del_cached_property(self, 'config')
                 continue
             elif self.config.Error_HandleError:
                 # self.config.task_delay(success=False)
-                del self.__dict__['config']
+                del_cached_property(self, 'config')
                 self.checker.check_now()
                 continue
             else:

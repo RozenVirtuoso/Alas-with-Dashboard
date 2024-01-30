@@ -1,5 +1,6 @@
 import re
 import argparse
+import json
 import queue
 import threading
 import time
@@ -7,8 +8,44 @@ from datetime import datetime
 from functools import partial
 from typing import Dict, List, Optional
 
+from pywebio import config as webconfig
+from pywebio.input import file_upload, input_group, input, select
+from pywebio.output import (
+    Output,
+    clear,
+    close_popup,
+    popup,
+    put_button,
+    put_buttons,
+    put_collapse,
+    put_column,
+    put_error,
+    put_html,
+    put_link,
+    put_loading,
+    put_markdown,
+    put_row,
+    put_scope,
+    put_table,
+    put_text,
+    put_warning,
+    toast,
+    use_scope,
+)
+from pywebio.pin import pin, pin_on_change
+from pywebio.session import (
+    go_app,
+    info,
+    local,
+    register_thread,
+    run_js,
+    set_env,
+    download,
+)
+
 import module.webui.lang as lang
 from module.config.config import AzurLaneConfig, Function
+from module.config.env import IS_ON_PHONE_CLOUD
 from module.config.utils import (
     alas_instance,
     alas_template,
@@ -34,7 +71,6 @@ from module.webui.pin import put_input, put_select, pin_update
 from module.webui.process_manager import ProcessManager
 from module.webui.remote_access import RemoteAccess
 from module.webui.setting import State
-from module.webui.translate import translate
 from module.webui.updater import updater
 from module.webui.utils import (
     Icon,
@@ -49,6 +85,7 @@ from module.webui.utils import (
     parse_pin_value,
     raise_exception,
     re_fullmatch,
+    to_pin_value,
 )
 from module.webui.widgets import (
     BinarySwitchButton,
@@ -59,31 +96,6 @@ from module.webui.widgets import (
     put_none,
     put_output,
 )
-from pywebio import config as webconfig
-from pywebio.output import (
-    Output,
-    clear,
-    close_popup,
-    popup,
-    put_button,
-    put_buttons,
-    put_collapse,
-    put_column,
-    put_error,
-    put_html,
-    put_link,
-    put_loading,
-    put_markdown,
-    put_row,
-    put_scope,
-    put_table,
-    put_text,
-    put_warning,
-    toast,
-    use_scope,
-)
-from pywebio.pin import pin, pin_on_change
-from pywebio.session import go_app, info, local, register_thread, run_js, set_env
 
 task_handler = TaskHandler()
 
@@ -137,11 +149,9 @@ class AlasGUI(Frame):
         # TODO: update put_icon_buttons()
         put_icon_buttons(
             Icon.DEVELOP,
-            buttons=[
-                {"label": t("Gui.Aside.Develop"), "value": "Develop", "color": "aside"}
-            ],
+            buttons=[{"label": t("Gui.Aside.Home"), "value": "Home", "color": "aside"}],
             onclick=[self.ui_develop],
-        ),
+        )
         for name in alas_instance():
             put_icon_buttons(
                 Icon.RUN,
@@ -149,12 +159,16 @@ class AlasGUI(Frame):
                 onclick=self.ui_alas,
             )
         put_icon_buttons(
-            Icon.ADD,
+            Icon.SETTING,
             buttons=[
-                {"label": t("Gui.Aside.AddAlas"), "value": "AddAlas", "color": "aside"}
+                {
+                    "label": t("Gui.AddAlas.Manage"),
+                    "value": "AddAlas",
+                    "color": "aside",
+                }
             ],
-            onclick=[self.ui_add_alas],
-        ),
+            onclick=[lambda: go_app("manage", new_window=False)],
+        )
 
     @use_scope("header_status")
     def set_status(self, state: int) -> None:
@@ -202,20 +216,16 @@ class AlasGUI(Frame):
                 }
             ],
             onclick=[self.alas_overview],
-        ).style(f"--menu-Overview--"),
+        ).style(f"--menu-Overview--")
 
-        for key, tasks in deep_iter(self.ALAS_MENU, depth=2):
-            # path = '.'.join(key)
-            menu = key[1]
-
-            if menu == "Tool":
+        for menu, task_data in self.ALAS_MENU.items():
+            if task_data.get("page") == "tool":
                 _onclick = self.alas_daemon_overview
             else:
                 _onclick = self.alas_set_group
 
-            task_btn_list = []
-            for task in tasks:
-                task_btn_list.append(
+            if task_data.get("menu") == "collapse":
+                task_btn_list = [
                     put_buttons(
                         [
                             {
@@ -226,9 +236,29 @@ class AlasGUI(Frame):
                         ],
                         onclick=_onclick,
                     ).style(f"--menu-{task}--")
+                    for task in task_data.get("tasks", [])
+                ]
+                put_collapse(title=t(f"Menu.{menu}.name"), content=task_btn_list)
+            else:
+                title = t(f"Menu.{menu}.name")
+                put_html(
+                    '<div class="hr-task-group-box">'
+                    '<span class="hr-task-group-line"></span>'
+                    f'<span class="hr-task-group-text">{title}</span>'
+                    '<span class="hr-task-group-line"></span>'
+                    '</div>'
                 )
-
-            put_collapse(title=t(f"Menu.{menu}.name"), content=task_btn_list)
+                for task in task_data.get("tasks", []):
+                    put_buttons(
+                        [
+                            {
+                                "label": t(f"Task.{task}.name"),
+                                "value": task,
+                                "color": "menu",
+                            }
+                        ],
+                        onclick=_onclick,
+                    ).style(f"--menu-{task}--").style(f"padding-left: 0.75rem")
 
         self.alas_overview()
 
@@ -480,8 +510,7 @@ class AlasGUI(Frame):
             try:
                 d = self.modified_config_queue.get(timeout=10)
                 config_name = self.alas_name
-                read = self.alas_config.read_file
-                write = self.alas_config.write_file
+                config_updater = self.alas_config
             except queue.Empty:
                 continue
             modified[d["name"]] = d["value"]
@@ -490,7 +519,7 @@ class AlasGUI(Frame):
                     d = self.modified_config_queue.get(timeout=1)
                     modified[d["name"]] = d["value"]
                 except queue.Empty:
-                    self._save_config(modified, config_name, read, write)
+                    self._save_config(modified, config_name, config_updater)
                     modified.clear()
                     break
 
@@ -498,14 +527,18 @@ class AlasGUI(Frame):
             self,
             modified: Dict[str, str],
             config_name: str,
-            read=State.config_updater.read_file,
-            write=State.config_updater.write_file,
+            config_updater: AzurLaneConfig = State.config_updater,
     ) -> None:
         try:
             skip_time_record = False
             valid = []
             invalid = []
-            config = read(config_name)
+            config = config_updater.read_file(config_name)
+            n = datetime.now()
+            for p, v in deep_iter(config, depth=3):
+                if p[-1].endswith('un') and not isinstance(v, bool):
+                    if (v - n).days >= 31:
+                        deep_set(config, p, '')
             for k, v in modified.copy().items():
                 valuetype = deep_get(self.ALAS_ARGS, k + ".valuetype")
                 v = parse_pin_value(v, valuetype)
@@ -521,17 +554,11 @@ class AlasGUI(Frame):
                     deep_set(config, k, v)
                     modified[k] = v
                     valid.append(k)
-
-                    # update Emotion Record if Emotion Value is changed
-                    if "Emotion" in k and "Value" in k:
-                        k = k.split(".")
-                        k[-1] = k[-1].replace("Value", "Record")
-                        k = ".".join(k)
-                        v = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-                        modified[k] = v
-                        deep_set(config, k, v)
-                        valid.append(k)
-                        pin["_".join(k.split("."))] = v
+                    for set_key, set_value in config_updater.save_callback(k, v):
+                        modified[set_key] = set_value
+                        deep_set(config, set_key, set_value)
+                        valid.append(set_key)
+                        pin["_".join(set_key.split("."))] = to_pin_value(set_value)
                 else:
                     modified.pop(k)
                     invalid.append(k)
@@ -548,7 +575,7 @@ class AlasGUI(Frame):
                 logger.info(
                     f"Save config {filepath_config(config_name)}, {dict_to_kv(modified)}"
                 )
-                write(config_name, config)
+                config_updater.write_file(config_name, config)
         except Exception as e:
             logger.exception(e)
 
@@ -789,6 +816,23 @@ class AlasGUI(Frame):
             if group[0] == "Storage":
                 continue
             self.set_group(group, arg_dict, config, task)
+
+        run_js(
+            """
+            $("#pywebio-scope-log").css(
+                "grid-row-start",
+                -2 - $("#pywebio-scope-_daemon").children().filter(
+                    function(){
+                        return $(this).css("display") === "none";
+                    }
+                ).length
+            );
+            $("#pywebio-scope-log").css(
+                "grid-row-end",
+                -1
+            );
+        """
+        )
 
         self.task_handler.add(switch_scheduler.g(), 1, True)
         self.task_handler.add(switch_log_scroll.g(), 1, True)
@@ -1056,8 +1100,8 @@ class AlasGUI(Frame):
                     "--loading-border-fill--"
                 )
                 if (
-                        State.deploy_config.EnableRemoteAccess
-                        and State.deploy_config.Password
+                    State.deploy_config.EnableRemoteAccess
+                    and State.deploy_config.Password
                 ):
                     put_text(t("Gui.Remote.NotRunning"), scope="remote_state")
                 else:
@@ -1086,8 +1130,8 @@ class AlasGUI(Frame):
         if not self.is_mobile:
             self.show()
             return
-        self.init_aside(name="Develop")
-        self.set_title(t("Gui.Aside.Develop"))
+        self.init_aside(name="Home")
+        self.set_title(t("Gui.Aside.Home"))
         self.dev_set_menu()
         self.alas_name = ""
         if hasattr(self, "alas"):
@@ -1123,15 +1167,18 @@ class AlasGUI(Frame):
                 name = pin["AddAlas_name"]
                 origin = pin["AddAlas_copyfrom"]
 
-                if set(name) & set(".\\/:*?\"'<>|"):
-                    clear(s)
-                    put(name, origin)
-                    put_error(t("Gui.AddAlas.InvalidChar"), scope=s)
-                    return
                 if name in alas_instance():
+                    err = "Gui.AddAlas.FileExist"
+                elif set(name) & set(".\\/:*?\"'<>|"):
+                    err = "Gui.AddAlas.InvalidChar"
+                elif name.lower().startswith("template"):
+                    err = "Gui.AddAlas.InvalidPrefixTemplate"
+                else:
+                    err = ""
+                if err:
                     clear(s)
                     put(name, origin)
-                    put_error(t("Gui.AddAlas.FileExist"), scope=s)
+                    put_error(t(err), scope=s)
                     return
 
                 r = load_config(origin).read_file(origin)
@@ -1146,22 +1193,32 @@ class AlasGUI(Frame):
                     label=t("Gui.AddAlas.NewName"),
                     value=name or get_unused_name(),
                     scope=s,
-                ),
+                )
                 put_select(
                     name="AddAlas_copyfrom",
                     label=t("Gui.AddAlas.CopyFrom"),
                     options=alas_template() + alas_instance(),
                     value=origin or "template-alas",
                     scope=s,
-                ),
-                put_button(label=t("Gui.AddAlas.Confirm"), onclick=add, scope=s)
+                )
+                put_buttons(
+                    buttons=[
+                        {"label": t("Gui.AddAlas.Confirm"), "value": "confirm"},
+                        {"label": t("Gui.AddAlas.Manage"), "value": "manage"},
+                    ],
+                    onclick=[
+                        add,
+                        lambda: go_app("manage", new_window=False),
+                    ],
+                    scope=s,
+                )
 
             put()
 
     def show(self) -> None:
         self._show()
         self.set_aside()
-        self.init_aside(name="Develop")
+        self.init_aside(name="Home")
         self.dev_set_menu()
         self.init_menu(name="HomePage")
         self.alas_name = ""
@@ -1203,10 +1260,6 @@ class AlasGUI(Frame):
             Alas is a free open source software, if you paid for Alas from any channel, please refund.
             Alas 是一款免费开源软件，如果你在任何渠道付费购买了Alas，请退款。
             Project repository 项目地址：`https://github.com/LmeSzinc/AzurLaneAutoScript`
-            GG Modified repository 魔改版地址: `https://github.com/Zuosizhu/AzurLaneAutoScript`
-            魔改版镜像地址: `https://gitee.com/zuosizhu/AzurLaneAutoScript`
-            GG Modified repository 魔改版地址: `https://github.com/MengNianxiaoyao/AzurLaneAutoScript`
-            魔改版镜像地址: `https://gitee.com/MengNianxiaoyao/AzurLaneAutoScript`
             """
             ).style("text-align: center")
 
@@ -1316,8 +1369,155 @@ class AlasGUI(Frame):
         self.task_handler.start()
 
         # Return to previous page
-        if aside not in ["Develop", None]:
+        if aside not in ["Home", None]:
             self.ui_alas(aside)
+
+
+def app_manage():
+    def _import():
+        resp = file_upload(
+            label=t("Gui.AppManage.Import"),
+            placeholder=t("Gui.Text.ChooseFile"),
+            help_text=t("Gui.AppManage.OverrideWarning"),
+            accept=".json",
+            required=False,
+            max_size="1M",
+        )
+
+        if resp is None:
+            return
+
+        file: bytes = resp["content"]
+        file_name: str = resp["filename"]
+
+        if IS_ON_PHONE_CLOUD:
+            config_name = mod_name = "alas"
+        elif len(file_name.split(".")) == 2:
+            config_name, _ = file_name.split(".")
+            mod_name = "alas"
+        else:
+            config_name, mod_name, _ = file_name.rsplit(".", maxsplit=2)
+
+        config = json.loads(file.decode(encoding="utf-8"))
+        State.config_updater.write_file(config_name, config, mod_name)
+        toast(t("Gui.AppManage.ImportSuccess"), color="success")
+
+        _show_table()
+
+    def _export(config_name: str):
+        mod_name = get_config_mod(config_name)
+        if mod_name == "alas":
+            filename = f"{config_name}.json"
+        else:
+            filename = f"{config_name}.{mod_name}.json"
+        with open(filepath_config(config_name, mod_name), "rb") as f:
+            download(filename, f.read())
+
+    def _new():
+        def get_unused_name():
+            all_name = alas_instance()
+            for i in range(2, 100):
+                if f"alas{i}" not in all_name:
+                    return f"alas{i}"
+            else:
+                return ""
+
+        def validate(s: str):
+            if s in alas_instance():
+                return t("Gui.AppManage.NameExist")
+            if set(s) & set(".\\/:*?\"'<>|"):
+                return t("Gui.AppManage.InvalidChar")
+            if s.lower().startswith("template"):
+                return t("Gui.AppManage.InvalidPrefixTemplate")
+            return None
+
+        resp = input_group(
+            label=t("Gui.AppManage.TitleNew"),
+            inputs=[
+                input(
+                    label=t("Gui.AppManage.NewName"),
+                    name="config_name",
+                    value=get_unused_name(),
+                    validate=validate,
+                ),
+                select(
+                    label=t("Gui.AppManage.CopyFrom"),
+                    name="copy_from",
+                    options=alas_template() + alas_instance(),
+                    value="template-alas",
+                ),
+            ],
+            cancelable=True,
+        )
+
+        if resp is None:
+            return
+
+        config_name = resp["config_name"]
+        origin = resp["copy_from"]
+
+        r = load_config(origin).read_file(origin)
+        State.config_updater.write_file(config_name, r, get_config_mod(origin))
+        toast(t("Gui.AppManage.NewSuccess"), color="success")
+        _show_table()
+
+    def _show_table():
+        clear("config_table")
+        put_table(
+            tdata=[
+                (
+                    name,
+                    get_config_mod(name),
+                    put_buttons(
+                        buttons=[
+                            {"label": t("Gui.AppManage.Export"), "value": name},
+                            # {
+                            #     "label": t("Gui.AppManage.Delete"),
+                            #     "value": name,
+                            #     "disabled": True,
+                            #     "color": "danger",
+                            # },
+                        ],
+                        onclick=[
+                            partial(_export, name),
+                            # partial(_delete, name),
+                        ],
+                        group=True,
+                        small=True,
+                    ),
+                )
+                for name in alas_instance()
+            ],
+            header=[
+                t("Gui.AppManage.Name"),
+                t("Gui.AppManage.Mod"),
+                t("Gui.AppManage.Actions"),
+            ],
+            scope="config_table",
+        )
+
+    set_env(title="Alas", output_animation=False)
+    run_js("$('head').append('<style>.footer{display:none}</style>')")
+
+    put_html(f"<h2>{t('Gui.AppManage.PageTitle')}</h2>")
+    put_scope("config_table")
+    put_buttons(
+        buttons=[
+            {
+                "label": t("Gui.AppManage.New"),
+                "value": "new",
+                "disabled": IS_ON_PHONE_CLOUD,
+            },
+            {"label": t("Gui.AppManage.Import"), "value": "import"},
+            {"label": t("Gui.AppManage.Back"), "value": "back"},
+        ],
+        onclick=[
+            (lambda: None) if IS_ON_PHONE_CLOUD else _new,
+            _import,
+            partial(go_app, "index", new_window=False),
+        ],
+    )
+    _show_table()
 
 
 def debug():
@@ -1344,8 +1544,8 @@ def startup():
     if State.deploy_config.StartOcrServer:
         start_ocr_server_process(State.deploy_config.OcrServerPort)
     if (
-            State.deploy_config.EnableRemoteAccess
-            and State.deploy_config.Password is not None
+        State.deploy_config.EnableRemoteAccess
+        and State.deploy_config.Password is not None
     ):
         task_handler.add(RemoteAccess.keep_ssh_alive(), 60)
 
@@ -1403,6 +1603,7 @@ def app():
     logger.attr("Language", lang.LANG)
     logger.attr("Password", True if key else False)
     logger.attr("CDN", cdn)
+    logger.attr("IS_ON_PHONE_CLOUD", IS_ON_PHONE_CLOUD)
 
     def index():
         if key is not None and not login(key):
@@ -1414,8 +1615,16 @@ def app():
         local.gui = gui
         gui.run()
 
+    def manage():
+        if key is not None and not login(key):
+            logger.warning(f"{info.user_ip} login failed.")
+            time.sleep(1.5)
+            run_js("location.reload();")
+            return
+        app_manage()
+
     app = asgi_app(
-        applications=[index],
+        applications=[index, manage],
         cdn=cdn,
         static_dir=None,
         debug=True,

@@ -22,6 +22,9 @@ from module.gg_handler.gg_handler import GGHandler
 
 
 class LoginHandler(UI):
+    _app_u2_family = ['uiautomator2', 'minitouch', 'scrcpy', 'MaaTouch']
+    have_been_reset = False
+
     def _handle_app_login(self):
         """
         Pages:
@@ -96,12 +99,12 @@ class LoginHandler(UI):
 
         confirm = self.image_color_button(
             area=(640, 360, 1280, 720), color=(78, 189, 234),
-            color_threshold=250, encourage=25, name='AGREEMENT_CONFIRM')
+            color_threshold=245, encourage=25, name='AGREEMENT_CONFIRM')
         if confirm is None:
             return False
         scroll = self.image_color_button(
             area=(640, 0, 1280, 720), color=(182, 189, 202),
-            color_threshold=250, encourage=5, name='AGREEMENT_SCROLL'
+            color_threshold=245, encourage=5, name='AGREEMENT_SCROLL'
         )
         if scroll is not None:
             # User agreement
@@ -142,19 +145,26 @@ class LoginHandler(UI):
         raise GameStuckError
 
     def app_stop(self):
+        if self.config.Emulator_ControlMethod in self._app_u2_family and not self.have_been_reset:
+            GGHandler(config=self.config, device=self.device).handle_u2_restart()
+            self.have_been_reset = True
         logger.hr('App stop')
         self.device.app_stop()
 
     def app_start(self):
+        if self.config.Emulator_ControlMethod in self._app_u2_family and not self.have_been_reset:
+            GGHandler(config=self.config, device=self.device).handle_u2_restart()
+            self.have_been_reset = True
         logger.hr('App start')
-        GGHandler(config=self.config, device=self.device).handle_before_restart()
         self.device.app_start()
         self.handle_app_login()
         # self.ensure_no_unfinished_campaign()
 
     def app_restart(self):
+        if self.config.Emulator_ControlMethod in self._app_u2_family and not self.have_been_reset:
+            GGHandler(config=self.config, device=self.device).handle_u2_restart()
+            self.have_been_reset = True
         logger.hr('App restart')
-        GGHandler(config=self.config, device=self.device).handle_before_restart()
         self.device.app_stop()
         self.device.app_start()
         self.handle_app_login()
